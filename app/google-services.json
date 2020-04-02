@@ -1,0 +1,71 @@
+{
+  "project_info": {
+    "project_number": "1006574270032",
+    "firebase_url": "https://bissatapp.firebaseio.com",
+    "project_id": "bissatapp",
+    "storage_bucket": "bissatapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1006574270032:android:059aae7a67c34a339e0355",
+        "android_client_info": {
+          "package_name": "com.deepak.besaat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1006574270032-36h0nr90120fj1mmdhg0ej0g9eh8mfnb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.deepak.besaat",
+            "certificate_hash": "99d4659ee89763cfc510232ff01ae18c39b62bc5"
+          }
+        },
+        {
+          "client_id": "1006574270032-lo4tgogtnq09fpnrc56b066hu7b1ek44.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.deepak.besaat",
+            "certificate_hash": "fccfd855a876031ff412feae7ed9cc9b22176e2d"
+          }
+        },
+        {
+          "client_id": "1006574270032-nll97thj4d1p8b8ec1ouks47j4h78rsh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.deepak.besaat",
+            "certificate_hash": "82647fcef18d93ce13df606d6ba1b1615f1746c1"
+          }
+        },
+        {
+          "client_id": "1006574270032-l7fpogpvhr8lthavj1al6k8jngas2a90.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDh_Fk6TMJ2g1eKCQBINcdbcyiWv_AMzjM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1006574270032-9nus0vv3hk3capfg004k9d5n5db7vdbp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1006574270032-1up43vpt3cvukmg68kbvfuif0rlb7cgc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.Besaat"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

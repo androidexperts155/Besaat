@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="deliveryType"
+            type="com.deepak.besaat.model.courierGuysModel.GetDeliveryTypesPojo.Datum" />
+
+        <variable
+            name="viewModel2"
+            type="com.deepak.besaat.viewModel.CourierGuysListingActivityViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/rootLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_white_eight_dp_bottom_corner"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/radioDelType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:checked="@{deliveryType.check}"
+                android:fontFamily="@font/open_sans_regular"
+                android:gravity="center"
+                android:padding="@dimen/_6sdp"
+                android:text="@{deliveryType.name}"
+                android:textColor="@color/colorLightBlack2"
+                android:textSize="@dimen/_14ssp" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black" />
+    </LinearLayout>
+</layout>

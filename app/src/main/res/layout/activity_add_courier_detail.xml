@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="addCourierDetailViewModel"
+            type="com.deepak.besaat.viewModel.AddCourierDetailViewModel" />
+        <import type="android.view.View" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/rootLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            tools:context=".view.activities.phoneSignUp.PhoneSignUpActivity">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:stateListAnimator="@null"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentInsetStart="0dp"
+                    android:contentInsetLeft="0dp"
+                    android:contentInsetEnd="0dp"
+                    android:contentInsetRight="0dp"
+                    app:contentInsetEnd="0dp"
+                    app:contentInsetLeft="0dp"
+                    app:contentInsetRight="0dp"
+                    app:contentInsetStart="0dp" />
+            </com.google.android.material.appbar.AppBarLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:background="@drawable/bg_white_tl_round_40"
+                android:paddingTop="@dimen/_24sdp"
+                android:paddingBottom="@dimen/_24sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_24sdp"
+                    android:layout_marginEnd="@dimen/_24sdp"
+                    android:alpha="0.3"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/courier_delivery"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutLocal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:gravity="center_vertical"
+                    android:onClick="@{addCourierDetailViewModel.onLocalClick}"
+                    android:paddingLeft="@dimen/_4sdp"
+                    android:paddingTop="@dimen/_8sdp"
+                    android:paddingRight="@dimen/_4sdp"
+                    android:paddingBottom="@dimen/_8sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView14">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/cabin_semi_bold"
+                        android:text="@string/local"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="@dimen/_14ssp" />
+
+                    <CheckBox
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/selector_check_box"
+                        android:button="@null"
+                        android:checked="@={addCourierDetailViewModel.localChecked}"
+                        android:clickable="false" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/view1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/divider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutLocal"></View>
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutOverseas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:gravity="center_vertical"
+                    android:onClick="@{addCourierDetailViewModel.onOverSeasClick}"
+                    android:paddingLeft="@dimen/_4sdp"
+                    android:paddingTop="@dimen/_8sdp"
+                    android:paddingRight="@dimen/_4sdp"
+                    android:paddingBottom="@dimen/_8sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view1">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/cabin_semi_bold"
+                        android:text="@string/overseas"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="@dimen/_14ssp" />
+
+                    <CheckBox
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/selector_check_box"
+                        android:button="@null"
+                        android:checked="@={addCourierDetailViewModel.overseasChecked}"
+                        android:clickable="false" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/view2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/divider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutOverseas"></View>
+
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutBoth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:gravity="center_vertical"
+                    android:onClick="@{addCourierDetailViewModel.onBothClick}"
+                    android:paddingLeft="@dimen/_4sdp"
+                    android:paddingTop="@dimen/_8sdp"
+                    android:paddingRight="@dimen/_4sdp"
+                    android:paddingBottom="@dimen/_8sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view2">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/cabin_semi_bold"
+                        android:text="@string/both"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="@dimen/_14ssp" />
+
+                    <CheckBox
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/selector_check_box"
+                        android:button="@null"
+                        android:checked="@={addCourierDetailViewModel.bothChecked}"
+                        android:clickable="false" />
+                </LinearLayout>
+
+
+                <View
+                    android:id="@+id/view3"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/divider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutBoth"></View>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/contraintLayoutInner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="@{addCourierDetailViewModel.licenseDetailViewVisibility ? View.VISIBLE:View.GONE}"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutBoth">
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="24dp"
+                        android:alpha="0.3"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/license"
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="@dimen/_10ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout5"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_45sdp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="24dp"
+                        android:background="@drawable/bg_light_whitish_blue_tl_br_bl_round_30"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_10sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView15">
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:maxLength="30"
+                            android:paddingLeft="@dimen/_10sdp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:hint="@string/add_license"
+                            android:text="@={addCourierDetailViewModel.licenseNumber}"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/colorLightBlack"
+                            android:textColorHint="@color/colorDarkGray"
+                            android:textSize="@dimen/_14ssp" />
+                    </LinearLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/relativeLayout6"
+                        android:layout_width="@dimen/_120sdp"
+                        android:layout_height="@dimen/_120sdp"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/bg_white_stroke_gradient_dotted_rectangle"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_plus" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:alpha="0.5"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text="@string/add_license_image"
+                                android:textColor="@color/colorDarkGray" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/imageViewLicense"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:onClick="@{addCourierDetailViewModel.onImageClick}"
+                            android:scaleType="centerCrop" />
+
+                    </RelativeLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutCountry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{addCourierDetailViewModel.coutryViewVisibility? View.VISIBLE:View.GONE}"
+                    app:layout_constraintTop_toBottomOf="@+id/contraintLayoutInner">
+
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="24dp"
+                        android:alpha="0.3"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/departure"
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="@dimen/_10ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <RelativeLayout
+                        android:id="@+id/relativeLayoutArrivalCountry"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_45sdp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="24dp"
+                        android:background="@drawable/bg_light_whitish_blue_tl_br_bl_round_30"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/_10sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView17">
+
+
+                        <com.rilixtech.widget.countrycodepicker.CountryCodePicker
+                            android:id="@+id/ccpDeparture"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:layout_toStartOf="@+id/imageViewRightArrow2"
+                            android:gravity="center_vertical"
+                            app:ccp_arrowSize="1dp"
+                            android:layout_marginStart="14dp"
+                            app:ccp_hideNameCode="false"
+                            app:ccp_hidePhoneCode="true"
+                            app:ccp_showFullName="false" />
+
+                        <ImageView
+                            android:id="@+id/imageViewRightArrow2"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            app:srcCompat="@drawable/ic_right_arrow_24dp" />
+                    </RelativeLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout7"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_45sdp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="16dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/relativeLayoutArrivalCountry">
+
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_45sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_light_whitish_blue_tl_br_bl_round_30"
+                            android:gravity="center_vertical"
+                            android:onClick="@{addCourierDetailViewModel::departureDateClick}"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/_10sdp">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/roboto_regular"
+                                android:hint="@string/date"
+                                android:paddingLeft="@dimen/_10sdp"
+                                android:text="@={addCourierDetailViewModel.departureDate}"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorLightBlack"
+                                android:textColorHint="@color/colorDarkGray"
+                                android:textSize="@dimen/_12ssp" />
+
+                            <ImageView
+                                android:layout_marginEnd="@dimen/_1sdp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_calander" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_45sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_light_whitish_blue_tl_br_bl_round_30"
+                            android:gravity="center_vertical"
+                            android:onClick="@{addCourierDetailViewModel::departureTimeClick}"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/_10sdp">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/roboto_regular"
+                                android:hint="@string/time"
+                                android:paddingLeft="@dimen/_10sdp"
+                                android:text="@={addCourierDetailViewModel.departureTime}"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorLightBlack"
+                                android:textColorHint="@color/colorDarkGray"
+                                android:textSize="@dimen/_12ssp" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_watch" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView18"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="24dp"
+                        android:alpha="0.3"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/arrival"
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="@dimen/_10ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout7" />
+
+
+                    <RelativeLayout
+                        android:id="@+id/relativeLayoutDepartureCountry"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_45sdp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="24dp"
+                        android:background="@drawable/bg_light_whitish_blue_tl_br_bl_round_30"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/_10sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView18">
+
+
+                        <com.rilixtech.widget.countrycodepicker.CountryCodePicker
+                            android:id="@+id/ccpArrival"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:layout_toStartOf="@+id/imageViewRightArrow"
+                            android:gravity="center_vertical"
+                            android:layout_marginStart="14dp"
+                            app:ccp_arrowSize="1dp"
+                            app:ccp_hideNameCode="false"
+                            app:ccp_hidePhoneCode="true"
+                            app:ccp_showFullName="false" />
+
+                        <ImageView
+                            android:id="@+id/imageViewRightArrow"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            app:srcCompat="@drawable/ic_right_arrow_24dp" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout8"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_45sdp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/relativeLayoutDepartureCountry">
+
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_45sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_light_whitish_blue_tl_br_bl_round_30"
+                            android:gravity="center_vertical"
+                            android:onClick="@{addCourierDetailViewModel::arrivalDateClick}"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/_10sdp">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/roboto_regular"
+                                android:hint="@string/date"
+                                android:paddingLeft="@dimen/_10sdp"
+                                android:text="@={addCourierDetailViewModel.arrivalDate}"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorLightBlack"
+                                android:textColorHint="@color/colorDarkGray"
+                                android:textSize="@dimen/_12ssp" />
+
+                            <ImageView
+                                android:layout_marginEnd="@dimen/_1sdp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_calander" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_45sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_light_whitish_blue_tl_br_bl_round_30"
+                            android:gravity="center_vertical"
+                            android:onClick="@{addCourierDetailViewModel::arrivalTimeClick}"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/_10sdp">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/roboto_regular"
+                                android:hint="@string/time"
+                                android:paddingLeft="@dimen/_10sdp"
+                                android:text="@={addCourierDetailViewModel.arrivalTime}"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorLightBlack"
+                                android:textColorHint="@color/colorDarkGray"
+                                android:textSize="@dimen/_12ssp" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_watch" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/textViewContinue"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/bg_bluelight_tl_tr_br_round_30"
+                    android:fontFamily="@font/cabin_semi_bold"
+                    android:gravity="center"
+                    android:onClick="@{addCourierDetailViewModel::continueClick}"
+                    android:text="@string/continue1"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_14ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutCountry" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

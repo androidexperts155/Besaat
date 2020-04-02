@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="viewModelCourierGuyzListing"
+            type="com.deepak.besaat.viewModel.CourierGuysListingActivityViewModel" />
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/rootLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhitishBlue"
+        tools:context=".view.activities.courierGuysListing.CourierGuysListing">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentInsetStart="0dp"
+            android:contentInsetLeft="0dp"
+            android:contentInsetEnd="0dp"
+            android:contentInsetRight="0dp"
+            app:contentInsetEnd="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetStart="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/cabin_semi_bold"
+            android:text="@string/courier"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_18ssp"
+            app:layout_constraintEnd_toStartOf="@+id/imageViewMapList"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolBar" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginEnd="40dp"
+            android:onClick="@{viewModelCourierGuyzListing::changeLocationClickFun}"
+            app:layout_constraintBottom_toBottomOf="@+id/textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView"
+            app:srcCompat="@drawable/ic_location" />
+
+        <ImageView
+            android:id="@+id/imageViewMapList"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginEnd="16dp"
+            android:onClick="@{viewModelCourierGuyzListing::listorMapIconClick}"
+            app:layout_constraintBottom_toBottomOf="@+id/textView"
+            app:layout_constraintEnd_toStartOf="@+id/imageView4"
+            app:layout_constraintTop_toTopOf="@+id/textView"
+            app:srcCompat="@drawable/ic_map" />
+        <!--android:onClick="@{viewModelServiceListing::listorMapIconClick}"-->
+
+        <LinearLayout
+            android:id="@+id/mainContainer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_below="@+id/toolBar"
+            android:layout_marginTop="24dp"
+            android:animateLayoutChanges="true"
+            android:background="@drawable/bg_white_tl_tr_round_20"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clDeliveryType"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:animateLayoutChanges="true">
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_24sdp"
+                    android:layout_marginEnd="@dimen/_16sdp"
+                    android:alpha="0.3"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/delivery_options"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <LinearLayout
+                    android:onClick="@{viewModelCourierGuyzListing::deliveryTypeClickFun}"
+                    android:id="@+id/linearLayout10"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="@dimen/_16sdp"
+                    android:background="@drawable/bg_light_whitish_blue_tl_br_bl_round_30"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/_20sdp"
+                    android:paddingEnd="@dimen/_20sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView14">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_1sdp"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/roboto_regular"
+                        android:maxLines="2"
+                        android:text="@{viewModelCourierGuyzListing.deliveryTypeName}"
+                        android:hint="@string/select_delivery_type"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorDarkGray"
+                        android:textSize="@dimen/_13ssp" />
+
+                    <ImageView
+                        android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_10sdp"
+                        android:src="@drawable/ic_dropdown" />
+                </LinearLayout>
+
+
+                <RadioGroup
+                    android:id="@+id/radioGroup2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_24sdp"
+                    android:layout_marginEnd="@dimen/_16sdp"
+                    android:onCheckedChanged="@{viewModelCourierGuyzListing::radioGroupOnCheckedChange}"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout10">
+
+                    <RadioButton
+                        android:id="@+id/radioButtonLocal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/selector_radio_button_icon2"
+                        android:checked="true"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:paddingStart="@dimen/_8sdp"
+                        android:text="@string/local"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="@dimen/_14ssp" />
+
+                    <RadioButton
+                        android:id="@+id/radioButtonOverseas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_24sdp"
+                        android:button="@drawable/selector_radio_button_icon2"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:paddingStart="@dimen/_8sdp"
+                        android:text="@string/overseas"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="@dimen/_14ssp" />
+                </RadioGroup>
+
+                <LinearLayout
+                    android:id="@+id/llOverseas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_24sdp"
+                    android:animateLayoutChanges="true"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/radioGroup2">
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_16sdp"
+                        android:layout_marginEnd="@dimen/_16sdp"
+                        android:alpha="0.3"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/departure"
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="@dimen/_10ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
+
+
+                    <RelativeLayout
+                        android:id="@+id/linearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_45sdp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/bg_light_whitish_blue_tl_br_bl_round_30"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/_10sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView15">
+
+                        <com.rilixtech.widget.countrycodepicker.CountryCodePicker
+                            android:id="@+id/ccpDeparture"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="14dp"
+                            android:layout_toStartOf="@+id/imageViewRightArrow"
+                            android:gravity="center_vertical"
+                            app:ccp_arrowSize="1dp"
+                            app:ccp_hideNameCode="false"
+                            app:ccp_hidePhoneCode="true"
+                            app:ccp_showFullName="false"/>
+
+                        <ImageView
+                            android:id="@+id/imageViewRightArrow"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            app:srcCompat="@drawable/ic_right_arrow_24dp" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_16sdp"
+                        android:layout_marginTop="@dimen/_24sdp"
+                        android:layout_marginEnd="@dimen/_16sdp"
+                        android:alpha="0.3"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/arrival"
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="@dimen/_10ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+
+                    <RelativeLayout
+                        android:id="@+id/linearLayout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_45sdp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/bg_light_whitish_blue_tl_br_bl_round_30"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/_10sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView16">
+
+                        <com.rilixtech.widget.countrycodepicker.CountryCodePicker
+                            android:id="@+id/ccpArrival"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="14dp"
+                            android:layout_toStartOf="@+id/imageViewRightArrow2"
+                            android:gravity="center_vertical"
+                            app:ccp_arrowSize="1dp"
+                            app:ccp_hideNameCode="false"
+                            app:ccp_hidePhoneCode="true"
+                            app:ccp_showFullName="false"/>
+
+                        <ImageView
+                            android:id="@+id/imageViewRightArrow2"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            app:srcCompat="@drawable/ic_right_arrow_24dp" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textViewContinue"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    android:layout_marginEnd="@dimen/_16sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:background="@drawable/bg_light_blue_tl_bl_br_round_30"
+                    android:fontFamily="@font/cabin_semi_bold"
+                    android:gravity="center"
+                    android:onClick="@{viewModelCourierGuyzListing::continueClick}"
+                    android:text="@string/continue1"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_14ssp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewCourierGuysListing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:paddingLeft="@dimen/_4sdp"
+                android:paddingRight="@dimen/_4sdp"
+                android:visibility="gone" />
+
+            <com.deepak.besaat.view.fragments.storeMapFragment.MapWrapperLayout
+                android:id="@+id/map_relative_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/_minus20sdp"
+                    app:cardCornerRadius="@dimen/_20sdp">
+                    <!--android:name="com.google.android.gms.maps.SupportMapFragment"-->
+                    <!-- android:name="com.appolica.interactiveinfowindow.fragment.MapInfoWindowFragment"-->
+                    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:tools="http://schemas.android.com/tools"
+                        android:id="@+id/map"
+                        android:name="com.deepak.besaat.view.activities.courierGuysListing.fragment.CourierGuysListMapFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:context=".MapsActivity" />
+                </androidx.cardview.widget.CardView>
+            </com.deepak.besaat.view.fragments.storeMapFragment.MapWrapperLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlNoDataFound"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:padding="@dimen/_10sdp"
+                    android:textAlignment="center"
+                    android:text="@string/no_courier_availed_"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        // not used
+
+        <FrameLayout
+            android:id="@+id/listOrMapContainerLocation"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_below="@+id/toolBar"
+            android:layout_marginTop="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

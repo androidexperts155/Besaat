@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+
+        <variable
+            name="createProfileModel"
+            type="com.deepak.besaat.viewModel.CreateProfileViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:background="@android:color/white"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rootLayout"
+            android:background="@color/colorAccent"
+            tools:context=".view.activities.createprofile.CreateProfileActivity">
+
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:stateListAnimator="@null"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentInsetStart="0dp"
+                    android:contentInsetLeft="0dp"
+                    android:contentInsetEnd="0dp"
+                    android:contentInsetRight="0dp"
+                    app:contentInsetEnd="0dp"
+                    app:contentInsetLeft="0dp"
+                    app:contentInsetRight="0dp"
+                    app:contentInsetStart="0dp"></androidx.appcompat.widget.Toolbar>
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_60sdp"
+                android:background="@drawable/bg_white_tl_tr_round_30"
+                android:elevation="@dimen/_2sdp"
+                android:paddingBottom="@dimen/_8sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+                app:layout_constraintVertical_bias="1.0"
+                tools:layout_editor_absoluteX="-127dp">
+
+                <EditText
+                    android:id="@+id/editTextName"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="@dimen/_50sdp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/bg_light_whitish_blue_tl_br_bl_round_30"
+                    android:ems="10"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="start|center_vertical"
+                    android:hint="@string/your_name"
+                    android:inputType="textCapWords"
+                    android:maxLength="30"
+                    android:paddingEnd="@dimen/_16sdp"
+                    android:paddingStart="@dimen/_16sdp"
+                    android:paddingTop="@dimen/_8sdp"
+                    android:paddingBottom="@dimen/_8sdp"
+                    android:text="@={createProfileModel.name}"
+                    android:textAlignment="viewStart"
+                    android:textSize="@dimen/_13ssp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.01999998" />
+
+                <EditText
+                    android:id="@+id/editTextEmail"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/bg_light_whitish_blue_tl_br_bl_round_30"
+                    android:ems="10"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="start|center_vertical"
+                    android:hint="@string/email_address"
+                    android:inputType="textEmailAddress"
+                    android:paddingEnd="@dimen/_16sdp"
+                    android:paddingStart="@dimen/_16sdp"
+                    android:paddingTop="@dimen/_8sdp"
+                    android:paddingBottom="@dimen/_8sdp"
+                    android:text="@={createProfileModel.email}"
+                    android:textAlignment="viewStart"
+                    android:textSize="@dimen/_13ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextName" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextEmail">
+
+                    <com.rilixtech.widget.countrycodepicker.CountryCodePicker
+                        android:id="@+id/ccp2"
+                        android:layout_width="@dimen/_60sdp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_light_whitish_blue_tl_bl_round_30"
+                        android:clickable="false"
+                        android:gravity="center"
+                        android:paddingLeft="@dimen/_10sdp"
+                        android:paddingTop="@dimen/_4sdp"
+                        android:paddingRight="@dimen/_10sdp"
+                        android:paddingBottom="@dimen/_4sdp"
+                        app:ccp_arrowSize="1dp"
+                        app:ccp_clickable="true"
+                        app:ccp_hideNameCode="true"
+                        app:ccp_showFlag="false"
+                        app:ccp_showFullName="false"
+                        app:ccp_textSize="@dimen/_13ssp" />
+
+                    <EditText
+                        android:id="@+id/editTextPhoneNumber"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_light_whitish_blue_br_round_30"
+                        android:digits="0123456789"
+                        android:fontFamily="@font/roboto_regular"
+                        android:hint="@string/phone_number"
+                        android:inputType="phone"
+                        android:maxLength="12"
+                        android:padding="@dimen/_8sdp"
+                        android:text="@={createProfileModel.phone}"
+                        android:textSize="@dimen/_13ssp"
+                        android:textAlignment="viewStart" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="64dp"
+                    android:layout_marginEnd="16dp"
+                    android:alpha="0.3"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/select_account_type"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/cabin_semi_bold"
+                    android:text="@string/i_am"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/_16ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:onCheckedChanged="@{createProfileModel.radioGroupOnCheckedChange}"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView12">
+
+
+                    <RadioButton
+                        android:id="@+id/radioButtonBuyer"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_45sdp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/selector_radio_button_background_primary"
+                        android:button="@null"
+                        android:drawableEnd="@drawable/selector_radio_button_icon"
+                        android:fontFamily="@font/cabin_semi_bold"
+                        android:gravity="center"
+                        android:paddingStart="@dimen/_15sdp"
+                        android:paddingEnd="@dimen/_15sdp"
+                        android:text="@string/buyer"
+                        android:textColor="@drawable/selector_radio_button_text_color_primary"
+                        android:textSize="@dimen/_14ssp">
+
+                    </RadioButton>
+
+
+                    <RadioButton
+                        android:id="@+id/radioButtonProvider"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_45sdp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/selector_radio_button_background_light_pink"
+                        android:button="@null"
+                        android:drawableEnd="@drawable/selector_radio_button_icon"
+                        android:fontFamily="@font/cabin_semi_bold"
+                        android:gravity="center"
+                        android:paddingStart="@dimen/_15sdp"
+                        android:paddingEnd="@dimen/_15sdp"
+                        android:text="@string/provider"
+                        android:textColor="@drawable/selector_radio_buttom_text_color_light_pink"
+                        android:textSize="@dimen/_14ssp" />
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/textViewContinue"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="@dimen/_40sdp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/bg_bluelight_tl_tr_br_round_30"
+                    android:fontFamily="@font/cabin_semi_bold"
+                    android:gravity="center"
+                    android:onClick="@{createProfileModel::onContinueClick}"
+                    android:text="@string/continue1"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_14ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/circularImageView"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:elevation="@dimen/_4sdp"
+                android:onClick="@{createProfileModel::imageClick}"
+                android:src="@drawable/ic_user_placeholder"
+                app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+                app:layout_constraintVertical_bias="0.0" />
+
+
+            <ImageView
+                app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:scaleType="centerInside"
+                android:elevation="@dimen/_4sdp"
+                app:layout_constraintCircleRadius="@dimen/_38sdp"
+                app:layout_constraintCircle="@+id/circularImageView"
+                app:layout_constraintCircleAngle="135"
+                android:background="@drawable/bg_light_blue_circle"
+                android:src="@drawable/ic_camera"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.deepak.besaat.view.fragments.storeMapFragment.MapWrapperLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/map_relative_layout"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/_minus20sdp"
+        app:cardCornerRadius="@dimen/_20sdp">
+<!--android:name="com.google.android.gms.maps.SupportMapFragment"-->
+     <!-- android:name="com.appolica.interactiveinfowindow.fragment.MapInfoWindowFragment"-->
+       <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/map"
+            android:name="com.deepak.besaat.view.fragments.MapFragment.MapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".MapsActivity" />
+        <!--<FrameLayout
+            android:id="@+id/frameMapContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></FrameLayout>-->
+
+    </androidx.cardview.widget.CardView>
+
+</com.deepak.besaat.view.fragments.storeMapFragment.MapWrapperLayout>

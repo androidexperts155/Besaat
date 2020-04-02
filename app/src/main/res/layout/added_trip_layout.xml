@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="30dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="TRIP ID :"
+                android:textAllCaps="true"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tripid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="0"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeActive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/flagarrival"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/planetop" />
+
+                <TextView
+                    android:id="@+id/textDeparture"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="abc"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/_13ssp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/far__arrowright"></ImageView>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/linearActive"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/flagdeparture"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/planetop" />
+
+                    <TextView
+                        android:id="@+id/textArrival"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="abc"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="@dimen/_13ssp" />
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="15dp">
+
+                    <LinearLayout
+                        android:id="@+id/activeText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/fasclock_icon">
+
+                        </ImageView>
+
+                        <TextView
+                            android:id="@+id/textActiveStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Active"
+                            android:textColor="@color/lightestBlue"
+                            android:textSize="15sp">
+
+                        </TextView>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/deniewZText"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Denied"
+                            android:textColor="@color/quantum_error_light"
+                            android:textSize="15sp">
+
+                        </TextView>
+                    </LinearLayout>
+                </FrameLayout>
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/linearPending"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/flagdeparturepending"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/planetop" />
+
+                <TextView
+                    android:id="@+id/textDeparturePending"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="abc"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/_13ssp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/far__arrowright"/>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/ll_arr"
+                    android:layout_alignParentStart="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/flagarrivalpending"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/planetop"/>
+
+                    <TextView
+                        android:id="@+id/textArrivalPending"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="abc"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="@dimen/_13ssp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_toRightOf="@+id/ll_arr"
+                    android:id="@+id/llStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_14sdp"
+                    android:background="@drawable/bd_yellow_drawable"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/tvStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pending"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:paddingStart="@dimen/_1sdp"
+                        android:paddingEnd="@dimen/_1sdp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_toRightOf="@+id/llStatus"
+                    android:id="@+id/llEditDelete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:gravity="end"
+                    android:layout_alignParentEnd="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:alpha=".5"
+                        android:tint="@color/colorVeryLightBlack"
+                        android:id="@+id/ivEdit"
+                        android:padding="2dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/falpencil_icon">
+
+                    </ImageView>
+
+                    <ImageView
+                        android:padding="2dp"
+                        android:alpha=".5"
+                        android:tint="@color/colorVeryLightBlack"
+                        android:id="@+id/ivDelete"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="10dp"
+                        android:src="@drawable/faltrash_icon">
+
+                    </ImageView>
+                </LinearLayout>
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1.1"
+                android:gravity="bottom">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:alpha=".4"
+                    android:src="@drawable/planetop" />
+
+                <TextView
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Departure"
+                    android:textColor="@color/cardview_dark_background"
+                    android:textSize="@dimen/_12ssp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_weight="1.1"
+                android:gravity="bottom|start">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_calander" />
+
+                <TextView
+                    android:ellipsize="end"
+                    android:id="@+id/departureDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="bottom"
+                    android:maxLines="1"
+                    android:text="@string/date"
+                    android:textColor="@color/colorDarkGray"
+                    android:textSize="@dimen/_10ssp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|bottom"
+                android:layout_weight="0.8"
+                android:layout_marginEnd="10dp"
+                android:gravity="bottom|start">
+
+                <ImageView
+                    android:layout_gravity="bottom"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/accesstime_icon" />
+
+                <TextView
+                    android:id="@+id/departureTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:maxLines="1"
+                    android:maxLength="5"
+                    android:ellipsize="end"
+                    android:text="@string/time"
+                    android:textColor="@color/colorDarkGray"
+                    android:textSize="@dimen/_10ssp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1.1"
+                android:gravity="bottom">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:alpha="0.4"
+                    android:src="@drawable/planebottom" />
+
+                <TextView
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Arrival"
+                    android:textColor="@color/cardview_dark_background"
+                    android:textSize="@dimen/_12ssp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_weight="1.1"
+                android:gravity="bottom|start">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_calander" />
+
+                <TextView
+                    android:ellipsize="end"
+                    android:id="@+id/arrivalDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:maxLines="1"
+                    android:text="@string/date"
+                    android:textColor="@color/colorDarkGray"
+                    android:textSize="@dimen/_10ssp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginEnd="10dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_weight="0.8"
+                android:gravity="bottom|start">
+
+                <ImageView
+                    android:layout_gravity="bottom"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/accesstime_icon" />
+
+                <TextView
+                    android:ellipsize="end"
+                    android:id="@+id/arrivalTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:maxLines="1"
+                    android:maxLength="5"
+                    android:text="@string/time"
+                    android:textColor="@color/colorDarkGray"
+                    android:textSize="@dimen/_10ssp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageBottom"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/quantum_grey300"
+        android:scaleType="centerCrop">
+    </ImageView>
+
+
+</LinearLayout>

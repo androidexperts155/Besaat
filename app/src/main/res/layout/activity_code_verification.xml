@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="codeVerificatonViewModel"
+            type="com.deepak.besaat.viewModel.CodeVerificationViewModel"/>
+    </data>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rootLayout"
+        android:background="@color/colorPrimary"
+        tools:context=".view.activities.phoneSignUp.PhoneSignUpActivity">
+
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:stateListAnimator="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentInsetStart="0dp"
+                android:contentInsetLeft="0dp"
+                android:contentInsetEnd="0dp"
+                android:contentInsetRight="0dp"
+                app:contentInsetEnd="0dp"
+                app:contentInsetLeft="0dp"
+                app:contentInsetRight="0dp"
+                app:contentInsetStart="0dp"></androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:textAlignment="viewStart"
+            android:fontFamily="@font/cabin_semi_bold"
+            android:text="@string/enter_verification_code"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_22sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/enter_the_sms_verification_code_below_that_was_sent_to_your_mobile_phone"
+            android:textAlignment="viewStart"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_24sdp"
+            android:background="@drawable/bg_white_tl_round_40"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView9"
+            app:layout_constraintVertical_bias="0.0">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:orientation="horizontal"
+                android:textSize="@dimen/_16ssp"
+                app:cornerRadius="@dimen/_4sdp"
+                android:textColor="@color/colorLightBlack"
+                android:padding="@dimen/_10sdp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textSelectHandle="@drawable/text_handle"
+                android:id="@+id/linearLayout">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:layout_width="@dimen/_50sdp"
+                        android:padding="@dimen/_8sdp"
+                        android:id="@+id/editTextOne"
+                        android:maxLength="1"
+                        android:layout_centerInParent="true"
+                        android:inputType="number"
+                        android:textSize="@dimen/_16ssp"
+                        android:text="@={codeVerificatonViewModel.firstEditText}"
+                        android:fontFamily="@font/robot_medium"
+                        android:gravity="center"
+                        android:selectAllOnFocus="true"
+                        android:background="@drawable/selector_edit_text"
+                        android:layout_height="@dimen/_50sdp"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:layout_width="@dimen/_50sdp"
+                        android:padding="@dimen/_8sdp"
+                        android:id="@+id/editTextTwo"
+                        android:layout_centerInParent="true"
+                        android:inputType="number"
+                        android:gravity="center"
+                        android:selectAllOnFocus="true"
+                        android:textSize="@dimen/_16ssp"
+                        android:maxLength="1"
+                        android:text="@={codeVerificatonViewModel.secondEditText}"
+                        android:fontFamily="@font/robot_medium"
+                        android:background="@drawable/selector_edit_text"
+                        android:layout_height="@dimen/_50sdp"/>
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/editTextThree"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="12dp"
+                        android:background="@drawable/selector_edit_text"
+                        android:fontFamily="@font/robot_medium"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:padding="@dimen/_8sdp"
+                        android:selectAllOnFocus="true"
+                        android:text="@={codeVerificatonViewModel.thirdEditText}"
+                        android:textSize="@dimen/_16ssp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:layout_width="@dimen/_50sdp"
+                        android:padding="@dimen/_8sdp"
+                        android:id="@+id/editTextFour"
+                        android:layout_centerInParent="true"
+                        android:inputType="number"
+                        android:gravity="center"
+                        android:selectAllOnFocus="true"
+                        android:maxLength="1"
+                        android:text="@={codeVerificatonViewModel.fourthEditText}"
+                        android:fontFamily="@font/robot_medium"
+                        android:textSize="@dimen/_16ssp"
+                        android:background="@drawable/selector_edit_text"
+                        android:layout_height="@dimen/_50sdp"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutSubmit"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/bg_bluelight_tl_tr_br_round_30"
+                android:gravity="center"
+                android:padding="@dimen/_10sdp"
+                android:onClick="@{codeVerificatonViewModel::submitClick}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/cabin_medium"
+                    android:text="@string/submit"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_14sdp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center"
+                android:onClick="@{codeVerificatonViewModel::resendCode}"
+                android:padding="@dimen/_8sdp"
+                android:text="@string/resend_verification_code"
+                android:textColor="@color/colorDarkGray"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayoutSubmit" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
+</layout>

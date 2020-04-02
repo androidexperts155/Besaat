@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+
+
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+          android:src="@drawable/welcom_screen1">
+
+    </ImageView>
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewWelcome"
+        android:text="@string/welcome_to_besaat"
+        android:fontFamily="@font/cabin_semi_bold"
+        android:textSize="@dimen/_24sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:textColor="@color/colorLightBlack"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewWelcomeTitle"
+        android:layout_marginEnd="@dimen/_24sdp"
+        android:layout_marginStart="@dimen/_24sdp"
+        android:layout_marginTop="@dimen/_18sdp"
+        android:gravity="center"
+        android:fontFamily="@font/roboto_light"
+        android:textColor="@color/colorLightBlack3"
+        android:text="@string/choose_hassle_free_local_and_overseas_delivery_services"
+        />
+</LinearLayout>

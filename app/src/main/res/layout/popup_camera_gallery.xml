@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:layout_margin="@dimen/_14sdp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_blue_top_corner_eight_dp"
+            android:fontFamily="@font/robot_medium"
+            android:gravity="center"
+            android:padding="@dimen/_14sdp"
+            android:text="@string/choose_from"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_16ssp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_white_eight_dp_bottom_corner"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewGallery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_regular"
+                android:gravity="center"
+                android:padding="@dimen/_6sdp"
+                android:text="@string/phone_s_gallery"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_14ssp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/black"></View>
+
+            <TextView
+                android:id="@+id/textViewTakePic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center"
+                android:padding="@dimen/_6sdp"
+                android:text="@string/take_a_pic"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_14ssp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/black"></View>
+
+            <TextView
+                android:id="@+id/textViewCancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_regular"
+                android:gravity="center"
+                android:padding="@dimen/_6sdp"
+                android:text="@string/cancel1"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="@dimen/_14ssp" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

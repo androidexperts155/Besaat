@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
+        <RelativeLayout
+            android:layout_marginTop="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:textAllCaps="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorLightBlack"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="start"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_toEndOf="@+id/imageCross1"
+                android:text="Filter">
+            </TextView>
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:id="@+id/imageCross1"
+                android:layout_gravity="end"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_close_black_24dp"/>
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/textreset1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reset Filter"
+                android:textSize="18sp"
+                android:textColor="@color/colorGoogle"
+                android:layout_gravity="end"
+                android:layout_marginEnd="10dp"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/textRating"
+            android:text="Status"
+            android:fontFamily="@font/cabin_semi_bold"
+            android:textAllCaps="true"
+            android:textColor="@color/quantum_grey500"
+            android:textSize="@dimen/_15sdp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="@dimen/_22sdp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+        <RadioGroup
+            android:id="@+id/groupradio"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <!-- In RadioGroup create the 1 Radio Button-->
+            <!-- like this we will add some more Radio Button-->
+
+            <RadioButton
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radia_id111"
+                android:padding="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:checked="true"
+                android:text="All"
+                android:fontFamily="@font/cabin_regular"
+                android:textColor="@color/colorLightBlack2"
+                android:textSize="15sp"/>
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/white"
+                android:layout_height="0.5dp"/>
+            <RadioButton
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radia_id11"
+                android:padding="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:text="Pending"
+                android:fontFamily="@font/cabin_regular"
+                android:textColor="@color/colorLightBlack2"
+                android:textSize="15sp"/>
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/white"
+                android:layout_height="0.5dp"/>
+            <RadioButton
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radia_id1"
+                android:padding="@dimen/_10sdp"
+                android:checked="false"
+                android:fontFamily="@font/cabin_regular"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:text="Active"
+                android:textColor="@color/colorLightBlack2"
+                android:textSize="15sp"/>
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/white"
+                android:layout_height="0.5dp"/>
+
+            <RadioButton
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radia_id2"
+                android:padding="@dimen/_10sdp"
+                android:checked="false"
+                android:fontFamily="@font/cabin_regular"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:text="Denied"
+                android:textColor="@color/colorLightBlack2"
+                android:textSize="15sp"/>
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/white"
+                android:layout_height="0.5dp"/>
+
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textViewContinue"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_bluelight_tl_tr_br_round_30"
+            android:fontFamily="@font/cabin_semi_bold"
+            android:gravity="center"
+            android:text="Apply"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_14ssp">
+
+        </TextView>
+
+    </LinearLayout>
+</ScrollView>

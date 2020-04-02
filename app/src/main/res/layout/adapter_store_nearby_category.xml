@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="storeCategory"
+            type="com.deepak.besaat.model.getStoresModel.Store" />
+        <variable
+            name="viewModel"
+            type="com.deepak.besaat.viewModel.StoresNearByListingViewModel" />
+    </data>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/relativeStore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/_10sdp"
+        android:paddingRight="@dimen/_10sdp"
+        android:paddingTop="@dimen/_6sdp"
+        android:paddingBottom="@dimen/_6sdp"
+        android:minWidth="@dimen/_60sdp"
+        android:background="@drawable/bg_light_bluelight_all_side_four_dp">
+        <TextView
+            android:layout_centerInParent="true"
+            android:id="@+id/textStoreCat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/stores"
+            android:text="@{storeCategory.name}"
+            android:fontFamily="@font/roboto_regular"
+            android:textSize="@dimen/_14ssp"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
+</LinearLayout>
+</layout>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.deepak.besaat.viewModel.MyOrdersOffersViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/rootLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorLightBlue"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        tools:context=".view.activities.requestOffers.ui.RequestOffersActivity">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true">
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/nScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/appBarLayout"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:background="@drawable/bg_whiteuncream_tl_tr_round_20"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/_24sdp"
+                    android:paddingBottom="@dimen/_24sdp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvOffersList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:itemCount="5"
+                        tools:listitem="@layout/adapter_request_offers" />
+
+                    <TextView
+                        android:visibility="gone"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:id="@+id/tv_no_data_found"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:padding="@dimen/_10sdp"
+                        android:text="@string/no_offer"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:background="@color/colorLightBlue"
+                android:stateListAnimator="@null">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorLightBlue"
+                    android:contentInsetStart="0dp"
+                    android:contentInsetLeft="0dp"
+                    android:contentInsetEnd="0dp"
+                    android:contentInsetRight="0dp"
+                    app:contentInsetEnd="0dp"
+                    app:contentInsetLeft="0dp"
+                    app:contentInsetRight="0dp"
+                    app:contentInsetStart="0dp" />
+            </com.google.android.material.appbar.AppBarLayout>
+
+            // remove this View after fix issue
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_24sdp"
+                android:layout_below="@id/appBarLayout"
+                android:background="@color/colorLightBlue" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>

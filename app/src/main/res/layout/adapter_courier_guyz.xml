@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="courierGuy"
+            type="com.deepak.besaat.model.courierGuysModel.Courier" />
+
+        <variable
+            name="viewModel"
+            type="com.deepak.besaat.viewModel.CourierGuysListingActivityViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/rootLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circleImageView"
+            android:layout_width="@dimen/_55sdp"
+            android:layout_height="@dimen/_55sdp"
+            android:layout_marginStart="16dp"
+            android:src="@color/colorAccent"
+            app:image_url='@{courierGuy.image!=null?courierGuy.image:"R.drawable.pin"}'
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView19" />
+
+        <TextView
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:maxWidth="@dimen/_130sdp"
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/cabin_semi_bold"
+            android:text="@{courierGuy.name}"
+            android:hint="@string/name"
+            tools:text="User name"
+            android:textColor="@color/colorLightBlack"
+            android:textSize="@dimen/_13ssp"
+            app:layout_constraintStart_toEndOf="@+id/circleImageView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewUserName"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center_horizontal"
+            app:layout_constraintStart_toEndOf="@+id/circleImageView"
+            app:layout_constraintTop_toBottomOf="@+id/textView19">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/_4sdp"
+                android:fontFamily="@font/robot_medium"
+                android:text="5.0"
+                android:textColor="@color/colorYellow"
+                android:textSize="@dimen/_13ssp" />
+
+            <RatingBar
+                style="@style/RatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:rating="4"
+                android:theme="@style/RatingBar" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/roboto_regular"
+            android:drawablePadding="@dimen/_4sdp"
+            android:drawableStart="@drawable/ic_location_pin"
+            android:text="@{courierGuy.address}"
+            android:textColor="@color/colorDarkGray"
+            android:textSize="@dimen/_10ssp"
+            android:maxLines="1"
+            android:maxLength="30"
+            android:ellipsize="end"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/circleImageView"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutRatingBar"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="78514 Koelpin Corner dddddddddddddddddddddddddddddcc" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView19">
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:visibility="gone"
+                android:drawableLeft="@drawable/ic_location_pin"
+                android:drawablePadding="@dimen/_4sdp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@{courierGuy.distanceString}"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintEnd_toEndOf="@+id/textViewRequest"
+                app:layout_constraintStart_toStartOf="@+id/textViewRequest"
+                app:layout_constraintTop_toBottomOf="@+id/textViewRequest"
+                tools:text="0.0 km" />
+
+            <ImageView
+                android:id="@+id/ivChat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewRequest"
+                app:layout_constraintEnd_toStartOf="@+id/textViewRequest"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintTop_toTopOf="@+id/textViewRequest"
+                app:srcCompat="@drawable/ic_chat" />
+
+            <TextView
+                android:id="@+id/textViewRequest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/bg_light_blue_all_side_four_dp"
+                android:paddingLeft="@dimen/_6sdp"
+                android:paddingTop="@dimen/_4sdp"
+                android:paddingRight="@dimen/_6sdp"
+                android:paddingBottom="@dimen/_4sdp"
+                android:text="@string/request"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_8ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutDeparture"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/circleImageView"
+            app:layout_constraintTop_toBottomOf="@+id/textView20">
+
+            <ImageView
+                app:flag_url='@{courierGuy.trips!=null?courierGuy.trips.departureCountry:"R.drawable.pin"}'
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_12sdp"
+                tools:src="@drawable/flag_canada" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_6sdp"
+                android:layout_weight="0.25"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/departure2"
+                android:textColor="@color/colorDarkGray"
+                android:textSize="@dimen/_10ssp" />
+
+            <TextView
+                android:text="@{courierGuy.trips.departureDate}"
+                tools:text="20-Aug-2019 08:30 PM"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:layout_weight="0.75"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="@dimen/_10ssp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/circleImageView"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutDeparture"
+            app:layout_constraintVertical_bias="0.0">
+
+            <ImageView
+                app:flag_url='@{courierGuy.trips!=null?courierGuy.trips.departureCountry:"R.drawable.pin"}'
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_12sdp"
+                tools:src="@drawable/flag_canada" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_6sdp"
+                android:layout_weight="0.25"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/arrival2"
+                android:textColor="@color/colorDarkGray"
+                android:textSize="@dimen/_10ssp" />
+
+            <TextView
+                android:text="@{courierGuy.trips.arrivalDate}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:layout_weight="0.75"
+                android:fontFamily="@font/roboto_regular"
+                tools:text="20-Aug-2019 08:30 PM"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="@dimen/_10ssp" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

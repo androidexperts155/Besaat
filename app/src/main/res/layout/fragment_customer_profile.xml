@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="customerProfileViewModel"
+            type="com.deepak.besaat.viewModel.CustomerProfileViewModell" />
+
+
+        <variable
+            name="userDetail"
+            type="com.deepak.besaat.model.getUserProfile.UserProfileResponse" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_blue_bl_br_round_30"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rootLayout"
+            tools:context=".view.activities.createprofile.CreateProfileActivity">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:background="@drawable/bg_light_green_tl_tr_round_30"
+                android:elevation="@dimen/_2sdp"
+                android:paddingBottom="@dimen/_70sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="148dp">
+
+                <EditText
+                    android:id="@+id/editTextName"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="@dimen/_50sdp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/bg_light_whitish_blue_tl_br_bl_round_30"
+                    android:ems="10"
+                    android:maxLength="30"
+                    android:text="@={customerProfileViewModel.name}"
+                    android:fontFamily="@font/roboto_regular"
+                    android:hint="@string/your_name"
+                    android:inputType="textCapWords"
+                    android:padding="@dimen/_16sdp"
+                    android:textAlignment="viewStart"
+                    android:textSize="@dimen/_13ssp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.01999998" />
+
+                <EditText
+                    android:id="@+id/editTextEmail"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/bg_light_whitish_blue_tl_br_bl_round_30"
+                    android:ems="10"
+                    android:text="@={customerProfileViewModel.email}"
+                    android:fontFamily="@font/roboto_regular"
+                    android:hint="@string/email_address"
+                    android:inputType="textEmailAddress"
+                    android:padding="@dimen/_16sdp"
+                    android:textAlignment="viewStart"
+                    android:textSize="@dimen/_13ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextName" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextEmail">
+
+                    <com.rilixtech.widget.countrycodepicker.CountryCodePicker
+                        android:id="@+id/ccp2"
+                        android:layout_width="@dimen/_60sdp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_light_whitish_blue_tl_bl_round_30"
+                        android:clickable="false"
+                        android:gravity="center"
+                        android:paddingLeft="@dimen/_10sdp"
+                        android:paddingTop="@dimen/_4sdp"
+                        android:paddingRight="@dimen/_10sdp"
+                        android:paddingBottom="@dimen/_4sdp"
+                        app:ccp_arrowSize="1dp"
+                        app:ccp_clickable="true"
+                        app:ccp_hideNameCode="true"
+                        app:ccp_showFlag="false"
+                        app:ccp_showFullName="false"
+                        app:ccp_textSize="@dimen/_13ssp" />
+
+                    <EditText
+                        android:id="@+id/editTextPhoneNumber"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_light_whitish_blue_br_round_30"
+                        android:fontFamily="@font/roboto_regular"
+                        android:hint="@string/phone_number"
+                        android:inputType="phone"
+                        android:maxLength="10"
+                        android:text="@={customerProfileViewModel.phone}"
+                        android:imeOptions="actionDone"
+                        android:padding="@dimen/_8sdp"
+                        android:textAlignment="viewStart"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="@dimen/_24sdp"
+                    android:layout_marginEnd="16dp"
+                    android:alpha="0.3"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/payment_methods"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="true"
+                    android:imeOptions="actionDone"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewPaymentMethods"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:nestedScrollingEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+                <TextView
+                    android:id="@+id/textView39"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginEnd="16dp"
+                    android:drawableLeft="@drawable/ic_add_circle_outline"
+                    android:drawablePadding="@dimen/_8sdp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/add_new_card"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_10ssp"
+                    android:textAlignment="viewStart"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/recyclerViewPaymentMethods" />
+
+
+                <TextView
+                    android:id="@+id/textViewBecomeServiceProvider"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="@dimen/_24sdp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/bg_white_stroke_light_blue_all_side_30"
+                    android:fontFamily="@font/cabin_medium"
+                    android:gravity="center"
+                    android:text="@string/become_a_service_provider"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorLightBlue"
+                    android:textSize="@dimen/_14ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView39" />
+
+
+                <TextView
+                    android:id="@+id/textViewContinue"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/bg_blue_tl_br_bl_round_30"
+                    android:fontFamily="@font/cabin_semi_bold"
+                    android:gravity="center"
+                    android:text="@string/continue1"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_14ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewBecomeServiceProvider" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/circularImageView"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:elevation="@dimen/_4sdp"
+                app:imageFromUrl="@{userDetail.data.image}"
+                android:src="@drawable/ic_user_placeholder"
+                app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+
+          <!--  <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:scaleType="centerInside"
+                android:elevation="@dimen/_4sdp"
+                app:layout_constraintCircleRadius="@dimen/_38sdp"
+                app:layout_constraintCircle="@+id/circularImageView"
+                app:layout_constraintCircleAngle="135"
+                android:background="@drawable/bg_light_blue_circle"
+                android:src="@drawable/ic_camera"/>-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

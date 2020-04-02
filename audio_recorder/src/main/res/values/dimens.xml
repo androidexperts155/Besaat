@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_icon_size">30dp</dimen>
+    <dimen name="default_icon_remove_size">30dp</dimen>
+    <dimen name="chronometer_margin">8dp</dimen>
+</resources>

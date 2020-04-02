@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.deepak.besaat">
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <application
+        android:name=".BesaatApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_logo2"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ic_logo2"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".view.activities.jobDetails.ui.JobDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/lightBlueStatusBar"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity
+            android:name=".view.activities.cancelOrderRequest.ui.CancelOrderRequestActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/lightPinkStatusBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".view.activities.requestOffers.ui.RequestOffersActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/lightBlueStatusBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".view.activities.requestStatus.ui.RequestStatusActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/lightBlueStatusBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".view.activities.storeNearByListing.activities.StoreNearByListingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/lightBlueStatusBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".view.activities.newRequestCourierOverSeas.NewRequestCourierOverseasActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/whitishBlueStatusBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".view.activities.chat.ui.ChatActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/lightBlueStatusBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".view.activities.customerSupport.ui.CustomerSupportActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/lightBlueStatusBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".view.VisitActivity.VisitActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".view.activities.paymentDetailsStore.PaymentDetailsStoreActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/lightBlueStatusBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".view.activities.customerProfile.CustomerProfile"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".view.activities.newRequestCourier.NewRequestCourier"
+            android:screenOrientation="portrait"
+            android:theme="@style/whitishBlueStatusBar" />
+        <activity
+            android:name=".view.activities.courierGuysListing.CourierGuysListing"
+            android:screenOrientation="portrait"
+            android:theme="@style/whitishBlueStatusBar" />
+        <activity
+            android:name=".view.activities.selectCourierType.SelectCourierType"
+            android:screenOrientation="portrait"
+            android:theme="@style/whitishBlueStatusBar" />
+        <activity
+            android:name=".view.activities.deliveryPersonDetail.DeliveryPersonDetail"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activities.newRequestService.NewRequestService"
+            android:screenOrientation="portrait"
+            android:theme="@style/yellowStatusBar" />
+        <activity
+            android:name=".view.activities.storeDetail.StoreDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/lightBlueStatusBar" />
+        <activity
+            android:name=".view.activities.servicesListing.ServicesListingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/yellowStatusBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".view.activities.newRequestStore.NewRequestStore"
+            android:screenOrientation="portrait"
+            android:theme="@style/lightBlueStatusBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".view.activities.storesListing.StoreListingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/lightBlueStatusBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name=".view.activities.termsAndConditions.Terms_and_privacy"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activities.paymentInformation.PaymentInformationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activities.addCourierDetail.AddCourierDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activities.selectDeliveryTypes.SelectDeliveryTypes"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activities.addServiceDetail.AddServicesDetailActvity"
+            android:screenOrientation="portrait">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".view.activities.createprofile.CreateProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activities.home.HomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/homeColorPrimary"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".view.activities.verifyCode.CodeVerificationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activities.signup.SignupActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/transparentStatusBar" />
+        <activity
+            android:name=".view.activities.phoneSignUp.PhoneSignUpActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".view.activities.walkThrough.WalkThroughActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/transparentStatusBar" />
+        <activity
+            android:name=".view.activities.selectLanguage.SelectLanguageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/transparentStatusBar" />
+        <activity
+            android:name=".view.activities.splash.SplashActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".notification.SmsBroadcastReceiver"
+            android:exported="true"
+            android:permission="TODO">
+            <intent-filter>
+                <action android:name="com.google.android.gms.auth.api.phone.SMS_RETRIEVE" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

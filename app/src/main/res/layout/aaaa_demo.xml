@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="aaFragmentViewModel"
+            type="com.deepak.besaat.viewModel.HomeFragmentViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rootLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_blue_bl_br_round_30"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".4" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/rltvBottom"
+                android:orientation="vertical">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="@font/popins_regular"
+                        android:letterSpacing="0.1"
+                        android:text="Some Tagline"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/_24ssp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imageView5"
+                        android:layout_width="@dimen/_200sdp"
+                        android:layout_height="@dimen/_150sdp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_bg_cloud" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="@dimen/_16sdp"
+                        android:paddingBottom="@dimen/_15sdp"
+                        android:src="@drawable/ic_delivery_man"></ImageView>
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rltvBottom"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_300sdp"
+                android:layout_alignParentBottom="true"
+                android:layout_weight="4"
+                android:gravity="bottom"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_dark_sky_blue_tl_tr_30"
+                    android:gravity="bottom"
+                    android:onClick="@{aaFragmentViewModel::locationClick}">
+
+                    <TextView
+                        android:id="@+id/txtLocations"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_16sdp"
+                        android:fontFamily="@font/cabin_semi_bold"
+                        android:text="@string/location"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorWhiteAlpha2"
+                        android:textSize="@dimen/_14ssp" />
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/txtLocations"
+                        android:layout_alignParentBottom="true"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_sky_blue_tl_tr_30"
+                        android:onClick="@{aaFragmentViewModel::servicesClick}">
+
+                        <TextView
+                            android:id="@+id/txtServices"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_16sdp"
+                            android:fontFamily="@font/cabin_semi_bold"
+                            android:text="@string/services"
+                            android:textAllCaps="true"
+                            android:textColor="@color/colorWhiteAlpha2"
+                            android:textSize="@dimen/_14ssp" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/txtServices"
+                            android:layout_alignParentBottom="true"
+                            android:layout_weight="2"
+                            android:background="@drawable/bg_white_all_round_30"
+                            android:onClick="@{aaFragmentViewModel::storesClick}">
+
+                            <TextView
+                                android:id="@+id/textViewStore"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/_16sdp"
+                                android:fontFamily="@font/cabin_semi_bold"
+                                android:text="@string/stores"
+                                android:textAllCaps="true"
+                                android:textColor="@color/colorLightBlack"
+                                android:textSize="@dimen/_14ssp" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerViewStore"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/textViewStore"
+                                android:paddingLeft="@dimen/_10sdp"
+                                android:paddingRight="@dimen/_10sdp">
+
+                            </androidx.recyclerview.widget.RecyclerView>
+                        </RelativeLayout>
+
+
+                    </RelativeLayout>
+
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

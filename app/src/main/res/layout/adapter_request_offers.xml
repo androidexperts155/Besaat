@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="offer"
+            type="com.deepak.besaat.model.myOrdersModel.Offer" />
+
+        <variable
+            name="viewModel"
+            type="com.deepak.besaat.viewModel.ServicesListingActivityViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/rootLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circleImageView"
+            android:layout_width="@dimen/_55sdp"
+            android:layout_height="@dimen/_55sdp"
+            android:layout_marginStart="16dp"
+            android:src="@color/colorAccent"
+            app:image_url='@{offer.provider.image!=null?offer.provider.image:"R.drawable.pin"}'
+            app:layout_constraintBottom_toBottomOf="@+id/textView20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView19" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/cabin_semi_bold"
+            android:gravity="top"
+            android:maxLines="1"
+            android:paddingEnd="200dp"
+            android:text="@{offer.provider.name}"
+            android:textColor="@color/colorLightBlack"
+            android:textSize="@dimen/_13ssp"
+            app:layout_constraintStart_toEndOf="@+id/circleImageView"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Deepak Rana" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewUserName"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:gravity="center_horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/textView20"
+            app:layout_constraintStart_toEndOf="@+id/circleImageView"
+            app:layout_constraintTop_toBottomOf="@+id/textView19">
+
+            <TextView
+                android:id="@+id/reviewcountText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/_4sdp"
+                android:fontFamily="@font/robot_medium"
+                android:text="0.0"
+                android:textColor="@color/colorYellow"
+                android:textSize="@dimen/_13ssp" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                style="@style/RatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:rating="0"
+                android:theme="@style/RatingBar" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginBottom="8dp"
+            android:drawableLeft="@drawable/ic_location_pin"
+            android:drawablePadding="@dimen/_4sdp"
+            android:ellipsize="end"
+            android:fontFamily="@font/roboto_regular"
+            android:maxLines="1"
+            android:paddingEnd="@dimen/_145sdp"
+            android:text="@{offer.provider.distanceString}"
+            android:textColor="@color/colorDarkGray"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/circleImageView"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutRatingBar"
+            tools:text="10 km away" />
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/textView20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintStart_toEndOf="@+id/textView20"
+            app:layout_constraintTop_toTopOf="@+id/textView19">
+
+            <TextView
+                android:id="@+id/tvOfferText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/text_offer"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorDarkGray"
+                android:textSize="@dimen/_10ssp" />
+
+            <TextView
+                android:id="@+id/tvOffer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@{offer.offerString}"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/lightestBlue"
+                android:textSize="@dimen/_12ssp"
+                tools:text="$32" />
+
+            <TextView
+                android:id="@+id/tvAccept"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:background="@drawable/bg_light_blue_all_side_four_dp"
+                android:paddingLeft="@dimen/_8sdp"
+                android:paddingTop="@dimen/_6sdp"
+                android:paddingRight="@dimen/_6sdp"
+                android:paddingBottom="@dimen/_6sdp"
+                android:text="@string/accept"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_8ssp" />
+
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="true" android:state_focused="true"
+        android:drawable="@drawable/bg_white_stroke_blue_round_all_side_4dp" />
+    <item android:drawable="@drawable/bg_white_stroke_light_gray_round_all_side_4dp" />
+</selector>

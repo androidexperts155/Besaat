@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
+        <TextView
+            android:id="@+id/textRating"
+            android:layout_below="@+id/lineview"
+            android:text="Filter"
+            android:fontFamily="@font/cabin_semi_bold"
+            android:textSize="20sp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+        <RadioGroup
+            android:layout_below="@+id/textRating"
+
+            android:id="@+id/groupradio"
+
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <!-- In RadioGroup create the 1 Radio Button-->
+            <!-- like this we will add some more Radio Button-->
+
+            <RadioButton
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radia_id111"
+                android:padding="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+          android:checked="true"
+                android:text="All"
+
+                android:fontFamily="@font/cabin_semi_bold"
+                android:textSize="15sp"/>
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/quantum_grey100"
+                android:layout_height="0.5dp"/>
+            <RadioButton
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radia_id11"
+                android:padding="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+
+                android:text="Pending"
+
+                android:fontFamily="@font/cabin_semi_bold"
+                android:textSize="15sp"/>
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/white"
+                android:layout_height="0.5dp"/>
+            <RadioButton
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radia_id1"
+                android:padding="@dimen/_10sdp"
+                android:checked="false"
+                android:fontFamily="@font/cabin_semi_bold"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:text="Active"
+                android:textSize="15sp"/>
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/white"
+                android:layout_height="0.5dp"/>
+
+            <RadioButton
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radia_id2"
+                android:padding="@dimen/_10sdp"
+                android:checked="false"
+                android:fontFamily="@font/cabin_semi_bold"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:text="Denied"
+                android:textSize="15sp"/>
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/quantum_grey100"
+                android:layout_height="0.5dp"/>
+
+
+        </RadioGroup>
+
+
+
+    </LinearLayout>
+</ScrollView>

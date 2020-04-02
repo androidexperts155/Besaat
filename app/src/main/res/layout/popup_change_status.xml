@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:background="@color/white"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_blue_top_corner_eight_dp"
+                android:backgroundTint="@color/colorDarkSkyBlue"
+                android:fontFamily="@font/robot_medium"
+                android:gravity="center"
+                android:padding="@dimen/_14sdp"
+                android:text="@string/change_status"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_16ssp" />
+
+
+        </RelativeLayout>
+
+        <RadioGroup
+
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/radio_pickup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:fontFamily="@font/cabin_regular"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/picked_up"
+                android:textColor="@color/colorLightBlack2"
+                android:textSize="15sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/white" />
+
+            <RadioButton
+                android:id="@+id/radio_delay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:fontFamily="@font/cabin_regular"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/delay"
+                android:textColor="@color/colorLightBlack2"
+                android:textSize="15sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/white" />
+
+            <RadioButton
+                android:id="@+id/radio_dropped"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:fontFamily="@font/cabin_regular"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/dropped"
+                android:textColor="@color/colorLightBlack2"
+                android:textSize="15sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/white" />
+
+            <RadioButton
+                android:id="@+id/radio_start"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:fontFamily="@font/cabin_regular"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/start"
+                android:textColor="@color/colorLightBlack2"
+                android:textSize="15sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/white" />
+
+            <RadioButton
+                android:id="@+id/radio_complete"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:fontFamily="@font/cabin_regular"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/completed"
+                android:textColor="@color/colorLightBlack2"
+                android:textSize="15sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/white" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/tvSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/bg_bluelight_tl_tr_br_round_30"
+            android:backgroundTint="@color/colorDarkSkyBlue"
+            android:fontFamily="@font/cabin_semi_bold"
+            android:gravity="center"
+            android:text="@string/submit"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_14ssp" />
+    </LinearLayout>
+</ScrollView>

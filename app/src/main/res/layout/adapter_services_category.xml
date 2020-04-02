@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="serviceDetail"
+            type="com.deepak.besaat.model.getServicesModel.Datum" />
+        <variable
+            name="viewModel"
+            type="com.deepak.besaat.viewModel.ServicesListingActivityViewModel" />
+    </data>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/relativeServices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/_10sdp"
+        android:paddingRight="@dimen/_10sdp"
+        android:paddingTop="@dimen/_6sdp"
+        android:paddingBottom="@dimen/_6sdp"
+        android:minWidth="@dimen/_60sdp"
+        android:background="@drawable/bg_light_white_all_side_four_dp">
+        <TextView
+            android:layout_centerInParent="true"
+            android:id="@+id/textServices"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/services"
+            android:text="@{serviceDetail.name}"
+            android:fontFamily="@font/roboto_regular"
+            android:textSize="@dimen/_14ssp"
+            android:textColor="@color/colorLightBlack"/>
+    </RelativeLayout>
+</LinearLayout>
+</layout>

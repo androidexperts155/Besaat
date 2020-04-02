@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/BlueLight"
+    android:padding="@dimen/_24sdp"
+    tools:context=".view.fragments.RequestSucessFull">
+
+    <ScrollView
+        android:id="@+id/backgroundTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_30sdp"
+                android:background="@drawable/bg_white_tl_tr_br_round_30"
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
+
+                <ImageView
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="@dimen/_70sdp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_36sdp"
+                    android:src="@drawable/icon_paysucessful" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/cabin_semi_bold"
+                    android:maxLines="2"
+                    android:paddingStart="@dimen/_14sdp"
+                    android:paddingTop="@dimen/_18sdp"
+                    android:paddingEnd="@dimen/_14sdp"
+                    android:text="Request successful!"
+                    android:textAlignment="center"
+                    android:textColor="@color/lightestBlue"
+                    android:textSize="@dimen/_16sdp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_18sdp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="You have to pay"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/_14sdp">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/orderPayment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/robot_medium"
+                    android:text="$0.0"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/_16sdp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_25sdp"
+                    android:layout_marginBottom="@dimen/_46sdp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="Order ID :"
+                        android:textSize="@dimen/_14sdp" />
+
+                    <TextView
+                        android:id="@+id/orderId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="112567"
+                        android:textSize="@dimen/_14sdp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textViewContinue"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:background="@drawable/bg_bluelight_tl_tr_br_round_30"
+                android:fontFamily="@font/open_sans_semi_bold"
+                android:gravity="center"
+                android:text="@string/back_to_home"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_14ssp" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

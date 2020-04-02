@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/topRelative"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/colorAccent">
+
+        <ImageView
+            android:id="@+id/imageViewMenu"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:padding="@dimen/_4sdp"
+            android:tint="@android:color/white"
+            app:srcCompat="@drawable/ic_menu_2" />
+
+
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/cabin_semi_bold"
+            android:layout_centerVertical="true"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_20ssp" />
+
+        <ImageView
+            android:id="@+id/imageViewSearch"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/_4sdp"
+            android:tint="@android:color/white"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_search" />
+    </RelativeLayout>
+    <!-- <LinearLayout
+         android:id="@+id/appBarLayout"
+         android:layout_width="match_parent"
+         android:padding="@dimen/_8sdp"
+         android:background="@color/colorLightBlue"
+         android:orientation="horizontal"
+         android:gravity="center_vertical"
+         android:layout_height="?android:attr/actionBarSize">
+
+
+         <ImageView
+             android:id="@+id/imageViewMenu"
+             android:layout_width="@dimen/_24sdp"
+             android:layout_height="@dimen/_24sdp"
+             android:layout_centerVertical="true"
+             android:padding="@dimen/_4sdp"
+             android:layout_alignParentStart="true"
+             android:tint="@android:color/white"
+             app:srcCompat="@drawable/ic_menu" />
+
+
+     </LinearLayout>-->
+
+
+</RelativeLayout>

@@ -1,0 +1,43 @@
+
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+def library_groupId = 'com.etebarian'
+def library_artifactId = 'meow-bottom-navigation'
+def library_versionCode = 1_0_01_00_04
+def library_versionName = '1.0.4'
+
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode library_versionCode
+        versionName library_versionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+androidExtensions {
+    experimental = true
+}
+
+dependencies {
+    implementation "androidx.appcompat:appcompat:1.0.2"
+    implementation "androidx.core:core-ktx:1.0.2"
+}

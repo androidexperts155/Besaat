@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#90BCDA"
+    tools:context=".view.fragments.AddTrip.AddTripFragment">
+
+    <ScrollView
+        android:id="@+id/rootLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/backgroundTop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/bg_green_tl_tr_br_round_30"
+            android:clickable="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:textColor="#A2B8BE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="35dp"
+                android:text="DEPARTURE"
+                android:textSize="@dimen/_12ssp"/>
+
+            <RelativeLayout
+                android:id="@+id/relativeLayoutArrivalCountry"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/bg_light_whitish_blue_tl_br_bl_round_30"
+                android:orientation="horizontal"
+                android:padding="@dimen/_10sdp">
+
+
+                <com.rilixtech.widget.countrycodepicker.CountryCodePicker
+                    android:id="@+id/ccpDeparture"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="14dp"
+                    android:layout_toStartOf="@+id/imageViewRightArrow2"
+                    android:gravity="center_vertical"
+                    app:ccp_arrowSize="1dp"
+                    app:ccp_hideNameCode="false"
+                    app:ccp_hidePhoneCode="true"
+                    app:ccp_showFullName="false" />
+
+                <ImageView
+                    android:id="@+id/imageViewRightArrow2"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    app:srcCompat="@drawable/ic_keyboard_arrow_down_black_24dp" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout7"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewServiceTime">
+
+
+                <LinearLayout
+                    android:id="@+id/departureDate"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_45sdp"
+
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_light_whitish_blue_tl_br_bl_round_30"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_10sdp">
+
+                    <TextView
+                        android:id="@+id/departureDateText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/roboto_regular"
+                        android:hint="@string/date"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorLightBlack"
+                        android:textColorHint="@color/buttonselctedColor"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <ImageView
+                        android:layout_marginEnd="@dimen/_8sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_calander" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/departureTime"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_light_whitish_blue_tl_br_bl_round_30"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_10sdp">
+
+                    <TextView
+                        android:id="@+id/departureDateTime"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/roboto_regular"
+                        android:hint="@string/time"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorLightBlack"
+                        android:textColorHint="@color/buttonselctedColor"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <ImageView
+                        android:layout_marginEnd="@dimen/_8sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_watch" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:textColor="#A2B8BE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="35dp"
+                android:text="ARRIVAL"
+                android:textSize="@dimen/_12ssp"/>
+
+
+            <RelativeLayout
+                android:id="@+id/relativeLayoutArrivalCountry2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/bg_light_whitish_blue_tl_br_bl_round_30"
+                android:orientation="horizontal"
+                android:padding="@dimen/_10sdp">
+
+
+                <com.rilixtech.widget.countrycodepicker.CountryCodePicker
+                    android:id="@+id/ccpArrival"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="14dp"
+                    android:layout_toStartOf="@+id/imageViewRightArrow22"
+                    android:gravity="center_vertical"
+                    app:ccp_arrowSize="1dp"
+                    app:ccp_hideNameCode="false"
+                    app:ccp_hidePhoneCode="true"
+                    app:ccp_showFullName="false" />
+
+                <ImageView
+                    android:id="@+id/imageViewRightArrow22"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    app:srcCompat="@drawable/ic_keyboard_arrow_down_black_24dp" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout77"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewServiceTime">
+
+
+                <LinearLayout
+                    android:id="@+id/arrivalDate"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_light_whitish_blue_tl_br_bl_round_30"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_10sdp">
+
+                    <TextView
+                        android:id="@+id/arrivalDateText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/roboto_regular"
+                        android:hint="@string/date"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorLightBlack"
+                        android:textColorHint="@color/buttonselctedColor"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <ImageView
+                        android:layout_marginEnd="@dimen/_8sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_calander" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/arrivalTime"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_light_whitish_blue_tl_br_bl_round_30"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_10sdp">
+
+                    <TextView
+                        android:id="@+id/arrivalTimeText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/roboto_regular"
+                        android:hint="@string/time"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorLightBlack"
+                        android:textColorHint="@color/buttonselctedColor"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <ImageView
+                        android:layout_marginEnd="@dimen/_8sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_watch" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout101"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/bg_light_whitish_blue_tl_br_bl_round_30"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingEnd="@dimen/_20sdp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout13">
+
+
+                <ImageView
+
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:src="@drawable/add_photo_icon"></ImageView>
+
+
+                <TextView
+
+                    android:id="@+id/textCurrentAddress11"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/roboto_regular"
+                    android:maxLines="2"
+                    android:text="@string/upload_ticket"
+                    android:textColor="@color/colorDarkGray"
+                    android:textSize="@dimen/_14ssp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout101">
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout6"
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="@dimen/_120sdp"
+                    android:background="@drawable/bg_white_stroke_gradient_dotted_rectangle">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_plus" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:alpha="0.5"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="@string/upload_ticket"
+                            android:textAlignment="center"
+                            android:textColor="@color/buttonselctedColor" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/add_photo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/textViewContinue"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="100dp"
+                android:background="@drawable/bg_bluelight_tl_tr_br_round_30"
+                android:fontFamily="@font/cabin_semi_bold"
+                android:gravity="center"
+                android:text="@string/save"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_bias="0.81" />
+
+            // dummy view
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

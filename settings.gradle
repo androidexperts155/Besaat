@@ -1,0 +1,2 @@
+include ':app', ':countrycodepicker', ':meowbottomnavigation', ':audio_recorder'
+rootProject.name='Besaat'

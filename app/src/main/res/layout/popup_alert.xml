@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/rlRoot"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:paddingBottom="@dimen/_16sdp"
+        android:background="@drawable/bg_white_stroke_blue_round_all_side_4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_14sdp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/robot_medium"
+            android:gravity="center"
+            android:padding="@dimen/_14sdp"
+            android:text="@string/alert"
+            android:id="@+id/tvTitle"
+            android:textColor="@color/colorLightBlack3"
+            android:textSize="@dimen/_16ssp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center"
+            android:paddingStart="@dimen/_14sdp"
+            android:paddingEnd="@dimen/_14sdp"
+            android:text="Do you want to delete this trip?"
+            android:textColor="@color/colorLightBlack3"
+            android:textSize="@dimen/_12ssp" />
+
+
+
+        <LinearLayout
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tvNo"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/cabin_semi_bold"
+                android:gravity="center"
+                android:paddingStart="@dimen/_15sdp"
+                android:paddingEnd="@dimen/_15sdp"
+                android:text="@string/cancel1"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/_14ssp">
+
+            </TextView>
+            <TextView
+                android:id="@+id/tvYes"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/cabin_semi_bold"
+                android:gravity="center"
+                android:paddingStart="@dimen/_15sdp"
+                android:paddingEnd="@dimen/_15sdp"
+                android:text="@string/delete"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/_14ssp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

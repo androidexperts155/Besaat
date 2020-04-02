@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:id="@+id/lnrCells"
+    android:layout_width="match_parent"
+    android:paddingTop="@dimen/_24sdp"
+    android:background="@color/colorLightBlue"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:id="@+id/imageViewIcon"
+        android:tint="@color/colorWhiteAlpha"
+        android:src="@drawable/ic_close">
+    </ImageView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewItemName"
+        android:text="Deepak"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:fontFamily="@font/robot_medium"
+        android:textSize="@dimen/_13ssp"
+        android:textColor="@android:color/white"
+        />
+</LinearLayout>

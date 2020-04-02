@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_21sdp"
+            android:fontFamily="@font/cabin_regular"
+            android:text="Ratings"
+            android:textAllCaps="true"
+            android:textColor="@color/quantum_grey500"
+            android:textSize="@dimen/_14sdp"/>
+
+        <RadioGroup
+            android:id="@+id/groupradio"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <!-- In RadioGroup create the 1 Radio Button-->
+            <!-- like this we will add some more Radio Button-->
+            <RadioButton
+                android:id="@+id/radia_id11"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:checked="true"
+                android:fontFamily="@font/cabin_regular"
+                android:padding="@dimen/_10sdp"
+                android:text="All"
+                android:textColor="@color/colorLightBlack2"
+                android:textSize="@dimen/_13sdp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/white" />
+
+            <RadioButton
+                android:textColor="@color/colorLightBlack2"
+                android:id="@+id/radia_id1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:checked="false"
+                android:fontFamily="@font/cabin_regular"
+                android:padding="@dimen/_10sdp"
+                android:text="5"
+                android:textSize="@dimen/_13sdp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/white"/>
+
+            <RadioButton
+                android:textColor="@color/colorLightBlack2"
+                android:id="@+id/radia_id2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:checked="false"
+                android:fontFamily="@font/cabin_regular"
+                android:padding="@dimen/_10sdp"
+                android:text="4"
+                android:textSize="@dimen/_13sdp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/white"/>
+
+            <RadioButton
+                android:textColor="@color/colorLightBlack2"
+                android:id="@+id/radia_id3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:checked="false"
+                android:fontFamily="@font/cabin_regular"
+                android:padding="@dimen/_10sdp"
+                android:text="3"
+                android:textSize="@dimen/_13sdp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/white"/>
+
+            <RadioButton
+                android:textColor="@color/colorLightBlack2"
+                android:id="@+id/radia_id4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:checked="false"
+                android:fontFamily="@font/cabin_regular"
+                android:padding="@dimen/_10sdp"
+                android:text="2"
+                android:textSize="@dimen/_13sdp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/white"/>
+
+            <RadioButton
+                android:textColor="@color/colorLightBlack2"
+                android:id="@+id/radia_id5"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:checked="false"
+                android:fontFamily="@font/cabin_regular"
+                android:padding="@dimen/_10sdp"
+                android:text="1"
+                android:textSize="@dimen/_13sdp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/white"/>
+        </RadioGroup>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_25sdp">
+
+            <TextView
+                android:id="@+id/textDistance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:fontFamily="@font/cabin_regular"
+                android:gravity="center_vertical"
+                android:text="Distance"
+                android:textAllCaps="true"
+                android:textColor="@color/quantum_grey500"
+                android:textSize="@dimen/_14sdp" />
+
+            <TextView
+                android:id="@+id/seekbardetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:gravity="center_vertical"
+                android:text="15 km"
+                android:fontFamily="@font/cabin_medium"
+                android:textColor="@color/colorLightBlack3"
+                android:textSize="@dimen/_14sdp" />
+        </RelativeLayout>
+
+        <SeekBar
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:id="@+id/simpleSeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="20dp"
+            android:max="20"
+            android:min="0"
+            android:progress="0"
+            android:thumb="@drawable/custom_thumb" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:fontFamily="@font/cabin_regular"
+                android:gravity="center_vertical"
+                android:text="Sorting"
+                android:textAllCaps="true"
+                android:textColor="@color/quantum_grey500"
+                android:textSize="@dimen/_14sdp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:fontFamily="@font/cabin_regular"
+                android:gravity="center_vertical"
+                android:text="Order"
+                android:textAllCaps="true"
+                android:textColor="@color/quantum_grey500"
+                android:textSize="@dimen/_14sdp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+                <RadioGroup
+                    android:id="@+id/radio_group_sorting"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                <!-- In RadioGroup create the 1 Radio Button-->
+                <!-- like this we will add some more Radio Button-->
+                <RadioButton
+                    android:id="@+id/radio_by_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:fontFamily="@font/cabin_regular"
+                    android:padding="@dimen/_4sdp"
+                    android:text="By Rating"
+                    android:textColor="@color/colorLightBlack2"
+                    android:textSize="@dimen/_13sdp" />
+                <RadioButton
+                    android:textColor="@color/colorLightBlack2"
+                    android:id="@+id/radio_by_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:checked="true"
+                    android:fontFamily="@font/cabin_regular"
+                    android:padding="@dimen/_4sdp"
+                    android:text="By Distance"
+                    android:textSize="@dimen/_13sdp" />
+                </RadioGroup>
+            </LinearLayout>
+            <LinearLayout
+                android:gravity="end"
+                android:layout_gravity="end"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+                <RadioGroup
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:gravity="end"
+                    android:id="@+id/radio_group_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <!-- In RadioGroup create the 1 Radio Button-->
+                    <!-- like this we will add some more Radio Button-->
+                    <RadioButton
+                        android:id="@+id/radio_highest"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:fontFamily="@font/cabin_regular"
+                        android:padding="@dimen/_4sdp"
+                        android:text="Highest"
+                        android:textColor="@color/colorLightBlack2"
+                        android:textSize="@dimen/_13sdp" />
+                    <RadioButton
+                        android:textColor="@color/colorLightBlack2"
+                        android:id="@+id/radio_lowest"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:checked="true"
+                        android:fontFamily="@font/cabin_regular"
+                        android:padding="@dimen/_4sdp"
+                        android:text=" Lowest"
+                        android:textSize="@dimen/_13sdp" />
+                </RadioGroup>
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

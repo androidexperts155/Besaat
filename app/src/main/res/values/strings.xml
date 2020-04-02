@@ -1,0 +1,382 @@
+<resources>
+
+    <string name="facebook_app_id">1396437327191035</string>
+    <string name="fb_login_protocol_scheme">fb1396437327191035</string>
+
+    <string name="app_name">Bissat</string>
+    <string name="preferred_language">Preferred Language</string>
+    <string name="english">English</string>
+    <string name="skip">Skip</string>
+    <string name="welcome_to_besaat">Welcome to Besaat!</string>
+    <string name="choose_hassle_free_local_and_overseas_delivery_services">Choose Hassle Free Local and Overseas Delivery Services.</string>
+    <string name="place_and_recieve">Place and Receive Requests Based Upon Particular Category</string>
+    <string name="real_time_Tracking">Real Time Tracking With Updated Status</string>
+    <string name="stay_connected">Stay Connected With Service Provider Through Chat Until Request Complete</string>
+    <string name="get_started">Get Started</string>
+    <string name="using_social_accounts">using social accounts</string>
+    <string name="facebook">Facebook</string>
+    <string name="google">Google</string>
+    <string name="instagram">Instagram</string>
+    <string name="or">Or</string>
+    <string name="by_continuing_you_agree_to_the_terms_privacy_policy">By continuing you agree to the <b>Terms &amp; Privacy Policy</b></string>
+    <string name="your_phone_number">Your Phone Number</string>
+    <string name="continue1">Continue</string>
+    <string name="we_ll_never_share_or_sell_your_phone_number">We\'ll never share or sell your phone number</string>
+    <string name="signup_using_mobile">Signup using mobile</string>
+    <string name="submit">Submit</string>
+    <string name="enter_verification_code">Enter Verification Code</string>
+    <string name="besaat_will_send_you_one_sms_message_to_verify_your_phone_number_to_verify_yourself_please_enter_your_phone_number">Besaat will send you one SMS message to verify your phone number. To verify yourself please enter your phone number.</string>
+    <string name="enter_the_sms_verification_code_below_that_was_sent_to_your_mobile_phone">Enter the SMS verification code below that was sent to your mobile phone</string>
+    <string name="resend_verification_code">Resend Verification Code</string>
+    <string name="terms_and_privacy">Terms &amp; Privacy Policy</string>
+
+    <string name="my_wallet">My Wallet</string>
+    <string name="my_cards">My Cards</string>
+    <string name="my_visits">My Visits</string>
+    <string name="settings">Settings</string>
+
+
+    <string-array name="welcome_screens_titles">
+        <item>@string/choose_hassle_free_local_and_overseas_delivery_services</item>
+        <item>@string/place_and_recieve</item>
+        <item>@string/real_time_Tracking</item>
+        <item>@string/stay_connected</item>
+    </string-array>
+
+    <integer-array name="welcome_screens_images">
+        <item>@drawable/welcom_screen1</item>
+        <item>@drawable/welcome_screen2</item>
+        <item>@drawable/welcome_screen_3</item>
+        <item>@drawable/welcome_screen4</item>
+    </integer-array>
+
+    <string name="menu_send">Send</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="logout">Logout</string>
+    <string name="home">Home</string>
+    <string name="orders">Orders</string>
+    <string name="notifications">Notifications</string>
+    <string name="me">Me</string>
+    <string name="stores">Stores</string>
+    <string name="location">Location</string>
+    <string name="services">Services</string>
+    <string name="create_profile">Create Profile</string>
+    <string name="create_account">Create Account</string>
+    <string name="select_account_type">Select Account Type</string>
+    <string name="i_am">I am a</string>
+    <string name="buyer">Buyer</string>
+    <string name="provider">Provider</string>
+    <string name="your_name">Your Name</string>
+    <string name="email_address">Email Address</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="select_delivery_types">Select Delivery Types</string>
+    <string name="you_can_select_one_or_both_delivery_types">You can select one or both delivery types.</string>
+    <string name="courier">Courier</string>
+    <string name="experience_years">Experience (Years)</string>
+    <string name="available_days">Available Days</string>
+    <string name="timings">Timings</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="mon">Mon</string>
+    <string name="tue">Tue</string>
+    <string name="wed">Wed</string>
+    <string name="thu">Thu</string>
+    <string name="fri">Fri</string>
+    <string name="sat">Sat</string>
+    <string name="sun">Sun</string>
+    <string name="add_service_detail">Add Services  Details</string>
+    <string name="courier_delivery">Courier Delivery</string>
+    <string name="license">License</string>
+    <string name="departure">Departure</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="arrival">Arrival</string>
+    <string name="local">Local</string>
+    <string name="overseas">Overseas</string>
+    <string name="both">Both</string>
+    <string name="add_courier_detail">Add Courier Details</string>
+    <string name="add_license">Add License Number</string>
+    <string name="account_holder_name">Account Holder Name</string>
+    <string name="account_number">Account Number</string>
+    <string name="ifsc_code">Ifsc Code</string>
+    <string name="payment_information">Payment Information</string>
+    <string name="payment_method">Payment Methods</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="internet_connection">Please make sure internet is available</string>
+    <string name="loading">Loading…</string>
+    <string name="choose_from">Choose From</string>
+    <string name="phone_s_gallery">Phone\'s Gallery</string>
+    <string name="take_a_pic">Take a Pic</string>
+    <string name="cancel1">Cancel</string>
+    <string name="permission">Permission</string>
+    <string name="alert">Alert !!</string>
+    <string name="no_data_found">No Data found</string>
+    <string name="storagePermission">Without storage permission the app is unable to get the images from the phone.So please allow this permission</string>
+    <string name="audio_permission">Without audio permission the app is unable to record your voice message from the phone mic. So please allow this permission</string>
+    <string name="ok">Ok</string>
+    <string name="save">Save</string>
+    <string name="empty_name">Please enter the Name</string>
+    <string name="empty_email">Please enter the email</string>
+    <string name="empty_issue">Please enter your issue</string>
+    <string name="invalid_email">Email enter appears to be invalid!</string>
+    <string name="empty_phone">Please enter the phone number</string>
+    <string name="enter_valid_phone">Please enter valid phone number</string>
+    <string name="empty_profile_image">Please choose the profile image</string>
+    <string name="empty_account_type">Please select the account type</string>
+    <string name="empty_support_type">Please select the support type</string>
+    <string name="empty_delivery_type">Please select one delivery type</string>
+
+    <string name="one_plus">1</string>
+    <string name="two_plus">2</string>
+    <string name="three_plus">3</string>
+    <string name="four_plus">4</string>
+    <string name="five_plus">5</string>
+
+    <string name="empty_service_type">Please select atleast one service</string>
+    <string name="empty_other_service">Please enter the other service name</string>
+    <string name="duplicate_other_service">Entered %s service already availed in the service list so confirm to select the list or to enter new service type.</string>
+    <string name="empty_provider_experience">Please select experience</string>
+    <string name="empty_available_days">Please select available days</string>
+    <string name="empty_timings">Please choose working timing</string>
+    <string name="please_enter_rate_per_hour">Please enter rate per hour.</string>
+    <string name="add_license_image">Add License Image</string>
+    <string name="empty_departure_date_time">Please choose the departure date and time first</string>
+    <string name="empty_departure_date">Please choose the departure date first</string>
+    <string name="empty_arrival_date">Please choose the arrival date first</string>
+    <string name="arrival_time_must_greater_than_departure">Arrival time must be greater than departure time</string>
+    <string name="total_duraton_should_be_greater_than_1_hour">Total Duraton should be greater than 1 hour</string>
+    <string name="past_time">Please select future time.</string>
+    <string name="edit_in_process">Please wait, edit in process</string>
+    <string name="empty_licence_number_image">Please enter licence number and upload license image</string>
+    <string name="empty_licence_number">Please enter licence number.</string>
+    <string name="empty_licence_image">Please upload license image.</string>
+    <string name="empty_courier_delivery_typr">Please select the courier delivery type</string>
+    <string name="empty_otp">Please Enter Verification Code</string>
+    <string name="otp_no_valid">You have entered wrong otp</string>
+    <string name="code_resend">Verification Code Resend Successfully</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="are_you_sure_to_log_out">Are you sure, you want to logout?</string>
+    <string name="phone_already_register">Phone number already register.</string>
+    <string name="request">Request</string>
+    <string name="empty_account_number">Please enter your account number</string>
+    <string name="empty_ifsc_code">Please enter the ifsc code</string>
+    <string name="pick_or_drop_location">Pick/Drop Locations</string>
+    <string name="enter_drop_location">Enter Drop Location</string>
+    <string name="order_information">Order Information</string>
+    <string name="special_note">Special Note</string>
+    <string name="choose_driver">Choose Driver</string>
+    <string name="auto_transmission">Auto Transmission</string>
+    <string name="manual_transmission">Manual Transmission</string>
+    <string name="estimated_charges">Estimated Charges</string>
+    <string name="incl_tax">(Incl Tax)</string>
+    <string name="new_request">New Request</string>
+    <string name="confirm">Confirm</string>
+    <string name="conti">Continue</string>
+    <string name="back_to_home">Back To Home</string>
+    <string name="offer">Offer:</string>
+    <string name="offers">Offers (%d)</string>
+    <string name="select">Select</string>
+    <string name="reason_for_cancellation">Reason for Cancellation</string>
+    <string name="selected">Selected</string>
+    <string name="google_maps_key">AIzaSyDzH7yEoRQjxZhbu51kcfH6jxcKZTLak3o</string>
+    <string name="add_photo_optional">Add Photo(Optional)</string>
+    <string name="add_photo">Add Photo (optional)</string>
+    <string name="upload_ticket">Upload\n(optional)</string>
+    <string name="store_detail">Store Detail</string>
+    <string name="Payment_Method">Payment Methods</string>
+    <string name="reviews">Reviews</string>
+    <string name="service_time">Service Time</string>
+    <string name="service_information">Services Information</string>
+    <string name="experience">Experience</string>
+    <string name="jobs">Jobs</string>
+    <string name="ratings">Ratings</string>
+    <string name="chat">chat</string>
+    <string name="chat_">Chat</string>
+    <string name="profile">Profile</string>
+    <string name="delivery_options">Delivery Options</string>
+    <string name="choose_courier_type">Choose Courier Type</string>
+    <string name="departure2">Departure:</string>
+    <string name="arrival2">Arrival:</string>
+    <string name="deliver_time">Delivery Time</string>
+    <string name="courier_information">Courier Information</string>
+    <string name="next_overseas_trip">Next Overseas Trip</string>
+    <string name="payment_methods">Payment Methods</string>
+    <string name="add_new_card">Add New Card</string>
+    <string name="become_a_service_provider">Become a Service Provider</string>
+    <string name="my_profile">My Profile</string>
+    <string name="earned">Earned</string>
+    <string name="make_my_profile">Make my Profile</string>
+    <string name="enable">Enable</string>
+    <string name="disable">Disable</string>
+    <string name="bank_details">Bank Details</string>
+    <string name="update">Update</string>
+    <string name="addCourier">Add Courier</string>
+    <string name="addServices">Add Services</string>
+    <string name="in_progress">In progress</string>
+    <string name="min_length_name">Name should be minimum 2 characters long</string>
+    <string name="min_length_licence">License number should be minimum 6 characters long</string>
+    <string name="min_length_account_nm">Account number should be minimum 10 characters long</string>
+    <string name="min_length_ifsc">IFSC code should be minimum 6 characters long</string>
+
+    <!--<string name="google_api">AIzaSyBJgdIB5Y6wVtZ-OKax7p6JwxaDr8dflng</string>-->
+    <string name="google_api">AIzaSyAtCrvV9feuiIbDmO4XRhHqLocy_6rWZaI</string>
+
+
+    <string-array name="navigation_items">
+        <item>@string/my_profile</item>
+        <item>@string/my_wallet</item>
+        <item>@string/my_cards</item>
+        <item>@string/my_visits</item>
+        <item>@string/settings</item>
+    </string-array>
+    <string-array name="navigation_items_buyer">
+        <item>@string/my_profile</item>
+        <item>@string/my_wallet</item>
+        <item>@string/my_cards</item>
+
+        <item>@string/settings</item>
+    </string-array>
+
+
+    <string-array name="experienceList">
+        <item>@string/one_plus</item>
+        <item>@string/two_plus</item>
+        <item>@string/three_plus</item>
+        <item>@string/four_plus</item>
+        <item>@string/five_plus</item>
+    </string-array>
+
+
+    <integer-array name="navigation_icons">
+        <item>@drawable/ic_user</item>
+        <item>@drawable/ic_wallet</item>
+        <item>@drawable/ic_credit_card</item>
+        <item>@drawable/ic_plane</item>
+        <item>@drawable/ic_setting</item>
+    </integer-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_payment_details_store">paymentDetailsStoreActivity</string>
+    <string name="your_request">Your Request</string>
+    <string name="requestdetails">Request Details</string>
+    <string name="requestitem">RequestItem</string>
+    <string name="pickup_address">PickUp Address</string>
+    <string name="pickup_location">Pickup Location</string>
+    <string name="dropoff_location">Dropoff Location</string>
+    <string name="address_pickup">Address Pickup</string>
+    <string name="delivery_address">Delivery Address</string>
+    <string name="delivery_adress">Delivery Address</string>
+    <string name="distance_covered">Distance Covered</string>
+    <string name="distance">Distance</string>
+    <string name="fare_per_mile">Fare Per KM</string>
+    <string name="fareOne">$0.0</string>
+    <string name="total_amount">Total Amount</string>
+    <string name="faretwo">$0.0</string>
+    <string name="pay_with">Select Payment Method</string>
+    <string name="paymentsucessful">TRANSACTION SUCCESSFULL!</string>
+    <string name="_0_hr">$0/hr</string>
+    <string name="hourly_rate_usd">Hourly Rate (USD)</string>
+    <string name="select_support_type">Select Support Type</string>
+    <string name="trip">Trip</string>
+    <string name="select_id">Select id</string>
+    <string name="write_your_issue">Write your issue...</string>
+    <string name="title">Title</string>
+    <string name="server_error">Server Error</string>
+    <string name="no_store_availed_please_change_filter_value_to_list_the_store">No store availed / Please change filter value to list the store …</string>
+    <string name="no_service_availed_">No Service providers availed…</string>
+    <string name="no_courier_availed_">No courier service found…</string>
+    <string name="name">name</string>
+    <string name="empty_title">Please enter title</string>
+    <string name="empty_service_location">Please select service location.</string>
+    <string name="far_service_location">The distance b/w the service provider location and service location should not be more than 20 km.</string>
+    <string name="empty_date">Please select service date.</string>
+    <string name="empty_time">Please select service time.</string>
+    <string name="empty_info">Please enter service information.</string>
+    <string name="empty_note">Please enter special note.</string>
+
+    <string name="empty_pickup_location">Please select pickup location.</string>
+    <string name="empty_drop_location">Please select drop location.</string>
+    <string name="empty_delivery_date">Please select delivery date.</string>
+    <string name="empty_delivery_time">Please select delivery time.</string>
+    <string name="empty_delivery_info">Please enter courier information.</string>
+    <string name="select_delivery_type">Select Delivery Type</string>
+    <string name="pickup_delivery_locations">Pickup/Delivery Locations</string>
+    <string name="service_location">Service Location</string>
+    <string name="type_a_message">Type a message...</string>
+    <string name="do_you_want_to_send_image">Do you Want to send image?</string>
+    <string name="_00_00">00:00/</string>
+    <string name="delete">Delete</string>
+    <string name="credit_card">Credit Card</string>
+    <string name="cash_on_delivery">Cash on Delivery</string>
+    <string name="q_pay">Q Pay</string>
+    <string name="my_requests">My Requests</string>
+    <string name="my_jobs">My Jobs</string>
+    <string name="delivery">Delivery</string>
+    <string name="important_documents">Important Documents</string>
+    <string name="active">active</string>
+    <string name="cancelled">cancelled</string>
+    <string name="cancelled1">Cancelled</string>
+    <string name="id">id#</string>
+    <string name="track_status">track status</string>
+    <string name="reorder">reorder</string>
+    <string name="assignee">Assignee</string>
+    <string name="payment_type">Payment Type</string>
+    <string name="delivery_location">Delivery Location</string>
+    <string name="client_name">Client Name</string>
+    <string name="reject">Reject</string>
+    <string name="rejected">Rejected</string>
+    <string name="accept">Accept</string>
+    <string name="rate">Rate</string>
+    <string name="delivered">Delivered</string>
+    <string name="google_rating_info">Review are automatically processed to detect inappropriate content like fake reviws and spam. We may take down reviews that are flagged in order to comply with Google policies or legal obligations.</string>
+    <string name="successfully_delivered">Successfully Delivered</string>
+    <string name="order_id">Order ID:</string>
+    <string name="item">Item:</string>
+    <string name="place">Place:</string>
+    <string name="placed">Placed</string>
+    <string name="completed">Completed</string>
+    <string name="accepted_at">Accepted at: %s</string>
+    <string name="request_sent_to">Request sent to</string>
+    <string name="directions">Directions</string>
+    <string name="want_to_cancel"><u>Want to cancel?</u></string>
+    <string name="need_help">Need Help?</string>
+    <string name="are_you_sure_to_cancel">Are you sure to cancel?</string>
+    <string name="text_offer">offer</string>
+    <string name="yes_i_understand_the_terms">Yes, I understand the terms.</string>
+    <string name="remarks">Remarks</string>
+    <string name="please_select_reason_to_cancel">Please select at least one reason to cancel.</string>
+    <string name="do_you_want_to_accept_cancellation_request_from_provider">Do you want to accept cancellation request from provider?</string>
+    <string name="request_status">Request Status</string>
+    <string name="rate_service_provider">rate service provider</string>
+    <string name="rate_user_validation">To submit rating for user, please rate user at least 1 star.</string>
+    <string name="cancelled_by_you">Cancelled by You</string>
+    <string name="cancelled_by_client">Cancelled by Client</string>
+    <string name="cancelled_by_provider">Cancelled by Provider</string>
+    <string name="description">Description</string>
+    <string name="client">Client</string>
+    <string name="delivery_date">Delivery Date</string>
+    <string name="delivery_time">Delivery Time</string>
+    <string name="payment_status">Payment Status</string>
+    <string name="pick_from">Pick From</string>
+    <string name="drop_to">Drop To</string>
+    <string name="support">Support</string>
+    <string name="change_status">Change Status</string>
+    <string name="view_directions">View Directions</string>
+    <string name="job_details">Job Details</string>
+    <string name="picked_up">Picked Up</string>
+    <string name="delay">Delay</string>
+    <string name="dropped">Dropped</string>
+    <string name="start">Start</string>
+    <string name="select_status_of_job">Select status of Job.</string>
+    <string name="cancellation_fee_may_apply_if_provider_rejects_cancellation_request">$40 cancellation fee may apply if provider rejects cancellation request.</string>
+    <string name="please_enter_your_offer_price">Please enter your offer price.</string>
+    <string name="poor">Poor</string>
+    <string name="average">Average</string>
+    <string name="above_average">Above Average</string>
+    <string name="good">Good</string>
+    <string name="excellent">Excellent</string>
+    <string name="no_offer">No offer yet! Please wait for provider\'s response to get best offer.</string>
+</resources>
