@@ -42,7 +42,7 @@ class NewRequestStoreViewModel(respository: Repository) : BaseViewModel() {
             try {
                 val response = respository.getFair(authorization)
                 Log.e("RequestResponse", "response of get fair " + response)
-                jsonObject = JSONObject(response.string());
+                jsonObject = JSONObject(response.string())
                 Coroutines.mainThread {
                     fairJsonResponse.value = jsonObject
                 }
@@ -53,13 +53,16 @@ class NewRequestStoreViewModel(respository: Repository) : BaseViewModel() {
     }
 
     fun executenearbyproviders(authorization: String, lat: String, long: String) {
+        Coroutines.mainThread {
+            progressBar.value = true
+        }
         Coroutines.backThread {
             var jsonObject: JSONObject? = null
             try {
                 val response = respository.nearByProvider(authorization, lat, long)
-                Log.e("RequestResponse", "request response is " + response)
+                Log.e("RequestResponse", "request response is $response")
                 jsonObject = JSONObject(response.string());
-                Log.e("RequestResponse", "response on view moodel " + jsonObject.toString())
+                Log.e("RequestResponse", "response on view model $jsonObject")
                 Coroutines.mainThread {
                     progressBar.value = false
                     nearbyProviderResponse.value = jsonObject
@@ -100,6 +103,7 @@ class NewRequestStoreViewModel(respository: Repository) : BaseViewModel() {
         paymentMethod: String,
         requestType: String,
         requestImage: File,
+        providerIDs: String,
         driverSelectionType: String
     ) {
         Coroutines.mainThread {
@@ -123,12 +127,13 @@ class NewRequestStoreViewModel(respository: Repository) : BaseViewModel() {
                     charges,
                     paymentMethod,
                     requestType,
+                    providerIDs,
                     requestImage,
                     driverSelectionType
                 )
-                Log.e("RequestResponse", "request response is " + response)
-                jsonObject = JSONObject(response.string());
-                Log.e("RequestResponse", "response on view moodel " + jsonObject.toString())
+                Log.e("RequestResponse", "request response is $response")
+                jsonObject = JSONObject(response.string())
+                Log.e("RequestResponse", "response on view model $jsonObject")
                 Coroutines.mainThread {
                     progressBar.value = false
                     createJsonResponse.value = jsonObject

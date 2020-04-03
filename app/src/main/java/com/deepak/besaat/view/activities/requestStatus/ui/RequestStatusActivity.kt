@@ -1,5 +1,6 @@
 package com.deepak.besaat.view.activities.requestStatus.ui
 
+import android.app.Activity
 import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
@@ -9,10 +10,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
-import android.widget.ImageView
-import android.widget.RatingBar
-import android.widget.RelativeLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -57,13 +55,19 @@ class RequestStatusActivity : BaseActivity() {
         initObserver()
     }
 
+    override fun onBackPressed() {
+//        super.onBackPressed()
+        var intent = Intent()
+        intent.putExtra("data", request)
+        setResult(Activity.RESULT_OK, intent)
+        finish()
+    }
+
     fun init() {
         binding.viewModel = viewModel
         binding.currentUserID = sharedPref.getLong(Constants.USER_ID).toInt()
         customToolBarWithBack(this, toolBar)
         textViewTitleName.text = getString(R.string.request_status)
-
-
 
         if (intent.getSerializableExtra("data") != null) {
             request = intent.getSerializableExtra("data") as Request?
@@ -77,11 +81,11 @@ class RequestStatusActivity : BaseActivity() {
             }
         }
 
-        tvReqSentTo.setOnClickListener {
-            val intent = Intent(this, RequestOffersActivity::class.java)
-            intent.putExtra("data", request)
-            startActivityForResult(intent, Constants.SELECT_OFFER_REQ)
-        }
+//        tvReqSentTo.setOnClickListener {
+//            val intent = Intent(this, RequestOffersActivity::class.java)
+//            intent.putExtra("data", request)
+//            startActivityForResult(intent, Constants.SELECT_OFFER_REQ)
+//        }
 
 
     }
@@ -152,7 +156,7 @@ class RequestStatusActivity : BaseActivity() {
                         serviceProviderAdapter.notifyDataSetChanged()
                     }
 
-                    if (serviceProviderList.size > 0 && request?.getProvider() == null) {
+                    if (serviceProviderList.size > 0 && request?.getProviderId() == null) {
                         tvReqSentTo.visibility = View.VISIBLE
                     } else {
                         tvReqSentTo.visibility = View.GONE
@@ -162,7 +166,7 @@ class RequestStatusActivity : BaseActivity() {
         })
     }
 
-    fun cancellationBannerStatusText() {
+    private fun cancellationBannerStatusText() {
         if (sharedPref.getLong(Constants.USER_ID).toInt() == request?.getCancelledById()) {
             tvStatusCanceledBanner.text = resources.getString(R.string.cancelled_by_you)
         } else {
@@ -223,6 +227,8 @@ class RequestStatusActivity : BaseActivity() {
         val commonDialog = Dialog(this)
         val inflater = layoutInflater
         val vv = inflater.inflate(R.layout.popup_delivered, null, false)
+        var llSuccessBanner = vv.findViewById<LinearLayout>(R.id.llSuccessBanner)
+        var llCancelledBanner = vv.findViewById<LinearLayout>(R.id.llCancelledBanner)
         var tvSubmit = vv.findViewById<TextView>(R.id.tvSubmit)
         var tvName = vv.findViewById<TextView>(R.id.tvName)
         var tvPrice = vv.findViewById<TextView>(R.id.tvPrice)
@@ -231,15 +237,24 @@ class RequestStatusActivity : BaseActivity() {
         var circleImageView = vv.findViewById<CircleImageView>(R.id.circleImageView)
         var ratingBar = vv.findViewById<RatingBar>(R.id.ratingBar)
         var rlRoot = vv.findViewById<RelativeLayout>(R.id.rlRoot)
-
+//        bg_light_pink_tl_bl_br_round_30
         tvUserName.text = request?.getProvider()!!.name
         tvName.text = request?.getTitle()
         tvPrice.text = request?.getChargesInCurrency()
+
         Picasso.get()
             .load(request?.getProvider()!!.image)
             .placeholder(R.drawable.ic_user_placeholder)
             .error(R.drawable.icn_no_image)
             .into(circleImageView)
+
+        if (request?.getRequestStatus() == "5") {
+            llSuccessBanner.visibility = View.VISIBLE
+            tvSubmit.setBackgroundResource(R.drawable.bg_bluelight_tl_tr_br_round_30)
+        } else {
+            llCancelledBanner.visibility = View.VISIBLE
+            tvSubmit.setBackgroundResource(R.drawable.bg_light_pink_tl_bl_br_round_30)
+        }
 
         tvSubmit.setOnClickListener {
             if (ratingBar.rating.roundToInt() != 0) {
@@ -275,5 +290,15 @@ class RequestStatusActivity : BaseActivity() {
         )
         commonDialog.setCancelable(true)
         commonDialog.show()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == Constants.CANCEL_REQ && resultCode == Activity.RESULT_OK) {
+            if (data?.getSerializableExtra("data") != null) {
+                request = data.getSerializableExtra("data") as Request
+                binding.orderItem = request
+            }
+        }
     }
 }

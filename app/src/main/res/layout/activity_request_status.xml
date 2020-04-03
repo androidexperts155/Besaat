@@ -437,7 +437,7 @@
                         android:textAllCaps="true"
                         android:textColor="@color/colorLightBlack"
                         android:textSize="@dimen/_12ssp"
-                        android:visibility="@{orderItem.provider==null?View.VISIBLE : View.GONE}" />
+                        android:visibility="@{orderItem.providerId==null?View.VISIBLE : View.GONE}" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvRequestSendTo"

@@ -119,7 +119,6 @@ class OrdersListAdapter(
                     holder.binding.llCancellationActions.visibility = View.GONE
                 }
 
-
                 holder.binding.rootLayout.setOnClickListener {
                     if (iOrderItemClick != null) {
                         iOrderItemClick?.onOrderItemClick(

@@ -139,13 +139,16 @@ class MyOrdersFragment : BaseFragment(), IOrderItemClick {
                 }
 
                 if (pojo.getMessage() != null && pojo.getMessage()!!.contains("Job reject", true)) {
-                    ordersList.removeAt(clickedPosition)
+                    if (viewModel.requestType.value == Constants.REQUEST_TYPE_STORE) {
+                        ordersList.removeAt(clickedPosition)
+                    }
                 } else if (pojo.getMessage() != null && pojo.getMessage()!!.contains(
                         "job accept",
                         true
                     )
                 ) {
-                    ordersList.removeAt(clickedPosition)
+                    if (viewModel.requestType.value == Constants.REQUEST_TYPE_STORE)
+                        ordersList.removeAt(clickedPosition)
                 }
 
                 adapter.submitList(ordersList)
@@ -350,6 +353,15 @@ class MyOrdersFragment : BaseFragment(), IOrderItemClick {
         }
 
         if (requestCode == Constants.CANCEL_REQ && resultCode == Activity.RESULT_OK) {
+            if (data?.getSerializableExtra("data") != null) {
+                var request: Request = data.getSerializableExtra("data") as Request
+                ordersList[clickedPosition] = request
+                adapter.submitList(ordersList)
+                adapter.notifyDataSetChanged()
+            }
+        }
+
+        if (requestCode == Constants.VIEW_REQ && resultCode == Activity.RESULT_OK) {
             if (data?.getSerializableExtra("data") != null) {
                 var request: Request = data.getSerializableExtra("data") as Request
                 ordersList[clickedPosition] = request

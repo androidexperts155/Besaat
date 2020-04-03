@@ -118,6 +118,7 @@
                         android:drawablePadding="@dimen/_3sdp"
                         android:fontFamily="@font/robot_medium"
                         android:text="New"
+                        android:visibility="@{(orderItem.requestStatus.equals(`1`))?View.VISIBLE : View.GONE}"
                         android:textAlignment="center"
                         android:textAllCaps="true"
                         android:textColor="@color/colorRed"

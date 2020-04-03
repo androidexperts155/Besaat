@@ -1,5 +1,6 @@
 package com.deepak.besaat.view.activities.jobDetails.ui
 
+import android.app.Activity
 import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
@@ -43,6 +44,14 @@ class JobDetailsActivity : BaseActivity() {
         )
         init()
         initObserver()
+    }
+
+    override fun onBackPressed() {
+//        super.onBackPressed()
+        var intent = Intent()
+        intent.putExtra("data", request)
+        setResult(Activity.RESULT_OK, intent)
+        finish()
     }
 
     fun init() {
@@ -152,6 +161,7 @@ class JobDetailsActivity : BaseActivity() {
                 if (pojo.request != null) {
                     intent.putExtra("data", pojo.request)
                     request = pojo.request
+                    binding.orderItem = request
                 }
             }
         })
@@ -189,9 +199,28 @@ class JobDetailsActivity : BaseActivity() {
             radio_pickup.visibility = View.GONE
             radio_delay.visibility = View.GONE
             radio_dropped.visibility = View.GONE
+            if (request?.getWorkingStatus() != null) {
+                if (request?.getWorkingStatus() == "0") {
+                    radio_start.isEnabled = false
+                }
+                if (request?.getWorkingStatus() == "1") {
+                    radio_complete.isEnabled = false
+                }
+            }
         } else {
             radio_start.visibility = View.GONE
             radio_complete.visibility = View.GONE
+            if (request?.getWorkingStatus() != null) {
+                if (request?.getWorkingStatus() == "0") {
+                    radio_pickup.isEnabled = false
+                }
+                if (request?.getWorkingStatus() == "1") {
+                    radio_delay.isEnabled = false
+                }
+                if (request?.getWorkingStatus() == "2") {
+                    radio_dropped.isEnabled = false
+                }
+            }
         }
 
         radioGroup.setOnCheckedChangeListener { group, viewID ->
@@ -313,5 +342,15 @@ class JobDetailsActivity : BaseActivity() {
         )
         commonDialog.setCancelable(false)
         commonDialog.show()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == Constants.CANCEL_REQ && resultCode == Activity.RESULT_OK) {
+            if (data?.getSerializableExtra("data") != null) {
+                request = data.getSerializableExtra("data") as Request
+                binding.orderItem = request
+            }
+        }
     }
 }

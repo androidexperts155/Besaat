@@ -241,28 +241,66 @@ class Repository(interceptor: NetworkConnectionInterceptor) : SafeApiRequest() {
         charges: String,
         paymentMethod: String,
         requestType: String,
+        providerID: String,
         image: File,
         driverSelectionType: String
     ): ResponseBody {
+        var part: MultipartBody.Part? = null
+        if (image.name.endsWith(".txt")) {
+//                val requestBodies = RequestBody.create(MediaType.parse("multipart/form-data"), imagee)
+            part = MultipartBody.Part.createFormData("image", " ")
+        } else {
+            val requestBodies =
+                RequestBody.create(MediaType.parse("multipart/form-data"), image)
+            part = MultipartBody.Part.createFormData("image", image.name, requestBodies)
+        }
+
+
+        val mProviderID = RequestBody.create(MediaType.parse("multipart/form-data"), providerID)
+        val mName = RequestBody.create(MediaType.parse("multipart/form-data"), name)
+        val mTitle = RequestBody.create(MediaType.parse("multipart/form-data"), title)
+        val mPickupAddress =
+            RequestBody.create(MediaType.parse("multipart/form-data"), pickUpAddress)
+        val mPickUpLatitute =
+            RequestBody.create(MediaType.parse("multipart/form-data"), pickUpLatitute)
+        val mPickUpLongitute =
+            RequestBody.create(MediaType.parse("multipart/form-data"), pickUpLongitute)
+        val mDropAddress = RequestBody.create(MediaType.parse("multipart/form-data"), dropAddress)
+        val mDropLatitute = RequestBody.create(MediaType.parse("multipart/form-data"), dropLatitute)
+        val mDropLongitute =
+            RequestBody.create(MediaType.parse("multipart/form-data"), dropLongitute)
+        val mOrderinfo = RequestBody.create(MediaType.parse("multipart/form-data"), orderinfo)
+        val mSpecialNote = RequestBody.create(MediaType.parse("multipart/form-data"), specialNote)
+        val mCharges = RequestBody.create(MediaType.parse("multipart/form-data"), charges)
+        val mPaymentMethod =
+            RequestBody.create(MediaType.parse("multipart/form-data"), paymentMethod)
+        val mRequestType = RequestBody.create(MediaType.parse("multipart/form-data"), requestType)
+        val mDriverSelectionType = RequestBody.create(MediaType.parse("multipart/form-data"), driverSelectionType)
+        val mTimeZone = RequestBody.create(
+            MediaType.parse("multipart/form-data"),
+            TimeZone.getDefault().id.toString()
+        )
+
         return apiRequest {
             api.createRequest(
                 authorization,
-                name,
-                title,
-                pickUpAddress,
-                pickUpLatitute,
-                pickUpLongitute,
-                dropAddress,
-                dropLatitute,
-                dropLongitute,
-                orderinfo,
-                specialNote,
-                charges,
-                paymentMethod,
-                requestType,
-                image,
-                TimeZone.getDefault().id.toString(),
-                driverSelectionType
+                mName,
+                mTitle,
+                mPickupAddress,
+                mPickUpLatitute,
+                mPickUpLongitute,
+                mDropAddress,
+                mDropLatitute,
+                mDropLongitute,
+                mOrderinfo,
+                mSpecialNote,
+                mCharges,
+                mPaymentMethod,
+                mRequestType,
+                mProviderID,
+                part,
+                mTimeZone,
+                mDriverSelectionType
             )
         }
     }

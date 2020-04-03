@@ -1,11 +1,13 @@
 package com.deepak.besaat.model.socialLoginModel
 
+import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import org.jetbrains.annotations.Nullable
 import java.io.Serializable
 
-class User : Serializable {
 
+class User : Serializable {
+    var isChecked: Boolean = false
     @SerializedName("address")
     var address: Any? = null
     @SerializedName("approved")
@@ -61,6 +63,54 @@ class User : Serializable {
     var ratePerHour: String? = null
     @SerializedName("offer")
     var offer: String? = null
+
+    ////////////////////////////////////////
+
+    @SerializedName("experience_years")
+    @Expose
+    var experienceYears: String? = null
+    @SerializedName("available_days")
+    @Expose
+    var availableDays: String? = null
+    @SerializedName("service_time_from")
+    @Expose
+    var serviceTimeFrom: String? = null
+    @SerializedName("service_time_to")
+    @Expose
+    var serviceTimeTo: String? = null
+    @SerializedName("departure_country")
+    @Expose
+    var departureCountry: String? = null
+    @SerializedName("departure_date")
+    @Expose
+    var departureDate: String? = null
+    @SerializedName("arrival_country")
+    @Expose
+    var arrivalCountry: String? = null
+    @SerializedName("arrival_date")
+    @Expose
+    var arrivalDate: String? = null
+    @SerializedName("otp")
+    @Expose
+    var otp: String? = null
+    @SerializedName("is_verified")
+    @Expose
+    var isVerified: String? = null
+    @SerializedName("is_applied_for_provider")
+    @Expose
+    var isAppliedForProvider: String? = null
+    @SerializedName("distance")
+    @Expose
+    var distance: String? = null
+
+    ////////////////////////////////////////
+
+    fun getDistanceString(): String {
+        return if (distance != null)
+            String.format("%.2f km", distance!!.toFloat())
+        else
+            "N/A"
+    }
 
     fun getRatingFloat(): Float? {
         return if (rating != null) {

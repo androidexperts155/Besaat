@@ -40,26 +40,50 @@ interface Api {
     @GET
     suspend fun getReviews(@Url urt: String): Response<ResponseBody>
 
-    @FormUrlEncoded
+//    @FormUrlEncoded
+//    @POST(NetworkConstants.CREATE_REQUEST)
+//    suspend fun createRequest(
+//        @Header("Authorization") authorization: String,
+//        @Field("name") name: String,
+//        @Field("title") title: String,
+//        @Field("pickup_address") pickUpAddress: String,
+//        @Field("pickup_latitude") pickUpLatitue: String,
+//        @Field("pickup_longitude") pickUpLongitute: String,
+//        @Field("drop_address") dropAddress: String,
+//        @Field("drop_latitude") dropLatitute: String,
+//        @Field("drop_longitude") dropLongitute: String,
+//        @Field("order_info") orderInfo: String,
+//        @Field("special_note") specialNote: String,
+//        @Field("charges") charges: String,
+//        @Field("payment_method") paymentMethod: String,
+//        @Field("request_type") requestType: String,
+//        @Field("image") image: File,
+//        @Field("timezone") timezone: String,
+//        @Field("driver_selection_type") driverSelectionType: String
+//    ): Response<ResponseBody>
+
+
+    @Multipart
     @POST(NetworkConstants.CREATE_REQUEST)
     suspend fun createRequest(
         @Header("Authorization") authorization: String,
-        @Field("name") name: String,
-        @Field("title") title: String,
-        @Field("pickup_address") pickUpAddress: String,
-        @Field("pickup_latitude") pickUpLatitue: String,
-        @Field("pickup_longitude") pickUpLongitute: String,
-        @Field("drop_address") dropAddress: String,
-        @Field("drop_latitude") dropLatitute: String,
-        @Field("drop_longitude") dropLongitute: String,
-        @Field("order_info") orderInfo: String,
-        @Field("special_note") specialNote: String,
-        @Field("charges") charges: String,
-        @Field("payment_method") paymentMethod: String,
-        @Field("request_type") requestType: String,
-        @Field("image") image: File,
-        @Field("timezone") timezone: String,
-        @Field("driver_selection_type") driverSelectionType: String
+        @Part("name") name: RequestBody,
+        @Part("title") title: RequestBody,
+        @Part("pickup_address") pickUpAddress: RequestBody,
+        @Part("pickup_latitude") pickUpLatitue: RequestBody,
+        @Part("pickup_longitude") pickUpLongitute: RequestBody,
+        @Part("drop_address") dropAddress: RequestBody,
+        @Part("drop_latitude") dropLatitute: RequestBody,
+        @Part("drop_longitude") dropLongitute: RequestBody,
+        @Part("order_info") orderInfo: RequestBody,
+        @Part("special_note") specialNote: RequestBody,
+        @Part("charges") charges: RequestBody,
+        @Part("payment_method") paymentMethod: RequestBody,
+        @Part("request_type") requestType: RequestBody,
+        @Part("provider_id") providerID: RequestBody,
+        @Part image: MultipartBody.Part?,
+        @Part("timezone") timezone: RequestBody,
+        @Part("driver_selection_type") driverSelectionType: RequestBody
     ): Response<ResponseBody>
 
     @Multipart

@@ -49,7 +49,6 @@ class NewRequestCourier : BaseActivity() {
         init()
         initObserver()
     }
-
     fun init() {
         viewModel.name.set(intent.getStringExtra("name"))
         viewModel.providerID.set(intent.getStringExtra("id"))

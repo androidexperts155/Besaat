@@ -27,11 +27,16 @@ import android.location.Geocoder
 import android.os.SystemClock
 import android.provider.MediaStore
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.deepak.besaat.Interfaces.Selected
+import com.deepak.besaat.model.CreateRequestResponse.NearByServicesProviderListPojo
 import com.deepak.besaat.model.GetNewServiceRequest.NewServiceRequestPojo
 import com.deepak.besaat.model.providerSignUpDetailToServer.personAddedModel
+import com.deepak.besaat.model.socialLoginModel.User
 import com.deepak.besaat.network.AllLocalHandler
 import com.deepak.besaat.utils.*
+import com.deepak.besaat.view.activities.newRequestStore.adapter.ServicesProvidersListAdapter
+import com.deepak.besaat.view.activities.newRequestStore.interfaces.IServiceProviderClickListener
 import com.deepak.besaat.view.activities.paymentDetailsStore.PaymentDetailsStoreActivity
 import com.deepak.besaat.view.fragments.NearByListFragments
 import com.example.possibility.hr.utils.FilesFunctions
@@ -47,7 +52,7 @@ import java.io.File
 import java.text.DecimalFormat
 
 
-class NewRequestStore : BaseActivity() {
+class NewRequestStore : BaseActivity(), IServiceProviderClickListener {
     lateinit var binding: ActivityNewRequestStoreBinding
     val viewModel: NewRequestStoreViewModel by inject()
     val sharedPref: SharedPref by inject()
@@ -58,7 +63,6 @@ class NewRequestStore : BaseActivity() {
     var radiusValue: Any? = null
     var fairAmount: Double? = null
     var fair: String? = null
-    var selectBool: Boolean? = false
     var type: Int = 1
     lateinit var file: File
     var storeName: String? = "Store"
@@ -66,6 +70,9 @@ class NewRequestStore : BaseActivity() {
     private var mLastClickTime = 0.toLong()
 
     var storeList: MutableList<personAddedModel>? = null
+    var selectedProviderIDs: MutableList<Long>? = ArrayList()
+    var servicesProviderList: MutableList<User>? = ArrayList()
+    lateinit var serviceProviderAdapter: ServicesProvidersListAdapter
     val commonFunctions: CommonFunctions by inject()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,8 +84,9 @@ class NewRequestStore : BaseActivity() {
         binding.viewModelNewRequest = viewModel
         binding.recyclerViewVisibility = false
         customToolBarWithBack(this, toolBar)
+        setAdapterServiceProviders()
 
-        file = File("abnc")
+        file = File("xyz.txt")
 
         var from: String = intent.getStringExtra("from") ?: ""
         storeName = intent.getStringExtra("title") ?: "Store"
@@ -99,7 +107,7 @@ class NewRequestStore : BaseActivity() {
         }
 
         editTextSpecialNotes.setOnTouchListener { p0, p1 ->
-            scrollView.requestDisallowInterceptTouchEvent(true);
+            scrollView.requestDisallowInterceptTouchEvent(true)
             false
         }
         init()
@@ -169,7 +177,7 @@ class NewRequestStore : BaseActivity() {
             )
         }
 
-        setAdapter()
+//        setAdapter()
 
         Places.initialize(applicationContext, getString(R.string.google_api_key))
         /* val placesClient = Places.createClient(this)*/
@@ -189,7 +197,9 @@ class NewRequestStore : BaseActivity() {
         }
         var authorization =
             Constants.BEARER + " " + sharedPref.getString(Constants.TOKEN)
+
         viewModel.executeFairApi(authorization)
+
         textViewContinue.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View?) {
                 if (SystemClock.elapsedRealtime() - mLastClickTime < 2000) {
@@ -199,7 +209,14 @@ class NewRequestStore : BaseActivity() {
 
                 var authorization =
                     Constants.BEARER + " " + sharedPref.getString(Constants.TOKEN)
+
+
+
                 if (validation()) {
+
+                    var providerID = selectedProviderIDs.toString().removeSurrounding("[", "]")
+                    Log.e("providerIds", providerID)
+
                     viewModel.executeCreateRequest(
                         authorization,
                         storeName!!,
@@ -216,7 +233,12 @@ class NewRequestStore : BaseActivity() {
                         "1",
                         "1",  // 1 for storeRequest
                         file,
-                        Constants.DRIVER_AUTO
+                        providerID,
+                        if (type == 1) {
+                            Constants.DRIVER_AUTO
+                        } else {
+                            Constants.DRIVER_MANUAL
+                        }
                     )
                 }
             }
@@ -252,6 +274,21 @@ class NewRequestStore : BaseActivity() {
         commonFunctions.hideProgressBar()
     }
 
+    private fun setAdapterServiceProviders() {
+        serviceProviderAdapter = ServicesProvidersListAdapter(this, servicesProviderList!!)
+        serviceProviderAdapter.attachServiceProviderClicks(this)
+        binding.rvServiceProviders.adapter = serviceProviderAdapter
+
+        binding.rvServiceProviders.addItemDecoration(
+            DividerItemDecoration(
+                ContextCompat.getDrawable(
+                    this,
+                    R.drawable.divider
+                )
+            )
+        )
+    }
+
     private fun CalculationByDistance(StartP: LatLng, EndP: LatLng): Any {
         val Radius = 6371// radius of earth in Km
         val lat1 = StartP.latitude
@@ -280,6 +317,7 @@ class NewRequestStore : BaseActivity() {
 
     private fun validation(): Boolean {
         val paramBool: Boolean
+        selectedProviderIDs!!.clear()
         if (edTitle.text.toString().trim() == "") {
             paramBool = false
             commonFunctions.showFeedbackMessage(
@@ -288,7 +326,7 @@ class NewRequestStore : BaseActivity() {
             )
             return paramBool
         }
-        if (textCurrentAddress.text.toString().equals("")) {
+        if (textCurrentAddress.text.toString() == "") {
             paramBool = false
             commonFunctions.showFeedbackMessage(
                 scrollView,
@@ -296,7 +334,7 @@ class NewRequestStore : BaseActivity() {
             )
             return paramBool
         }
-        if (dropAddress.text.toString().equals("")) {
+        if (dropAddress.text.toString() == "") {
             paramBool = false
             commonFunctions.showFeedbackMessage(
                 scrollView,
@@ -321,14 +359,22 @@ class NewRequestStore : BaseActivity() {
             return paramBool
         }
         if (type == 2) {
-            if (selectBool == false) {
+            var selected = false
+            for (i in 0 until servicesProviderList!!.size) {
+                if (servicesProviderList!![i].isChecked) {
+                    selected = true
+                    selectedProviderIDs!!.add(servicesProviderList!![i].id!!)
+                }
+            }
+
+            if (!selected) {
                 paramBool = false
-                if (storeList == null) {
+                if (servicesProviderList == null) {
                     commonFunctions.showFeedbackMessage(
                         scrollView,
                         "No nearby provider,\n you can choose auto transmission"
                     )
-                } else if (storeList != null && storeList!!.isEmpty()) {
+                } else if (servicesProviderList != null && servicesProviderList!!.isEmpty()) {
                     commonFunctions.showFeedbackMessage(
                         scrollView,
                         "No nearby provider,\n you can choose auto transmission"
@@ -364,10 +410,11 @@ class NewRequestStore : BaseActivity() {
                 Log.e("newRequest", "account type is 2nd")
                 // Toast.makeText(this@NewRequestStore,"manual transmission is in progress ",Toast.LENGTH_LONG).show()
                 binding.recyclerViewVisibility = true
-                setAdapter()
+//                setAdapter()
 
-                if (storeList != null) {
-                    if (storeList!!.isEmpty())
+
+                if (servicesProviderList != null) {
+                    if (servicesProviderList!!.isEmpty())
                         commonFunctions.showFeedbackMessage(
                             scrollView,
                             "No nearby provider,\n you can choose auto transmission"
@@ -380,6 +427,7 @@ class NewRequestStore : BaseActivity() {
                 }
             }
         })
+
         viewModel.progressBar.observe(this, androidx.lifecycle.Observer {
             if (it) {
                 commonFunctions.showProgressBar(this, getString(R.string.loading))
@@ -404,47 +452,35 @@ class NewRequestStore : BaseActivity() {
     }
 
     private fun handleNearbyResponse(it: JSONObject?) {
-        Log.e("NearByResponse", "near by reponse " + it)
-        storeList = ArrayList<personAddedModel>()
-        //   storeList = ArrayList()
+        Log.e("NearByResponse", "near by response $it")
+        storeList = ArrayList()
+        servicesProviderList?.clear()
         try {
+            var pojo = Gson().fromJson(it.toString(), NearByServicesProviderListPojo::class.java)
+            if (pojo.data != null)
+                servicesProviderList?.addAll(pojo.data!!)
 
-            if (it?.has("data") == true) {
-                val jsonArray = it?.getJSONArray("data")!!
-
-
-                Log.e(
-                    "responseArray",
-                    "Json array response on first try resposne 22 " + jsonArray
-                )
-
-                for (item: JSONObject in jsonArray) {
-                    Log.e("response", "item object  " + item)
-                    try {
-                        var personAddedModel = personAddedModel()
-
-                        personAddedModel.name = item?.getString("name")
-                        personAddedModel.distance = item?.getString("distance")
-                        personAddedModel.imageUrl = item?.getString("image")
-
-
-                        // store.status=item?.getString("")
-
-
-                        (storeList as ArrayList<personAddedModel>).add(personAddedModel)
-
-
-                    } catch (e: JSONException) {
-
-                        Log.e("response", "json Exception  " + e)
-                    }
-                }
-            }
+            serviceProviderAdapter.submitList(servicesProviderList)
+            serviceProviderAdapter.notifyDataSetChanged()
+//            if (it?.has("data") == true) {
+//                val jsonArray = it?.getJSONArray("data")!!
+//                for (item: JSONObject in jsonArray) {
+//                    Log.e("response", "item object  $item")
+//                    try {
+//                        var personAddedModel = personAddedModel()
+//                        personAddedModel.name = item?.getString("name")
+//                        personAddedModel.distance = item?.getString("distance")
+//                        personAddedModel.imageUrl = item?.getString("image")
+//                        // store.status=item?.getString("")
+//                        (storeList as ArrayList<personAddedModel>).add(personAddedModel)
+//                    } catch (e: JSONException) {
+//                        Log.e("response", "json Exception  $e")
+//                    }
+//                }
+//            }
         } catch (e: JSONException) {
             e.printStackTrace()
-
         }
-
     }
 
     private fun handleFairResponse(it: JSONObject?) {
@@ -537,22 +573,21 @@ class NewRequestStore : BaseActivity() {
             e.printStackTrace()
             Log.w("CurrentAddress", "Canont get Address!")
         }
-
         return strAdd
     }
 
-    private fun setAdapter() {
-        var nearByListFragments = NearByListFragments.newInstance(storeList, object : Selected {
-            override fun selected(sucess: Boolean) {
-                selectBool = sucess
-            }
-        })
-        fragmentFucntion.replaceFragment(this, nearByListFragments, R.id.linearContainer)
-        /*var adapter= storeList?.let { DriverAdapter(it) }
-        recyclerViewDriver.layoutManager=LinearLayoutManager(this)
-        recyclerViewDriver.addItemDecoration(DividerItemDecoration(ContextCompat.getDrawable(this@NewRequestStore,R.drawable.divider)))
-        recyclerViewDriver.adapter=adapter*/
-    }
+//    private fun setAdapter() {
+//        var nearByListFragments = NearByListFragments.newInstance(storeList, object : Selected {
+//            override fun selected(sucess: Boolean) {
+//                selectBool = sucess
+//            }
+//        })
+//        fragmentFucntion.replaceFragment(this, nearByListFragments, R.id.linearContainer)
+//        /*var adapter= storeList?.let { DriverAdapter(it) }
+//        recyclerViewDriver.layoutManager=LinearLayoutManager(this)
+//        recyclerViewDriver.addItemDecoration(DividerItemDecoration(ContextCompat.getDrawable(this@NewRequestStore,R.drawable.divider)))
+//        recyclerViewDriver.adapter=adapter*/
+//    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -628,4 +663,10 @@ class NewRequestStore : BaseActivity() {
 
     operator fun JSONArray?.iterator(): Iterator<JSONObject> =
         (0 until this!!.length()).asSequence().map { get(it) as JSONObject }.iterator()
+
+    override fun onServiceProviderClick(position: Int) {
+        servicesProviderList!![position].isChecked = !servicesProviderList!![position].isChecked
+        serviceProviderAdapter.submitList(servicesProviderList)
+        serviceProviderAdapter.notifyDataSetChanged()
+    }
 }

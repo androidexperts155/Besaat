@@ -121,7 +121,7 @@ class NewRequestServiceViewModel(
                 } catch (e: ApiException) {
                     Coroutines.mainThread {
                         progressBar.value = false
-                        successfullyCreateRequest.value = e.message.toString()
+//                        successfullyCreateRequest.value = e.message.toString()
                         feedBackMessage.value = e.message
                     }
                 } catch (e: NoInternetException) {

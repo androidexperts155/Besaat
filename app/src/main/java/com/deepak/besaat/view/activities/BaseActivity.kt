@@ -181,14 +181,14 @@ open class BaseActivity : AppCompatActivity(), View.OnClickListener {
         textViewTitleName = view.findViewById<TextView>(R.id.textViewTitleName)
         imageViewbackArrow = view.findViewById<ImageView>(R.id.imageViewbackArrow)
         context.supportActionBar!!.customView = view
-        if (context is JobDetailsActivity ||context is CancelOrderRequestActivity ||context is RequestStatusActivity || context is RequestOffersActivity || context is CreateProfileActivity || context is AddServicesDetailActvity || context is AddCourierDetailActivity || context is PaymentInformationActivity || context is NewRequestStore || context is StoreDetailActivity || context is NewRequestService || context is DeliveryPersonDetail || context is SelectCourierType || context is NewRequestCourier || context is NewRequestCourierOverseasActivity || context is PaymentDetailsStoreActivity || context is ChatActivity) {
+        if (context is JobDetailsActivity || context is CancelOrderRequestActivity || context is RequestStatusActivity || context is RequestOffersActivity || context is CreateProfileActivity || context is AddServicesDetailActvity || context is AddCourierDetailActivity || context is PaymentInformationActivity || context is NewRequestStore || context is StoreDetailActivity || context is NewRequestService || context is DeliveryPersonDetail || context is SelectCourierType || context is NewRequestCourier || context is NewRequestCourierOverseasActivity || context is PaymentDetailsStoreActivity || context is ChatActivity) {
             textViewTitleName.visibility = View.VISIBLE
         } else {
             textViewTitleName.visibility = View.GONE
         }
 
         imageViewbackArrow.setOnClickListener {
-            if (context is RequestOffersActivity||context is CancelOrderRequestActivity) {
+            if (context is JobDetailsActivity || context is RequestStatusActivity || context is RequestOffersActivity || context is CancelOrderRequestActivity) {
                 context.onBackPressed()
             } else {
                 finish()

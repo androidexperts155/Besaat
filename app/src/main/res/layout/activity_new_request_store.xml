@@ -4,10 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModelNewRequest"
             type="com.deepak.besaat.viewModel.NewRequestStoreViewModel" />
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
 
         <variable
             name="recyclerViewVisibility"
@@ -15,15 +17,15 @@
     </data>
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/scrollView"
         android:background="@android:color/white">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/rootLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/rootLayout"
             android:background="@color/colorLightBlue"
             tools:context=".view.activities.phoneSignUp.PhoneSignUpActivity">
 
@@ -95,17 +97,17 @@
                     android:layout_marginEnd="16dp"
                     android:background="@drawable/bg_light_whitish_blue_tl_br_bl_round_30"
                     android:ems="10"
-                    android:textColorHint="@color/colorVeryLightGray2"
                     android:fontFamily="@font/roboto_regular"
                     android:gravity="start|center_vertical"
                     android:hint="Enter title"
                     android:inputType="textEmailAddress"
-                    android:paddingEnd="@dimen/_16sdp"
                     android:paddingStart="@dimen/_16sdp"
                     android:paddingTop="@dimen/_8sdp"
+                    android:paddingEnd="@dimen/_16sdp"
                     android:paddingBottom="@dimen/_8sdp"
                     android:textAlignment="viewStart"
                     android:textColor="@color/colorDarkGray"
+                    android:textColorHint="@color/colorVeryLightGray2"
                     android:textSize="@dimen/_13ssp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -128,7 +130,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/edTitle"/>
+                    app:layout_constraintTop_toBottomOf="@+id/edTitle" />
 
                 <LinearLayout
                     android:id="@+id/linearLayout10"
@@ -152,7 +154,7 @@
                         android:layout_width="@dimen/_20sdp"
                         android:layout_height="@dimen/_20sdp"
                         android:src="@drawable/ic_location_pin"
-                        android:tint="@color/colorAccent"></ImageView>
+                        android:tint="@color/colorAccent" />
 
 
                     <TextView
@@ -191,7 +193,7 @@
                         android:layout_width="@dimen/_20sdp"
                         android:layout_height="@dimen/_20sdp"
                         android:src="@drawable/ic_location_pin"
-                        android:tint="@color/colorLightPink"></ImageView>
+                        android:tint="@color/colorLightPink" />
 
 
                     <TextView
@@ -212,7 +214,7 @@
                         android:layout_width="@dimen/_20sdp"
                         android:layout_height="@dimen/_20sdp"
                         android:src="@drawable/ic_location"
-                        android:tint="@color/colorGrayStar"></ImageView>
+                        android:tint="@color/colorGrayStar" />
                 </LinearLayout>
 
 
@@ -236,7 +238,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout11">
 
                     <TextView
-                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10sdp"
@@ -246,7 +247,8 @@
                         android:hint="@string/order_information"
                         android:maxLines="2"
                         android:textColor="@color/colorLightBlack"
-                        android:textSize="@dimen/_14ssp" />
+                        android:textSize="@dimen/_14ssp"
+                        android:visibility="gone" />
 
                     <EditText
                         android:id="@+id/editTextOrderInformation"
@@ -258,9 +260,9 @@
                         android:ellipsize="end"
                         android:fontFamily="@font/roboto_regular"
                         android:gravity="start"
-                        android:textColorHint="@color/colorVeryLightGray2"
                         android:hint="@string/order_information"
                         android:textColor="@color/colorDarkGray"
+                        android:textColorHint="@color/colorVeryLightGray2"
                         android:textSize="@dimen/_12ssp" />
 
                 </LinearLayout>
@@ -286,7 +288,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout12">
 
                     <TextView
-                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10sdp"
@@ -296,7 +297,8 @@
                         android:hint="@string/special_note"
                         android:maxLines="2"
                         android:textColor="@color/colorLightBlack"
-                        android:textSize="@dimen/_14ssp" />
+                        android:textSize="@dimen/_14ssp"
+                        android:visibility="gone" />
 
                     <EditText
                         android:id="@+id/editTextSpecialNotes"
@@ -308,16 +310,15 @@
                         android:ellipsize="end"
                         android:fontFamily="@font/roboto_regular"
                         android:gravity="start"
-                        android:text=""
-                        android:textColorHint="@color/colorVeryLightGray2"
                         android:hint="@string/special_note"
+                        android:text=""
                         android:textColor="@color/colorDarkGray"
+                        android:textColorHint="@color/colorVeryLightGray2"
                         android:textSize="@dimen/_12ssp" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:visibility="gone"
                     android:id="@+id/linearLayout101"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_45sdp"
@@ -329,6 +330,7 @@
                     android:orientation="horizontal"
                     android:paddingStart="@dimen/_20sdp"
                     android:paddingEnd="@dimen/_20sdp"
+                    android:visibility="gone"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout13">
 
 
@@ -336,7 +338,7 @@
                         android:id="@+id/add_photo1"
                         android:layout_width="@dimen/_30sdp"
                         android:layout_height="@dimen/_30sdp"
-                        android:src="@drawable/add_photo_icon"/>
+                        android:src="@drawable/add_photo_icon" />
 
 
                     <TextView
@@ -471,23 +473,32 @@
                 <View
                     android:id="@+id/view1"
                     android:layout_width="match_parent"
-                    android:visibility="gone"
                     android:layout_height="0dp"
                     android:layout_marginTop="16dp"
                     android:background="@drawable/divider"
+                    android:visibility="gone"
                     app:layout_constraintTop_toBottomOf="@+id/radioGroup2"
                     tools:layout_editor_absoluteX="24dp" />
+
                 <LinearLayout
                     android:id="@+id/linearContainer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:nestedScrollingEnabled="false"
+                    android:orientation="vertical"
+                    android:visibility="@{recyclerViewVisibility?View.VISIBLE:View.GONE}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/radioGroup21"
-                    android:visibility="@{recyclerViewVisibility?View.VISIBLE:View.GONE}"
-                    android:orientation="vertical"></LinearLayout>
+                    app:layout_constraintTop_toBottomOf="@+id/radioGroup21">
 
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvServiceProviders"
+                        android:layout_width="match_parent"
+                        tools:itemCount="2"
+                        tools:listitem="@layout/adapter_manual_service_provider"
+                        android:layout_height="wrap_content"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                </LinearLayout>
 
 
                 <TextView
@@ -496,11 +507,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:alpha="0.3"
-                    android:textSize="@dimen/_12ssp"
-                    android:textAllCaps="true"
                     android:gravity="center"
                     android:text="@string/estimated_charges"
+                    android:textAllCaps="true"
                     android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/_12ssp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/linearContainer" />
@@ -611,7 +622,6 @@
                         android:visibility="gone" />
 
                 </RelativeLayout>
-
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

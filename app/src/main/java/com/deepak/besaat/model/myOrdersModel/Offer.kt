@@ -15,7 +15,7 @@ class Offer {
     private var typeId: Int? = null
     @SerializedName("offer")
     @Expose
-    private var offer: Int? = null
+    private var offer: String? = null
     @SerializedName("provider")
     @Expose
     private var provider: Provider? = null
@@ -44,17 +44,17 @@ class Offer {
         this.typeId = typeId
     }
 
-    fun getOffer(): Int? {
+    fun getOffer(): String? {
         return offer
     }
 
-    fun setOffer(offer: Int?) {
+    fun setOffer(offer: String?) {
         this.offer = offer
     }
 
     fun getOfferString(): String {
-        return if (offer != null)
-            String.format("$%d", offer)
+        return if (offer != null && offer != "")
+            String.format("$%.2f", offer!!.toFloat())
         else
             "N/A"
     }

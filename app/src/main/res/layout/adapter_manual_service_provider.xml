@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="serviceProviderDetail"
+            type="com.deepak.besaat.model.socialLoginModel.User" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:id="@+id/root_layout"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circleImageView"
+            android:layout_width="@dimen/_45sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginStart="16dp"
+            android:src="@color/colorAccent"
+            app:imageFromUrl='@{serviceProviderDetail.image!=null?serviceProviderDetail.image:"R.drawable.pin"}'
+            app:layout_constraintBottom_toBottomOf="@+id/textView20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView19" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/cabin_semi_bold"
+            tools:text="Deepak Rana"
+            android:text="@{serviceProviderDetail.name}"
+            android:textColor="@color/colorLightBlack"
+            android:textSize="@dimen/_13ssp"
+            app:layout_constraintStart_toEndOf="@+id/circleImageView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewUserName"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center_horizontal"
+            app:layout_constraintStart_toEndOf="@+id/circleImageView"
+            app:layout_constraintTop_toBottomOf="@+id/textView19">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/_4sdp"
+                android:fontFamily="@font/robot_medium"
+                tools:text="0.0"
+                android:text="@{serviceProviderDetail.ratingFloat.toString()}"
+                android:textColor="@color/colorYellow"
+                android:textSize="@dimen/_13ssp" />
+
+            <RatingBar
+                style="@style/RatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                tools:rating="0"
+                android:rating='@{serviceProviderDetail.ratingFloat}'
+                android:theme="@style/RatingBar" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="78514 Koelpin Corner"
+            android:textColor="@color/colorDarkGray"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/circleImageView"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutRatingBar">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/offer"
+                android:textColor="@color/colorDarkGray"
+                android:textSize="@dimen/_10ssp"
+                android:visibility="gone" />
+
+
+            <TextView
+                android:id="@+id/ordertext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robot_medium"
+                android:text=" $35.00"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="@dimen/_10ssp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/textView20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/textView20"
+            app:layout_constraintTop_toTopOf="@+id/textView19">
+
+            <TextView
+                android:id="@+id/textViewSelect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_drawable_borders"
+                android:fontFamily="@font/cabin_medium"
+                android:paddingLeft="@dimen/_10sdp"
+                android:paddingTop="@dimen/_4sdp"
+                android:paddingRight="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_4sdp"
+                android:text="Select"
+                android:textAllCaps="true"
+                android:textColor="#BFBFC9"
+                android:textSize="@dimen/_8ssp" />
+
+            <TextView
+                android:id="@+id/distanceText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:drawableLeft="@drawable/ic_location_pin"
+                android:drawablePadding="@dimen/_4sdp"
+                android:fontFamily="@font/roboto_regular"
+                tools:text="0.9 km"
+                android:text="@{serviceProviderDetail.distanceString}"
+                android:textColor="@color/colorDarkGray"
+                android:textSize="@dimen/_10ssp" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

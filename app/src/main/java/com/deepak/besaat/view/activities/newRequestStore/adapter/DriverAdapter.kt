@@ -20,7 +20,6 @@ import de.hdodenhof.circleimageview.CircleImageView
 
 class DriverAdapter(storeList: MutableList<personAddedModel>) :
     RecyclerView.Adapter<DriverAdapter.ViewHolder>() {
-
     var storeList = storeList
     var clicked: Boolean = false
     lateinit var selectedd: Selected
