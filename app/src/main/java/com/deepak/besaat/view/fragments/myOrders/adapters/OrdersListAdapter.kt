@@ -366,8 +366,19 @@ class OrdersListAdapter(
                         iOrderItemClick?.onOrderItemClick(
                             position,
                             holder.itemViewType,
-                            Constants.FILTER_ORDER_STATUS_VIEW,
-                            Constants.FILTER_ORDER_STATUS_VIEW
+                            Constants.FILTER_ORDER_STATUS_TRACK,
+                            Constants.FILTER_ORDER_STATUS_TRACK
+                        )
+                    }
+                }
+
+                holder.binding.tvReorder.setOnClickListener {
+                    if (iOrderItemClick != null) {
+                        iOrderItemClick?.onOrderItemClick(
+                            position,
+                            holder.itemViewType,
+                            Constants.ORDER_STATUS_REQ_REORDER,
+                            Constants.ORDER_STATUS_REQ_REORDER
                         )
                     }
                 }
@@ -434,8 +445,19 @@ class OrdersListAdapter(
                         iOrderItemClick?.onOrderItemClick(
                             position,
                             holder.itemViewType,
-                            Constants.FILTER_ORDER_STATUS_VIEW,
-                            Constants.FILTER_ORDER_STATUS_VIEW
+                            Constants.FILTER_ORDER_STATUS_TRACK,
+                            Constants.FILTER_ORDER_STATUS_TRACK
+                        )
+                    }
+                }
+
+                holder.binding.tvReorder.setOnClickListener {
+                    if (iOrderItemClick != null) {
+                        iOrderItemClick?.onOrderItemClick(
+                            position,
+                            holder.itemViewType,
+                            Constants.ORDER_STATUS_REQ_REORDER,
+                            Constants.ORDER_STATUS_REQ_REORDER
                         )
                     }
                 }
@@ -499,8 +521,19 @@ class OrdersListAdapter(
                         iOrderItemClick?.onOrderItemClick(
                             position,
                             holder.itemViewType,
-                            Constants.FILTER_ORDER_STATUS_VIEW,
-                            Constants.FILTER_ORDER_STATUS_VIEW
+                            Constants.FILTER_ORDER_STATUS_TRACK,
+                            Constants.FILTER_ORDER_STATUS_TRACK
+                        )
+                    }
+                }
+
+                holder.binding.tvReorder.setOnClickListener {
+                    if (iOrderItemClick != null) {
+                        iOrderItemClick?.onOrderItemClick(
+                            position,
+                            holder.itemViewType,
+                            Constants.ORDER_STATUS_REQ_REORDER,
+                            Constants.ORDER_STATUS_REQ_REORDER
                         )
                     }
                 }
