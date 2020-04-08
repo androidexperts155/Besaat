@@ -33,6 +33,9 @@ class CourierUserDetailsViewModel(
     var services: ObservableField<String> = ObservableField()
     var courierStatus: ObservableField<String> = ObservableField()
     var experienceYears: ObservableField<String> = ObservableField()
+    var rating: ObservableField<String> = ObservableField()
+    var ratingBar: ObservableField<Float> = ObservableField()
+    var completedJobs: ObservableField<String> = ObservableField()
     var image: ObservableField<String> = ObservableField()
     var id: ObservableField<String> = ObservableField()
 

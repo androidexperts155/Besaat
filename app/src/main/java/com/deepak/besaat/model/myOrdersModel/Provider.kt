@@ -21,12 +21,30 @@ class Provider {
         @SerializedName("distance")
         @Expose
         var distance: Double? = null
+        @SerializedName("rating")
+        var rating: String? = null
 
         fun getDistanceString(): String {
                 return if (distance != null)
                         String.format("%.2f km away", distance)
                 else
                         "N/A"
+        }
+
+        fun getRatingFloat(): Float? {
+                return if (rating != null && rating != "") {
+                        rating!!.toFloat()
+                } else {
+                        0.0f
+                }
+        }
+
+        fun getRatingString(): String? {
+                return if (rating != null && rating != "") {
+                        String.format("%.2f", rating!!.toFloat())
+                } else {
+                        rating
+                }
         }
 
         companion object DataBindingAdapter : Serializable {

@@ -65,11 +65,11 @@
                         android:drawableTop="@drawable/ic_order_clock"
                         android:drawablePadding="@dimen/_3sdp"
                         android:fontFamily="@font/robot_medium"
+                        android:text="@{orderItem.requestStatus.equals(`1`)?@string/placed:@string/active}"
                         android:textAlignment="center"
                         android:textAllCaps="true"
                         android:textColor="@color/colorYellow"
                         android:textSize="@dimen/_8ssp"
-                        android:text="@{orderItem.requestStatus.equals(`1`)?@string/placed:@string/active}"
                         android:visibility="@{(orderItem.requestStatus.equals(`1`)||orderItem.requestStatus.equals(`2`)||orderItem.requestStatus.equals(`4`))?View.VISIBLE : View.GONE}"
                         tools:visibility="gone" />
 
@@ -100,11 +100,11 @@
                         android:drawableTop="@drawable/ic_order_cancelled"
                         android:drawablePadding="@dimen/_3sdp"
                         android:fontFamily="@font/robot_medium"
+                        android:text="@{orderItem.requestStatus.equals(`3`)?@string/rejected:@string/cancelled}"
                         android:textAlignment="center"
                         android:textAllCaps="true"
                         android:textColor="@color/colorLightPink"
                         android:textSize="@dimen/_8ssp"
-                        android:text="@{orderItem.requestStatus.equals(`3`)?@string/rejected:@string/cancelled}"
                         android:visibility="@{(orderItem.requestStatus.equals(`3`)||orderItem.requestStatus.equals(`6`)||orderItem.requestStatus.equals(`7`))?View.VISIBLE : View.GONE}"
                         tools:visibility="gone" />
 
@@ -197,7 +197,7 @@
                         android:layout_weight="0.6"
                         android:fontFamily="@font/roboto_regular"
                         android:maxLines="1"
-                        android:text='@{(orderItem.provider!=null &amp;&amp;orderItem.provider.ratePerHour!=null) ?orderItem.provider.ratePerHour:"N/A"}'
+                        android:text='@{(orderItem.provider!=null &amp;&amp;orderItem.provider.ratePerHourString!=null) ?orderItem.provider.ratePerHourString:"N/A"}'
                         android:textAlignment="viewStart"
                         android:textColor="@color/colorLightBlack"
                         android:textSize="@dimen/_12ssp"
@@ -216,6 +216,19 @@
                     android:textSize="@dimen/_12ssp"
                     android:visibility="@{orderItem.cancellationReason!=null?View.VISIBLE : View.GONE}"
                     tools:text="@string/reason_for_cancellation" />
+
+                <TextView
+                    android:id="@+id/tvCancellationRemarks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text='@{orderItem.cancellationRemarks!=null?orderItem.cancellationRemarks:""}'
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/_12ssp"
+                    android:visibility="@{orderItem.cancellationRemarks!=null?View.VISIBLE : View.GONE}"
+                    tools:text="@string/remarks" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -309,6 +322,16 @@
                         android:textAllCaps="true"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_14ssp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_14sdp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="@{(orderItem.requestStatus.equals(`3`)||orderItem.requestStatus.equals(`6`)||orderItem.requestStatus.equals(`5`))?View.VISIBLE : View.GONE}"
+                    android:weightSum="1">
 
                     <TextView
                         android:id="@+id/tvReorder"
@@ -322,9 +345,7 @@
                         android:textAlignment="center"
                         android:textAllCaps="true"
                         android:textColor="@color/lightestBlue"
-                        android:textSize="@dimen/_14ssp"
-                        android:visibility="@{(orderItem.requestStatus.equals(`3`)||orderItem.requestStatus.equals(`6`)||orderItem.requestStatus.equals(`5`))?View.VISIBLE : View.GONE}"
-                        tools:visibility="gone" />
+                        android:textSize="@dimen/_14ssp" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>

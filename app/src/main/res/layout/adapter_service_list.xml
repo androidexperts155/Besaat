@@ -65,7 +65,8 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="@dimen/_4sdp"
                 android:fontFamily="@font/robot_medium"
-                android:text="0.0"
+                tools:text="0.0"
+                android:text="@{serviceProvider.ratingString}"
                 android:textColor="@color/colorYellow"
                 android:textSize="@dimen/_13ssp" />
 
@@ -74,7 +75,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:rating="0"
+                tools:rating="0"
+                android:rating="@{serviceProvider.ratingFloat}"
                 android:theme="@style/RatingBar" />
         </LinearLayout>
 

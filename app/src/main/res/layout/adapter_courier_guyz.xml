@@ -64,7 +64,8 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="@dimen/_4sdp"
                 android:fontFamily="@font/robot_medium"
-                android:text="5.0"
+                tools:text="5.0"
+                android:text="@{courierGuy.ratingString}"
                 android:textColor="@color/colorYellow"
                 android:textSize="@dimen/_13ssp" />
 
@@ -73,7 +74,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:rating="4"
+                tools:rating="4"
+                android:rating="@{courierGuy.ratingFloat}"
                 android:theme="@style/RatingBar" />
         </LinearLayout>
 

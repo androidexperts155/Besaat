@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.deepak.besaat.viewModel.CourierUserDetailsViewModel" />
@@ -69,12 +70,12 @@
                     android:fontFamily="@font/cabin_semi_bold"
                     android:gravity="center"
                     android:text="@{viewModel.name}"
-                    tools:text="enska ksdla"
                     android:textColor="@color/colorLightBlack"
                     android:textSize="@dimen/_18ssp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="enska ksdla" />
 
                 <TextView
                     android:id="@+id/textView31"
@@ -83,13 +84,13 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/roboto_regular"
                     android:gravity="center"
-                    tools:text="Delivery man / Elect"
                     android:text="@{viewModel.services}"
                     android:textColor="@color/colorDarkGray"
                     android:textSize="@dimen/_12ssp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView32" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView32"
+                    tools:text="Delivery man / Elect" />
 
                 <LinearLayout
                     android:id="@+id/linearLayout16"
@@ -125,10 +126,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10ssp"
                             android:fontFamily="@font/cabin_semi_bold"
-                            tools:text="5"
                             android:text="@{viewModel.experienceYears}"
                             android:textColor="@color/colorLightBlack"
-                            android:textSize="@dimen/_18ssp" />
+                            android:textSize="@dimen/_18ssp"
+                            tools:text="5" />
 
                     </LinearLayout>
 
@@ -157,9 +158,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10ssp"
                             android:fontFamily="@font/cabin_semi_bold"
-                            android:text="0"
+                            android:text="@{(viewModel.completedJobs!=null||!viewModel.completedJobs.equals(``))?viewModel.completedJobs:`0`}"
                             android:textColor="@color/colorLightBlack"
-                            android:textSize="@dimen/_18ssp" />
+                            android:textSize="@dimen/_18ssp"
+                            tools:text="0" />
 
                     </LinearLayout>
 
@@ -185,17 +187,19 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/robot_medium"
-                            android:text="0"
+                            android:text="@{viewModel.rating}"
                             android:textColor="@color/colorYellow"
-                            android:textSize="@dimen/_18ssp" />
+                            android:textSize="@dimen/_18ssp"
+                            tools:text="0" />
 
 
                         <RatingBar
                             style="@style/RatingBar"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:rating="0"
-                            android:theme="@style/RatingBar" />
+                            android:rating="@{viewModel.ratingBar}"
+                            android:theme="@style/RatingBar"
+                            tools:rating="0" />
 
                     </LinearLayout>
 
@@ -215,13 +219,13 @@
 
 
                     <LinearLayout
-                        app:onSingleClick="@{viewModel::onChatClickFun}"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_45sdp"
                         android:layout_marginEnd="@dimen/_8sdp"
                         android:layout_weight="1"
                         android:background="@drawable/bg_yellow_tl_tr_br_round_30"
-                        android:gravity="center">
+                        android:gravity="center"
+                        app:onSingleClick="@{viewModel::onChatClickFun}">
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -245,13 +249,13 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        app:onSingleClick="@{viewModel::onRequestClickFun}"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_45sdp"
                         android:layout_marginStart="@dimen/_8sdp"
                         android:layout_weight="1"
                         android:background="@drawable/bg_light_blue_tl_bl_br_round_30"
-                        android:gravity="center">
+                        android:gravity="center"
+                        app:onSingleClick="@{viewModel::onRequestClickFun}">
 
                         <TextView
                             android:layout_width="wrap_content"

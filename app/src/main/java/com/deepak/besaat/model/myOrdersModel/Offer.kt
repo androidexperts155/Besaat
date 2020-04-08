@@ -66,4 +66,6 @@ class Offer {
     fun setProvider(provider: Provider?) {
         this.provider = provider
     }
+
+
 }

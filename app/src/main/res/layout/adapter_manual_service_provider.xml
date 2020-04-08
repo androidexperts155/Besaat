@@ -59,7 +59,7 @@
                 android:layout_marginEnd="@dimen/_4sdp"
                 android:fontFamily="@font/robot_medium"
                 tools:text="0.0"
-                android:text="@{serviceProviderDetail.ratingFloat.toString()}"
+                android:text="@{serviceProviderDetail.ratingString}"
                 android:textColor="@color/colorYellow"
                 android:textSize="@dimen/_13ssp" />
 

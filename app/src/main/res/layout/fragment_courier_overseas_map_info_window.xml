@@ -88,10 +88,12 @@
                                 android:layout_marginEnd="@dimen/_4sdp"
                                 android:fontFamily="@font/robot_medium"
                                 android:text="5.0"
+                                android:id="@+id/textRating"
                                 android:textColor="@color/colorYellow"
                                 android:textSize="@dimen/_13ssp" />
 
                             <RatingBar
+                                android:id="@+id/ratingB"
                                 style="@style/RatingBar"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"

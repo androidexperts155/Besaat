@@ -51,6 +51,10 @@ class DeliveryPersonDetail : BaseActivity() {
         viewModel.id.set(intent.getStringExtra("id"))
         viewModel.deliveryType.set(intent.getStringExtra("deliveryType"))
 
+        viewModel.rating.set("0.0")// default
+        viewModel.ratingBar.set(0.0f)// default
+        viewModel.completedJobs.set("0")// default
+
         viewModel.providerLatitude.set(intent.getStringExtra("providerLat"))
         viewModel.providerLongitude.set(intent.getStringExtra("providerLng"))
         viewModel.providerAddress.set(intent.getStringExtra("providerAddress"))
@@ -80,11 +84,13 @@ class DeliveryPersonDetail : BaseActivity() {
                 commonFunctions.showFeedbackMessage(rootLayout, pojo.getMessage()!!)
                 viewModel.services.set(pojo.getUser()?.services)
                 viewModel.experienceYears.set(pojo.getUser()?.experienceYears)
+                viewModel.rating.set(pojo.getUser()?.getRatingString())
+                viewModel.ratingBar.set(pojo.getUser()?.getRatingFloat())
+                viewModel.completedJobs.set(pojo.getUser()?.completedJobs)
 
                 if (viewModel.from.get() != null && viewModel.from.get().toString().contains("service")) {
                     viewModel.services.set(pojo.getUser()?.services)
                     viewModel.services.set(viewModel.services.get()!!.replace(",", "/"))
-
                 } else {
                     viewModel.courierStatus.set(intent.getStringExtra("courierStatus"))
                     if (viewModel.courierStatus.get() != null) {
@@ -108,7 +114,10 @@ class DeliveryPersonDetail : BaseActivity() {
                 var intent: Intent
                 if (viewModel.from.get() != null && viewModel.from.get().toString().contains("service")) {
                     intent = Intent(this, NewRequestService::class.java)
-                } else if (viewModel.from.get() != null && viewModel.from.get().toString().contains("CourierOverSeas")) {
+                } else if (viewModel.from.get() != null && viewModel.from.get().toString().contains(
+                        "CourierOverSeas"
+                    )
+                ) {
                     intent = Intent(this, NewRequestCourierOverseasActivity::class.java)
                     intent.putExtra("pickupCountry", intent.getStringExtra("pickupCountry"))
                     intent.putExtra("dropCountry", intent.getStringExtra("dropCountry"))

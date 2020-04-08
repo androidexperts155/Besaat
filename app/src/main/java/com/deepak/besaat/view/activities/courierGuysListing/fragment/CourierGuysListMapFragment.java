@@ -344,6 +344,8 @@ public class CourierGuysListMapFragment extends
         textAddress.setText(sourceDetails.getAddress());
 
         textRadius.setText(sourceDetails.getDistanceString());
+        textRating.setText(sourceDetails.getRatingString());
+        ratingBar.setRating(sourceDetails.getRatingFloat());
 //        if (sourceDetails.getRating() != null) {
 //            textRating.setText(sourceDetails.getRating().toString());
 //            ratingBar.setRating(sourceDetails.getRating());
@@ -459,6 +461,8 @@ public class CourierGuysListMapFragment extends
         textAddress.setText(sourceDetails.getAddress());
 
         textRadius.setText(sourceDetails.getDistanceString());
+        textRating.setText(sourceDetails.getRatingString());
+        ratingBar.setRating(sourceDetails.getRatingFloat());
 //        if (sourceDetails.getRating() != null) {
 //            textRating.setText(sourceDetails.getRating().toString());
 //            ratingBar.setRating(sourceDetails.getRating());

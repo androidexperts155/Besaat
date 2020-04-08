@@ -64,7 +64,7 @@ class HomeFragmentViewModel(repository: Repository, fragmentFucntions: FragmentF
     fun servicesClick(view: View) {
         Handler().postDelayed(Runnable {
             var Int: Intent = Intent(view.context, ServicesListingActivity::class.java)
-            Int.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            Int.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
             view.context.startActivity(Int)
         }, 100)
 

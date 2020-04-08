@@ -59,6 +59,8 @@ class User : Serializable {
     var updatedAt: String? = null
     @SerializedName("rating")
     var rating: String? = null
+    @SerializedName("completed_jobs")
+    var completedJobs: String? = null
     @SerializedName("rate_per_hour")
     var ratePerHour: String? = null
     @SerializedName("offer")
@@ -105,6 +107,13 @@ class User : Serializable {
 
     ////////////////////////////////////////
 
+    @SerializedName("services")
+    @Expose
+    var services: String? = null
+
+    ///////////////////////////////////////////
+
+
     fun getDistanceString(): String {
         return if (distance != null)
             String.format("%.2f km", distance!!.toFloat())
@@ -113,17 +122,32 @@ class User : Serializable {
     }
 
     fun getRatingFloat(): Float? {
-        return if (rating != null) {
+        return if (rating != null && rating != "") {
             rating!!.toFloat()
         } else {
             0.0f
         }
     }
 
+    fun getRatingString(): String? {
+        return if (rating != null && rating != "") {
+            String.format("%.2f", rating!!.toFloat())
+        } else {
+            rating
+        }
+    }
+
     fun getOfferInCurrency(): String? {
-        if (offer != null) {
+        if (offer != null && offer != "") {
             return String.format("$%.2f", offer!!.toFloat())
         } else
             return offer
+    }
+
+    fun getRatePerHourString(): String? {
+        if (ratePerHour != null) {
+            return String.format("$%s/hr", ratePerHour)
+        } else
+            return ratePerHour
     }
 }

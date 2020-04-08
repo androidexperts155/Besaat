@@ -1101,10 +1101,8 @@ class HomeActivity : BaseActivity(), KeyboardVisibilityEventListener,
         SmartLocation.with(this@HomeActivity).geofencing().stop()
     }
 
-    private fun changeToolBarColor(menu:Int)
-    {
-        if (menu==Constants.MENU_HOME||menu==Constants.MENU_ME||menu==Constants.MENU_NOTIFICATION||menu==Constants.MENU_SETTINGS||menu==Constants.MENU_SETTINGS||menu==Constants.MENU_CARDS||menu==Constants.MENU_WALLET)
-        {
+    private fun changeToolBarColor(menu: Int) {
+        if (menu == Constants.MENU_HOME || menu == Constants.MENU_ME || menu == Constants.MENU_NOTIFICATION || menu == Constants.MENU_SETTINGS || menu == Constants.MENU_SETTINGS || menu == Constants.MENU_CARDS || menu == Constants.MENU_WALLET) {
             topBarExtra.setBackgroundColor(
                 ContextCompat.getColor(
                     this,
@@ -1126,9 +1124,7 @@ class HomeActivity : BaseActivity(), KeyboardVisibilityEventListener,
                 window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
                 window.statusBarColor = this.resources.getColor(R.color.colorAccent)
             }
-        }
-        else if (menu==Constants.MENU_VISITS)
-        {
+        } else if (menu == Constants.MENU_VISITS) {
             topBarExtra.setBackgroundColor(
                 ContextCompat.getColor(
                     this,

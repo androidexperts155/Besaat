@@ -165,11 +165,11 @@
                                     android:layout_weight="0.7"
                                     android:fontFamily="@font/roboto_regular"
                                     android:maxLines="1"
-                                    android:text='@{orderItem.orderDateFormatted!=null?orderItem.orderDateFormatted:"N/A"}'
                                     android:textAlignment="viewStart"
                                     android:textColor="@color/colorLightBlack"
                                     android:textSize="@dimen/_11ssp"
                                     tools:text="C W" />
+                                <!--                                android:text='@{orderItem.orderDateOnlyFormatted!=null?orderItem.orderDateOnlyFormatted:"N/A"}'-->
                             </LinearLayout>
 
                             <LinearLayout
@@ -197,11 +197,11 @@
                                     android:layout_weight="0.7"
                                     android:fontFamily="@font/roboto_regular"
                                     android:maxLines="1"
-                                    android:text='@{orderItem.orderDateFormatted!=null?orderItem.orderDateFormatted:"N/A"}'
                                     android:textAlignment="viewStart"
                                     android:textColor="@color/colorLightBlack"
                                     android:textSize="@dimen/_11ssp"
                                     tools:text="C W" />
+                                <!--                                android:text='@{orderItem.orderTimeOnlyFormatted!=null?orderItem.orderTimeOnlyFormatted:"N/A"}'-->
                             </LinearLayout>
 
                             <LinearLayout
@@ -228,7 +228,7 @@
                                     android:layout_weight="0.7"
                                     android:fontFamily="@font/roboto_regular"
                                     android:maxLines="1"
-                                    android:text="(Pending)"
+                                    android:text="@{(orderItem.requestStatus.equals(`5`))?`Completed`:`Pending`}"
                                     android:textAlignment="viewStart"
                                     android:textColor="@color/colorLightBlack"
                                     android:textSize="@dimen/_11ssp"
@@ -236,12 +236,12 @@
                             </LinearLayout>
 
                             <LinearLayout
-                                android:visibility="@{(orderItem.requestStatus.equals(`5`)||orderItem.requestStatus.equals(`6`)||orderItem.requestStatus.equals(`7`))?View.GONE : View.VISIBLE}"
                                 android:id="@+id/llPickup"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_5sdp"
-                                android:orientation="horizontal">
+                                android:orientation="horizontal"
+                                android:visibility="@{(orderItem.requestStatus.equals(`5`)||orderItem.requestStatus.equals(`6`)||orderItem.requestStatus.equals(`7`))?View.GONE : View.VISIBLE}">
 
                                 <TextView
                                     android:id="@+id/tvLabel5"
@@ -269,11 +269,11 @@
                             </LinearLayout>
 
                             <LinearLayout
-                                android:visibility="@{(orderItem.requestStatus.equals(`5`)||orderItem.requestStatus.equals(`6`)||orderItem.requestStatus.equals(`7`))?View.GONE : View.VISIBLE}"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_5sdp"
-                                android:orientation="horizontal">
+                                android:orientation="horizontal"
+                                android:visibility="@{(orderItem.requestStatus.equals(`5`)||orderItem.requestStatus.equals(`6`)||orderItem.requestStatus.equals(`7`))?View.GONE : View.VISIBLE}">
 
                                 <TextView
                                     android:id="@+id/tvLabel6"

@@ -1,5 +1,6 @@
 package com.deepak.besaat.model.GetUserDetailsModel
 
+import com.deepak.besaat.model.socialLoginModel.User
 import com.google.gson.annotations.Expose
 
 import com.google.gson.annotations.SerializedName

@@ -384,6 +384,8 @@ public class CourierGuysOverseasListMapFragment extends
         tvDepatureDate.setText(sourceDetails.getTrips().getDepartureDate());
 
         textRadius.setText(sourceDetails.getDistanceString());
+        textRating.setText(sourceDetails.getRatingString());
+        ratingBar.setRating(sourceDetails.getRatingFloat());
 //        if (sourceDetails.getRating() != null) {
 //            textRating.setText(sourceDetails.getRating().toString());
 //            ratingBar.setRating(sourceDetails.getRating());
@@ -530,6 +532,8 @@ public class CourierGuysOverseasListMapFragment extends
         tvDepatureDate.setText(sourceDetails.getTrips().getDepartureDate());
 
         textRadius.setText(sourceDetails.getDistanceString());
+        textRating.setText(sourceDetails.getRatingString());
+        ratingBar.setRating(sourceDetails.getRatingFloat());
 //        if (sourceDetails.getRating() != null) {
 //            textRating.setText(sourceDetails.getRating().toString());
 //            ratingBar.setRating(sourceDetails.getRating());

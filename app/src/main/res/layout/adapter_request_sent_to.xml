@@ -66,7 +66,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="@dimen/_4sdp"
                     android:fontFamily="@font/robot_medium"
-                    android:text='@{serviceProvider.receiverRating!=null?serviceProvider.receiverRating:"0.0"}'
+                    android:text='@{serviceProvider.getRatingString!=null?serviceProvider.getRatingString:"0.0"}'
                     android:textColor="@color/colorYellow"
                     android:textSize="@dimen/_13ssp"
                     tools:text="0.0" />
@@ -116,7 +116,7 @@
                     android:fontFamily="@font/robot_medium"
                     android:maxWidth="@dimen/_150sdp"
                     android:maxLines="1"
-                    android:text='@{(serviceProvider.offer!=null &amp;&amp; serviceProvider.offer!=0)?serviceProvider.offer.toString():"N/A"}'
+                    android:text='@{(serviceProvider.offer!=null &amp;&amp; serviceProvider.offerInCurrency!=null)?serviceProvider.offerInCurrency:"N/A"}'
                     android:textColor="@color/colorLightBlack"
                     android:textSize="@dimen/_10ssp"
                     app:layout_constraintBottom_toBottomOf="parent"

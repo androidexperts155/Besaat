@@ -35,7 +35,7 @@
 
 
         <TextView
-            android:id="@+id/tvRatingStatus"
+            android:id="@+id/tvOfferDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_16sdp"

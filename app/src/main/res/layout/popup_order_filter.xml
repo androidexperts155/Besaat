@@ -88,6 +88,38 @@
                 android:background="@color/white"/>
 
             <RadioButton
+                android:id="@+id/radio_new"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:fontFamily="@font/cabin_regular"
+                android:textColor="@color/colorLightBlack2"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/_new"
+                android:textSize="15sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/white"/>
+
+            <RadioButton
+                android:id="@+id/radio_placed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:fontFamily="@font/cabin_regular"
+                android:textColor="@color/colorLightBlack2"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/placed"
+                android:textSize="15sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/white"/>
+
+            <RadioButton
                 android:id="@+id/radio_in_progress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -95,7 +127,7 @@
                 android:fontFamily="@font/cabin_regular"
                 android:textColor="@color/colorLightBlack2"
                 android:padding="@dimen/_10sdp"
-                android:text="@string/in_progress"
+                android:text="@string/active1"
                 android:textSize="15sp" />
 
             <View
@@ -120,6 +152,7 @@
                 android:background="@color/white"/>
 
             <RadioButton
+                android:visibility="gone"
                 android:id="@+id/radio_rejected"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -131,6 +164,7 @@
                 android:textSize="15sp" />
 
             <View
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:background="@color/white"/>

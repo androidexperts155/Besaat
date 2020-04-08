@@ -267,6 +267,19 @@
                     tools:text="@string/reason_for_cancellation" />
 
                 <TextView
+                    android:id="@+id/tvCancellationRemarks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text='@{orderItem.cancellationRemarks!=null?orderItem.cancellationRemarks:""}'
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/_12ssp"
+                    android:visibility="@{orderItem.cancellationRemarks!=null?View.VISIBLE : View.GONE}"
+                    tools:text="@string/remarks" />
+
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"

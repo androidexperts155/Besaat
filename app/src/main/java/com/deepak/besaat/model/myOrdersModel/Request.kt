@@ -147,7 +147,10 @@ class Request : Serializable {
     }
 
     fun getCancellationRemarks(): String? {
-        return cancellationRemarks
+        return if (cancellationRemarks != null) {
+            "Remarks : $cancellationRemarks"
+        } else
+            cancellationRemarks
     }
 
     fun setCancellationRemarks(cancellationRemarks: String?) {
@@ -481,7 +484,70 @@ class Request : Serializable {
             Constants.Pattern_YYYY_MM_DD_HH_MM_SS,
             Constants.Pattern_DD_MMM_YY_HH_MM_AA
         )
+    }
 
+    fun getOrderDateOnlyFormatted(): String {
+        return CommonFunctions().getFormattedTimeOrDate(
+            createdAt!!,
+            Constants.Pattern_YYYY_MM_DD_HH_MM_SS,
+            Constants.Pattern_MMM_D_YYYY
+        )
+    }
+
+    fun getOrderTimeOnlyFormatted(): String {
+        return CommonFunctions().getFormattedTimeOrDate(
+            createdAt!!,
+            Constants.Pattern_YYYY_MM_DD_HH_MM_SS,
+            Constants.Pattern_HH_MM_A
+        )
+    }
+
+    fun getOrderServiceDateOnlyFormatted(): String {
+        return if (serviceTimeFrom != null) {
+            CommonFunctions().getFormattedTimeOrDate(
+                serviceTimeFrom!!,
+                Constants.Pattern_YYYY_MM_DD_HH_MM_SS,
+                Constants.Pattern_MMM_D_YYYY
+            )
+        } else {
+            "N/A"
+        }
+    }
+
+    fun getOrderServiceTimeOnlyFormatted(): String {
+        return if (serviceTimeFrom != null) {
+            CommonFunctions().getFormattedTimeOrDate(
+                serviceTimeFrom!!,
+                Constants.Pattern_YYYY_MM_DD_HH_MM_SS,
+                Constants.Pattern_HH_MM_A
+            )
+        } else {
+            "N/A"
+        }
+    }
+
+    fun getOrderDeliveryDateOnlyFormatted(): String {
+        return if (deliverTimeFrom != null) {
+            CommonFunctions().getFormattedTimeOrDate(
+                deliverTimeFrom!!,
+                Constants.Pattern_YYYY_MM_DD_HH_MM_SS,
+                Constants.Pattern_MMM_D_YYYY
+            )
+        } else {
+            "N/A"
+        }
+    }
+
+    fun getOrderDeliveryTimeOnlyFormatted(): String {
+        return if (deliverTimeFrom != null) {
+            CommonFunctions().getFormattedTimeOrDate(
+                deliverTimeFrom!!,
+                Constants.Pattern_YYYY_MM_DD_HH_MM_SS,
+                Constants.Pattern_HH_MM_A
+            )
+        } else {
+            "N/A"
+        }
     }
 
     fun cancellationPanelVisibility(): Int? {
@@ -509,7 +575,7 @@ class Request : Serializable {
     }
 
     fun getImageDrawableStage1(): Int? {
-        return if (requestStatus == "1") {
+        return if (requestStatus == "1" || requestStatus == "2") {
             R.drawable.radio_button_selected_yellow
         } else if (provider != null) {
             R.drawable.ic_check_circle_blue
@@ -547,11 +613,11 @@ class Request : Serializable {
     }
 
     fun getTextStage1(): String? {
-        return if (requestStatus == "1") {
+        return if (requestStatus == "1" || requestStatus == "2") {
             "Waiting..."
         } else if (provider != null) {
             "Accepted"
-        } else if (requestStatus == "6" || requestStatus == "7") {
+        } else if (requestStatus == "6" || requestStatus == "7" || requestStatus == "3") {
             "Cancelled"
         } else {
             "Accepted"
@@ -559,12 +625,14 @@ class Request : Serializable {
     }
 
     fun getTextColorStage1(): String? {
-        return if (requestStatus == "1") {
+        return if (requestStatus == "1" || requestStatus == "2") {
             "#E5B253"  // yellow
         } else if (provider != null) {
             "#64BFCD"  // blue
         } else if (requestStatus == "6" || requestStatus == "7") {
             "#DD8B89"  //red
+        } else if (requestStatus == "3") {
+            "#E1E1ED"  //red
         } else {
             "#64BFCD"  // blue
         }

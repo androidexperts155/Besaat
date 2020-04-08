@@ -17,7 +17,7 @@ class RequestSentTo : Serializable {
     private var customerStatus: Int? = null
     @SerializedName("offer")
     @Expose
-    private var offer: Int? = null
+    private var offer: String? = null
     @SerializedName("receiver_image")
     @Expose
     private var receiverImage: String? = null
@@ -52,11 +52,11 @@ class RequestSentTo : Serializable {
         this.customerStatus = customerStatus
     }
 
-    fun getOffer(): Int? {
+    fun getOffer(): String? {
         return offer
     }
 
-    fun setOffer(offer: Int?) {
+    fun setOffer(offer: String?) {
         this.offer = offer
     }
 
@@ -91,5 +91,24 @@ class RequestSentTo : Serializable {
         } else {
             0.0f
         }
+    }
+
+    fun getRatingString(): String? {
+        return if (receiverRating != null) {
+            String.format("$%.2f", receiverRating!!.toFloat())
+        } else {
+            receiverRating
+        }
+    }
+
+    fun getOfferInCurrency(): String? {
+        if (offer != null && offer != "") {
+            if (offer!!.toFloat() <= 0.0f) {
+                return "N/A"
+            } else {
+                return String.format("$%.2f", offer!!.toFloat())
+            }
+        } else
+            return "N/A"
     }
 }

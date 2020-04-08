@@ -28,6 +28,7 @@ import com.deepak.besaat.viewModel.JobDetailsViewModel
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_job_details.*
 import org.koin.android.ext.android.inject
+import java.util.*
 
 class JobDetailsActivity : BaseActivity() {
     lateinit var binding: ActivityJobDetailsBinding
@@ -65,6 +66,7 @@ class JobDetailsActivity : BaseActivity() {
                 binding.orderItem = request
                 viewModel.receiverID.set(request?.getProviderId().toString())
                 viewModel.requestID.set(request?.getId().toString())
+                setOrderDateTime()
             }
         }
 
@@ -73,6 +75,19 @@ class JobDetailsActivity : BaseActivity() {
         if (jobType == Constants.REQUEST_TYPE_STORE) {
             llTime.visibility = View.GONE
             llDate.visibility = View.GONE
+        }
+    }
+
+    fun setOrderDateTime() {
+        if (request?.getServiceTimeFrom() != null) {
+            tvValue2.text = request?.getOrderServiceDateOnlyFormatted()
+            tvValue3.text = request?.getOrderServiceTimeOnlyFormatted()
+        } else if (request?.getDeliverTimeFrom() != null) {
+            tvValue2.text = request?.getOrderDeliveryDateOnlyFormatted()
+            tvValue3.text = request?.getOrderDeliveryTimeOnlyFormatted()
+        } else {
+            tvValue2.text = request?.getOrderDateFormatted()
+            tvValue3.text = request?.getOrderTimeOnlyFormatted()
         }
     }
 
@@ -162,6 +177,7 @@ class JobDetailsActivity : BaseActivity() {
                     intent.putExtra("data", pojo.request)
                     request = pojo.request
                     binding.orderItem = request
+                    setOrderDateTime()
                 }
             }
         })
@@ -174,6 +190,7 @@ class JobDetailsActivity : BaseActivity() {
                     intent.putExtra("data", pojo.request)
                     request = pojo.request
                     binding.orderItem = request
+                    setOrderDateTime()
                 }
             }
         })
@@ -305,9 +322,15 @@ class JobDetailsActivity : BaseActivity() {
         val inflater = layoutInflater
         val vv = inflater.inflate(R.layout.popup_make_offer, null, false)
         var tvSubmit = vv.findViewById<TextView>(R.id.tvSubmit)
+        var tvOfferDetails = vv.findViewById<TextView>(R.id.tvOfferDetails)
         var ivCancel = vv.findViewById<ImageView>(R.id.ivCancel)
         var edOfferPrice = vv.findViewById<EditText>(R.id.edOfferPrice)
         var rlRoot = vv.findViewById<RelativeLayout>(R.id.rlRoot)
+
+        tvOfferDetails.text = String.format(
+            getString(R.string.offer_price_details),
+            request?.getChargesInCurrency(), request?.getChargesInCurrency()
+        )
 
         ivCancel.setOnClickListener {
             commonDialog.dismiss()
@@ -315,19 +338,37 @@ class JobDetailsActivity : BaseActivity() {
 
         tvSubmit.setOnClickListener {
             if (edOfferPrice.text.toString().trim() != "") {
-                viewModel.acceptOrRejectOrMakeOfferJob(
-                    request?.getId().toString(),
-                    edOfferPrice.text.toString().trim(),
-                    Constants.JOB_ACCEPT
-                )
-                commonDialog.dismiss()
+                if (edOfferPrice.text.toString().trim().toFloat() > (request?.getCharges()?.toFloat()!! + request?.getCharges()?.toFloat()!! * 0.2f)) {
+                    commonFunctions.showFeedbackMessage(
+                        rlRoot,
+                        String.format(
+                            getString(R.string.please_enter_your_offer_price_less_than),
+                            request?.getChargesInCurrency()
+                        )
+
+                    )
+                } else if (edOfferPrice.text.toString().trim().toFloat() < (request?.getCharges()?.toFloat()!! - request?.getCharges()?.toFloat()!! * 0.1f)) {
+                    commonFunctions.showFeedbackMessage(
+                        rlRoot,
+                        String.format(
+                            getString(R.string.please_enter_your_offer_price_greater_than),
+                            request?.getChargesInCurrency()
+                        )
+                    )
+                } else {
+                    viewModel.acceptOrRejectOrMakeOfferJob(
+                        request?.getId().toString(),
+                        edOfferPrice.text.toString().trim(),
+                        Constants.JOB_ACCEPT
+                    )
+                    commonDialog.dismiss()
+                }
             } else {
                 commonFunctions.showFeedbackMessage(
                     rlRoot,
                     getString(R.string.please_enter_your_offer_price)
                 )
             }
-
         }
 
         tvNo.setOnClickListener {

@@ -316,6 +316,7 @@
     <string name="delivery">Delivery</string>
     <string name="important_documents">Important Documents</string>
     <string name="active">active</string>
+    <string name="active1">Active</string>
     <string name="cancelled">cancelled</string>
     <string name="cancelled1">Cancelled</string>
     <string name="id">id#</string>
@@ -372,6 +373,9 @@
     <string name="select_status_of_job">Select status of Job.</string>
     <string name="cancellation_fee_may_apply_if_provider_rejects_cancellation_request">$40 cancellation fee may apply if provider rejects cancellation request.</string>
     <string name="please_enter_your_offer_price">Please enter your offer price.</string>
+    <string name="please_enter_your_offer_price_less_than">You can enter offer price only 20 percent more than estimate price(%s) .</string>
+    <string name="please_enter_your_offer_price_greater_than">You can enter offer price only 10 percent less than estimate price(%s).</string>
+    <string name="offer_price_details">Please enter your offer price. You can enter offer price only 20 percent more than estimate price(%s) or 10 percent less than estimate price(%s).</string>
     <string name="poor">Poor</string>
     <string name="average">Average</string>
     <string name="above_average">Above Average</string>
@@ -379,4 +383,5 @@
     <string name="excellent">Excellent</string>
     <string name="no_offer">No offer yet! Please wait for provider\'s response to get best offer.</string>
     <string name="selected">Selected</string>
+    <string name="_new">New</string>
 </resources>

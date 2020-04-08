@@ -64,6 +64,7 @@ object Constants {
     val FILTER_ORDER_STATUS_NEW_PENDING = "7"
     val FILTER_ORDER_STATUS_VIEW = "100"  //dummy
     val FILTER_ORDER_STATUS_REQ_VIEW_OFFERS = "101" //dummy
+    val FILTER_ORDER_STATUS_TRACK = "102" //dummy
 
 
 
@@ -76,6 +77,7 @@ object Constants {
     val ORDER_STATUS_CANCELLED = "6"
     val ORDER_STATUS_REQ_CANCLLATION = "7"
 
+    val ORDER_STATUS_REQ_REORDER = "10" //dummy
 
 
     // for accept and reject job to send in API

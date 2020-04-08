@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <data>
+
         <variable
             name="courierGuy"
             type="com.deepak.besaat.model.courierGuysModel.Courier" />
+
         <variable
             name="viewModel"
             type="com.deepak.besaat.viewModel.CourierGuysListingActivityViewModel" />
@@ -12,9 +15,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/rootLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rootLayout"
         android:orientation="vertical">
 
 
@@ -30,22 +33,22 @@
             app:layout_constraintTop_toTopOf="@+id/textView19" />
 
         <TextView
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:maxWidth="@dimen/_130sdp"
             android:id="@+id/textView19"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:ellipsize="end"
             android:fontFamily="@font/cabin_semi_bold"
-            android:text="@{courierGuy.name}"
             android:hint="@string/name"
-            tools:text="User name"
+            android:maxWidth="@dimen/_130sdp"
+            android:maxLines="1"
+            android:text="@{courierGuy.name}"
             android:textColor="@color/colorLightBlack"
             android:textSize="@dimen/_13ssp"
             app:layout_constraintStart_toEndOf="@+id/circleImageView"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="User name" />
 
         <LinearLayout
             android:id="@+id/linearLayoutRatingBar"
@@ -64,39 +67,41 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="@dimen/_4sdp"
                 android:fontFamily="@font/robot_medium"
-                android:text="0.0"
+                android:text="@{courierGuy.ratingString}"
                 android:textColor="@color/colorYellow"
-                android:textSize="@dimen/_13ssp" />
+                android:textSize="@dimen/_13ssp"
+                tools:text="0.0" />
 
             <RatingBar
                 style="@style/RatingBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:rating="0"
-                android:theme="@style/RatingBar" />
+                android:rating="@{courierGuy.ratingFloat}"
+                android:theme="@style/RatingBar"
+                tools:rating="0" />
         </LinearLayout>
 
         <TextView
-            android:drawableStart="@drawable/ic_location_pin"
-            android:drawablePadding="@dimen/_4sdp"
             android:id="@+id/textView20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="8dp"
+            android:drawableStart="@drawable/ic_location_pin"
+            android:drawablePadding="@dimen/_4sdp"
+            android:ellipsize="end"
             android:fontFamily="@font/roboto_regular"
+            android:maxWidth="@dimen/_150sdp"
+            android:maxLines="1"
             android:text="@{courierGuy.distanceString}"
             android:textColor="@color/colorDarkGray"
             android:textSize="@dimen/_10ssp"
-            android:ellipsize="end"
-            android:maxWidth="@dimen/_150sdp"
-            tools:text="0 KM"
-            android:maxLines="1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/circleImageView"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutRatingBar" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutRatingBar"
+            tools:text="0 KM" />
 
 
         <androidx.constraintlayout.widget.ConstraintLayout

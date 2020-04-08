@@ -85,7 +85,6 @@ class NewRequestStore : BaseActivity(), IServiceProviderClickListener {
         binding.recyclerViewVisibility = false
         customToolBarWithBack(this, toolBar)
         setAdapterServiceProviders()
-
         file = File("xyz.txt")
 
         var from: String = intent.getStringExtra("from") ?: ""
@@ -456,9 +455,12 @@ class NewRequestStore : BaseActivity(), IServiceProviderClickListener {
         storeList = ArrayList()
         servicesProviderList?.clear()
         try {
-            var pojo = Gson().fromJson(it.toString(), NearByServicesProviderListPojo::class.java)
-            if (pojo.data != null)
-                servicesProviderList?.addAll(pojo.data!!)
+            if (it != null) {
+                var pojo =
+                    Gson().fromJson(it.toString(), NearByServicesProviderListPojo::class.java)
+                if (pojo.data != null)
+                    servicesProviderList?.addAll(pojo.data!!)
+            }
 
             serviceProviderAdapter.submitList(servicesProviderList)
             serviceProviderAdapter.notifyDataSetChanged()
@@ -478,7 +480,7 @@ class NewRequestStore : BaseActivity(), IServiceProviderClickListener {
 //                    }
 //                }
 //            }
-        } catch (e: JSONException) {
+        } catch (e: Exception) {
             e.printStackTrace()
         }
     }
@@ -487,9 +489,9 @@ class NewRequestStore : BaseActivity(), IServiceProviderClickListener {
         Log.e("RequestResponse", "fair response is " + it)
         try {
             fair = it?.getString("fair")
-            Log.e("RequestResponse", "fair is " + fair)
+            Log.e("RequestResponse", "fair is $fair")
             fairAmount = (fair?.toDouble())?.times((radiusValue.toString().toDouble()))
-            Log.e("RequestResponse", "fair calculation is  " + fairAmount)
+            Log.e("RequestResponse", "fair calculation is  $fairAmount")
             if (fairAmount.toString().length > 3) {
                 fairText.text = "$" + fairAmount.toString().substring(0, 4) + " "
             } else if (fairAmount.toString().length > 2) {
@@ -594,7 +596,7 @@ class NewRequestStore : BaseActivity(), IServiceProviderClickListener {
         if (requestCode == 5) {
             if (resultCode == Activity.RESULT_OK) {
                 if (data != null) {
-                    val place = Autocomplete.getPlaceFromIntent(data!!)
+                    val place = Autocomplete.getPlaceFromIntent(data)
                     var longitude = place.latLng!!.longitude
                     var latitude = place.latLng!!.latitude
                     Log.e("longitude", longitude.toString())

@@ -44,13 +44,30 @@ class Courier() : Parcelable, ClusterItem {
     @SerializedName("provider_role")
     @Expose
     var providerRole: String? = null
+    @SerializedName("rating")
+    @Expose
+    var rating: String? = null
     @SerializedName("trips")
     @Expose
     var trips: Trips? = null
 
-
     var bitmapIcon: Bitmap? = null  // for map markers
 
+    fun getRatingFloat(): Float? {
+        return if (rating != null && rating != "") {
+            rating!!.toFloat()
+        } else {
+            0.0f
+        }
+    }
+
+    fun getRatingString(): String? {
+        return if (rating != null && rating != "") {
+            String.format("%.2f", rating!!.toFloat())
+        } else {
+            rating
+        }
+    }
 
     fun getDistanceString(): String {
         return if (distance != null && distance != "") {
@@ -69,6 +86,7 @@ class Courier() : Parcelable, ClusterItem {
         distance = parcel.readString()
         experienceYears = parcel.readString()
         providerRole = parcel.readString()
+        rating = parcel.readString()
         trips = parcel.readValue(Trips::class.java.classLoader) as Trips?
     }
 
@@ -81,6 +99,7 @@ class Courier() : Parcelable, ClusterItem {
         parcel.writeString(image)
         parcel.writeValue(distance)
         parcel.writeValue(providerRole)
+        parcel.writeValue(rating)
         parcel.writeValue(experienceYears)
         parcel.writeValue(trips)
     }
@@ -121,7 +140,6 @@ class Courier() : Parcelable, ClusterItem {
         if (latitude != null && latitude != "") {
             latLng = LatLng(latitude!!.toDouble(), logitude!!.toDouble())
         }
-
         return latLng
     }
 }

@@ -127,6 +127,9 @@ class Datum : Serializable,ClusterItem {
     @SerializedName("distance")
     @Expose
     var distance: Double? = null
+    @SerializedName("rating")
+    @Expose
+    var rating: String? = null
 
     fun getDistanceString(): String {
         return if (distance != null)
@@ -151,6 +154,22 @@ class Datum : Serializable,ClusterItem {
 //            }
         } else
             "0 Year's Exp"
+    }
+
+    fun getRatingFloat(): Float? {
+        return if (rating != null && rating != "") {
+            rating!!.toFloat()
+        } else {
+            0.0f
+        }
+    }
+
+    fun getRatingString(): String? {
+        return if (rating != null && rating != "") {
+            String.format("%.2f", rating!!.toFloat())
+        } else {
+            rating
+        }
     }
 
     var bitmapIcon: Bitmap? = null  // for map markers

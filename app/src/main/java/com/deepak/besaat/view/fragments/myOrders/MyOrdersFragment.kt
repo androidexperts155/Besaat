@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.ImageView
+import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -26,9 +27,13 @@ import com.deepak.besaat.utils.CommonFunctions
 import com.deepak.besaat.utils.Constants
 import com.deepak.besaat.utils.SharedPref
 import com.deepak.besaat.view.activities.cancelOrderRequest.ui.CancelOrderRequestActivity
+import com.deepak.besaat.view.activities.courierGuysListing.CourierGuysListing
 import com.deepak.besaat.view.activities.jobDetails.ui.JobDetailsActivity
+import com.deepak.besaat.view.activities.newRequestStore.NewRequestStore
 import com.deepak.besaat.view.activities.requestOffers.ui.RequestOffersActivity
 import com.deepak.besaat.view.activities.requestStatus.ui.RequestStatusActivity
+import com.deepak.besaat.view.activities.servicesListing.ServicesListingActivity
+import com.deepak.besaat.view.activities.storeNearByListing.activities.StoreNearByListingActivity
 import com.deepak.besaat.view.fragments.BaseFragment
 import com.deepak.besaat.view.fragments.myOrders.adapters.OrdersListAdapter
 import com.deepak.besaat.view.fragments.myOrders.interfaces.IOrderItemClick
@@ -261,10 +266,22 @@ class MyOrdersFragment : BaseFragment(), IOrderItemClick {
         var tvReset = vv.findViewById<TextView>(R.id.textreset2)
         var radioGroup = vv.findViewById<RadioGroup>(R.id.radioGroup)
 
+        if (viewModel.orderType.value == NetworkConstants.MY_REQUESTS) {
+            vv.findViewById<RadioButton>(R.id.radio_new).visibility = View.GONE
+        } else {
+            vv.findViewById<RadioButton>(R.id.radio_placed).visibility = View.GONE
+        }
+
         radioGroup.setOnCheckedChangeListener { group, viewID ->
             when (viewID) {
                 R.id.radio_all -> {
                     viewModel.status.value = Constants.FILTER_ORDER_STATUS_ALL
+                }
+                R.id.radio_new -> {
+                    viewModel.status.value = Constants.FILTER_ORDER_STATUS_NEW_PENDING
+                }
+                R.id.radio_placed -> {
+                    viewModel.status.value = Constants.FILTER_ORDER_STATUS_PLACED
                 }
                 R.id.radio_in_progress -> {
                     viewModel.status.value = Constants.FILTER_ORDER_STATUS_IN_PROGRESS
@@ -272,9 +289,9 @@ class MyOrdersFragment : BaseFragment(), IOrderItemClick {
                 R.id.radio_cancelled -> {
                     viewModel.status.value = Constants.FILTER_ORDER_STATUS_CANCELLED
                 }
-                R.id.radio_rejected -> {
-                    viewModel.status.value = Constants.FILTER_ORDER_STATUS_REJECT
-                }
+//                R.id.radio_rejected -> {
+//                    viewModel.status.value = Constants.FILTER_ORDER_STATUS_REJECT
+//                }
                 R.id.radio_delivered -> {
                     viewModel.status.value = Constants.FILTER_ORDER_STATUS_COMPLETED
                 }
@@ -302,6 +319,14 @@ class MyOrdersFragment : BaseFragment(), IOrderItemClick {
             Constants.FILTER_ORDER_STATUS_ALL -> {
                 radioGroup.check(R.id.radio_all)
                 tvReset.visibility = View.GONE
+            }
+            Constants.FILTER_ORDER_STATUS_PLACED -> {
+                radioGroup.check(R.id.radio_placed)
+                tvReset.visibility = View.VISIBLE
+            }
+            Constants.FILTER_ORDER_STATUS_NEW_PENDING -> {
+                radioGroup.check(R.id.radio_new)
+                tvReset.visibility = View.VISIBLE
             }
             Constants.FILTER_ORDER_STATUS_IN_PROGRESS -> {
                 radioGroup.check(R.id.radio_in_progress)
@@ -388,7 +413,25 @@ class MyOrdersFragment : BaseFragment(), IOrderItemClick {
                 intent.putExtra("data", ordersList[position])
                 startActivityForResult(intent, Constants.VIEW_REQ)
             }
-
+        } else if (purpose == Constants.FILTER_ORDER_STATUS_TRACK) {
+            val intent = Intent(activity, RequestStatusActivity::class.java)
+            intent.putExtra("data", ordersList[position])
+            startActivityForResult(intent, Constants.VIEW_REQ)
+        } else if (type == adapter.VIEW_TYPE_REQUEST_SUB_VIEW_TYPE_DELIVERY && purpose == Constants.ORDER_STATUS_REQ_REORDER) {
+            val intent = Intent(activity, StoreNearByListingActivity::class.java)
+            intent.putExtra("data", ordersList[position])
+            intent.putExtra("from", Constants.ORDER_STATUS_REQ_REORDER)
+            startActivity(intent)
+        } else if (type == adapter.VIEW_TYPE_REQUEST_SUB_VIEW_TYPE_SERVICE && purpose == Constants.ORDER_STATUS_REQ_REORDER) {
+            val intent = Intent(activity, ServicesListingActivity::class.java)
+            intent.putExtra("data", ordersList[position])
+            intent.putExtra("from", Constants.ORDER_STATUS_REQ_REORDER)
+            startActivity(intent)
+        } else if (type == adapter.VIEW_TYPE_REQUEST_SUB_VIEW_TYPE_COURIER && purpose == Constants.ORDER_STATUS_REQ_REORDER) {
+            val intent = Intent(activity, CourierGuysListing::class.java)
+            intent.putExtra("data", ordersList[position])
+            intent.putExtra("from", Constants.ORDER_STATUS_REQ_REORDER)
+            startActivity(intent)
         } else if (type == adapter.VIEW_TYPE_REQUEST_SUB_VIEW_TYPE_SERVICE && purpose == Constants.FILTER_ORDER_STATUS_VIEW) {
             if (ordersList[position].getRequestStatus() == "2") {
                 val intent = Intent(activity, RequestOffersActivity::class.java)

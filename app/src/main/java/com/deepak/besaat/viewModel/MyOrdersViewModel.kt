@@ -61,7 +61,7 @@ class MyOrdersViewModel(
         }
     }
 
-    fun acceptOrRejectJob(requestID:String,offer:String,status:String) {
+    fun acceptOrRejectJob(requestID: String, offer: String, status: String) {
         Coroutines.mainThread {
             progressBar.value = true
         }
@@ -69,7 +69,7 @@ class MyOrdersViewModel(
             try {
                 val response = repository.acceptOrRejectJob(
                     Constants.BEARER + " " + sharedPreferences.getString(Constants.TOKEN),
-                    requestID,offer, status
+                    requestID, offer, status
                 )
                 Coroutines.mainThread {
                     progressBar.value = false
@@ -94,7 +94,7 @@ class MyOrdersViewModel(
         }
     }
 
-    fun acceptOrRejectCancelRequest(requestID:String,status:String) {
+    fun acceptOrRejectCancelRequest(requestID: String, status: String) {
         Coroutines.mainThread {
             progressBar.value = true
         }
@@ -102,7 +102,7 @@ class MyOrdersViewModel(
             try {
                 val response = repository.acceptOrRejectCancelRequest(
                     Constants.BEARER + " " + sharedPreferences.getString(Constants.TOKEN),
-                    requestID,status
+                    requestID, status
                 )
                 Coroutines.mainThread {
                     progressBar.value = false
@@ -131,10 +131,12 @@ class MyOrdersViewModel(
         when (radioGroup.checkedRadioButtonId) {
             R.id.radioButtonMyRequests -> {
                 orderType.value = NetworkConstants.MY_REQUESTS
+                status.value = Constants.FILTER_ORDER_STATUS_ALL
                 getOrders()
             }
             R.id.radioButtonMyJobs -> {
                 orderType.value = (NetworkConstants.MY_JOBS)
+                status.value = Constants.FILTER_ORDER_STATUS_ALL
                 getOrders()
             }
             R.id.radioButtonDelivery -> {

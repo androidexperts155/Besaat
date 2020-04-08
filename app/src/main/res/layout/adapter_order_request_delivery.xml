@@ -220,6 +220,19 @@
                     tools:text="@string/reason_for_cancellation" />
 
                 <TextView
+                    android:id="@+id/tvCancellationRemarks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text='@{orderItem.cancellationRemarks!=null?orderItem.cancellationRemarks:""}'
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/_12ssp"
+                    android:visibility="@{orderItem.cancellationRemarks!=null?View.VISIBLE : View.GONE}"
+                    tools:text="@string/remarks" />
+
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
@@ -269,22 +282,6 @@
                         android:textAllCaps="true"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_14ssp" />
-
-                    <TextView
-                        android:id="@+id/tvReorder"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:background="@drawable/bg_white_stroke_blue"
-                        android:fontFamily="@font/roboto_regular"
-                        android:padding="@dimen/_6sdp"
-                        android:text="@string/reorder"
-                        android:textAlignment="center"
-                        android:textAllCaps="true"
-                        android:textColor="@color/lightestBlue"
-                        android:textSize="@dimen/_14ssp"
-                        android:visibility="@{(orderItem.requestStatus.equals(`3`)||orderItem.requestStatus.equals(`6`)||orderItem.requestStatus.equals(`5`))?View.VISIBLE : View.GONE}"
-                        tools:visibility="gone" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -327,6 +324,30 @@
                         android:textColor="@color/white"
                         android:textSize="@dimen/_14ssp" />
 
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_14sdp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="@{(orderItem.requestStatus.equals(`3`)||orderItem.requestStatus.equals(`6`)||orderItem.requestStatus.equals(`5`))?View.VISIBLE : View.GONE}"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:id="@+id/tvReorder"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:background="@drawable/bg_white_stroke_blue"
+                        android:fontFamily="@font/roboto_regular"
+                        android:padding="@dimen/_6sdp"
+                        android:text="@string/reorder"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textColor="@color/lightestBlue"
+                        android:textSize="@dimen/_14ssp" />
                 </LinearLayout>
 
             </LinearLayout>

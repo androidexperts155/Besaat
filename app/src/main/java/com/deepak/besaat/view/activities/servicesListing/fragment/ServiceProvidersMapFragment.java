@@ -112,7 +112,7 @@ public class ServiceProvidersMapFragment extends
     private static String curLat = "0.0";
     private static String curLng = "0.0";
     private static Bitmap markerIconBitmap;
-    private int markerHeight=70;
+    private int markerHeight = 70;
 
     //высота маркера
     private AbsoluteLayout.LayoutParams overlayLayoutParams;
@@ -225,7 +225,7 @@ public class ServiceProvidersMapFragment extends
 
                 if (!serviceProvidersArrayList.isEmpty()) {
 //                    if (serviceProvidersArrayList.get(0).getBitmapIcon() == null)
-                        new GetMapMarkerBitmap().execute();
+                    new GetMapMarkerBitmap().execute();
 
                     map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(serviceProvidersArrayList.get(serviceProvidersArrayList.size() - 1).getLatitude(), serviceProvidersArrayList.get(serviceProvidersArrayList.size() - 1).getLogitude()), 10.0f));
                 } else {
@@ -334,10 +334,8 @@ public class ServiceProvidersMapFragment extends
         textExpYear.setText(sourceDetails.getExpString());
 
         textRadius.setText(String.format("%s", sourceDetails.getDistanceString()));
-//        if (sourceDetails.getRating() != null) {
-//            textRating.setText(sourceDetails.getRating().toString());
-//            ratingBar.setRating(sourceDetails.getRating());
-//        }
+        textRating.setText(sourceDetails.getRatingString());
+        ratingBar.setRating(sourceDetails.getRatingFloat());
 
         //  getMapViewComponent.viewClicked(textRequest,sourceDetails.getLatitute().doubleValue(),sourceDetails.getLongitute().doubleValue());
         textRequest.setOnClickListener(new OnClickListener() {
@@ -454,8 +452,8 @@ public class ServiceProvidersMapFragment extends
 
         textRadius.setText(String.format("%s", sourceDetails.getDistanceString()));
 //        if (sourceDetails.getRating() != null) {
-//            textRating.setText(sourceDetails.getRating().toString());
-//            ratingBar.setRating(sourceDetails.getRating());
+        textRating.setText(sourceDetails.getRatingString());
+        ratingBar.setRating(sourceDetails.getRatingFloat());
 //        }
 
         //  getMapViewComponent.viewClicked(textRequest,sourceDetails.getLatitute().doubleValue(),sourceDetails.getLongitute().doubleValue());
@@ -577,29 +575,29 @@ public class ServiceProvidersMapFragment extends
         @Override
         protected Void doInBackground(Void... params) {
 //            for (int i = 0; i < serviceProvidersArrayList.size(); i++) {
-                try {
-                    if (catName.toLowerCase().equals("all") || catName.equals("")) {
-                        Bitmap b = ((BitmapDrawable) getActivity().getResources().getDrawable(R.drawable.icn_map_services_all)).getBitmap();
-                        Bitmap bitmapResized = Bitmap.createScaledBitmap(b, 70, markerHeight, false);
+            try {
+                if (catName.toLowerCase().equals("all") || catName.equals("")) {
+                    Bitmap b = ((BitmapDrawable) getActivity().getResources().getDrawable(R.drawable.icn_map_services_all)).getBitmap();
+                    Bitmap bitmapResized = Bitmap.createScaledBitmap(b, 70, markerHeight, false);
 //                        serviceProvidersArrayList.get(i).setBitmapIcon(bitmapResized);
-                        markerIconBitmap = bitmapResized;
-                    } else {
-                        Bitmap b = getBitmapFromURL(markerIcon);
-                        Bitmap bitmapResized = Bitmap.createScaledBitmap(b, 70, markerHeight, false);
+                    markerIconBitmap = bitmapResized;
+                } else {
+                    Bitmap b = getBitmapFromURL(markerIcon);
+                    Bitmap bitmapResized = Bitmap.createScaledBitmap(b, 70, markerHeight, false);
 //                        serviceProvidersArrayList.get(i).setBitmapIcon(bitmapResized);
-                        markerIconBitmap = bitmapResized;
-                    }
-                } catch (Exception e) {
-                    try {
-                        Bitmap b = ((BitmapDrawable) getActivity().getResources().getDrawable(R.drawable.icn_map_services_all)).getBitmap();
-                        Bitmap bitmapResized = Bitmap.createScaledBitmap(b, 70, markerHeight, false);
-//                        serviceProvidersArrayList.get(i).setBitmapIcon(bitmapResized);
-                        markerIconBitmap = bitmapResized;
-                    } catch (Exception e1) {
-                        Log.e("exp", "" + e1.getMessage());
-                    }
-
+                    markerIconBitmap = bitmapResized;
                 }
+            } catch (Exception e) {
+                try {
+                    Bitmap b = ((BitmapDrawable) getActivity().getResources().getDrawable(R.drawable.icn_map_services_all)).getBitmap();
+                    Bitmap bitmapResized = Bitmap.createScaledBitmap(b, 70, markerHeight, false);
+//                        serviceProvidersArrayList.get(i).setBitmapIcon(bitmapResized);
+                    markerIconBitmap = bitmapResized;
+                } catch (Exception e1) {
+                    Log.e("exp", "" + e1.getMessage());
+                }
+
+            }
 //            }
             return null;
         }

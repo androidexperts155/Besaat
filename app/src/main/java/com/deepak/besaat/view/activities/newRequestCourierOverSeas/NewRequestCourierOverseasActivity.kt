@@ -192,12 +192,27 @@ class NewRequestCourierOverseasActivity : BaseActivity() {
                                 )
                             ).toString()
                         )
-                        viewModel.fair.set(
-                            String.format(
-                                "%.2f",
-                                viewModel.fairPerDistanceUnit.get()!!.toDouble() * viewModel.distance.get()!!.toDouble()
-                            ).toDouble()
-                        )
+                        if (viewModel.distance.get()!!.toFloat() < 1.0f) {
+                            viewModel.fair.set(
+                                String.format(
+                                    "%.2f",
+                                    (viewModel.fairPerDistanceUnit.get()!!.toDouble() * 1.0f)
+                                ).toDouble()
+                            )
+                        } else {
+                            viewModel.fair.set(
+                                String.format(
+                                    "%.2f",
+                                    (viewModel.fairPerDistanceUnit.get()!!.toDouble() * viewModel.distance.get()!!.toDouble())
+                                ).toDouble()
+                            )
+                        }
+//                        viewModel.fair.set(
+//                            String.format(
+//                                "%.2f",
+//                                viewModel.fairPerDistanceUnit.get()!!.toDouble() * viewModel.distance.get()!!.toDouble()
+//                            ).toDouble()
+//                        )
                     }
                 }
             } else {
@@ -272,12 +287,29 @@ class NewRequestCourierOverseasActivity : BaseActivity() {
             if (pojo.getStatus() != null && pojo.getStatus()!!) {
                 if (pojo.getFair() != null) {
                     viewModel.fairPerDistanceUnit.set(pojo.getFair())
-                    viewModel.fair.set(
-                        String.format(
-                            "%.2f",
-                            (pojo.getFair()!! * viewModel.distance.get()!!.toDouble())
-                        ).toDouble()
-                    )
+
+                    if (viewModel.distance.get()!!.toFloat() < 1.0f) {
+                        viewModel.fair.set(
+                            String.format(
+                                "%.2f",
+                                (viewModel.fairPerDistanceUnit.get()!!.toDouble() * 1.0f)
+                            ).toDouble()
+                        )
+                    } else {
+                        viewModel.fair.set(
+                            String.format(
+                                "%.2f",
+                                (viewModel.fairPerDistanceUnit.get()!!.toDouble() * viewModel.distance.get()!!.toDouble())
+                            ).toDouble()
+                        )
+                    }
+
+//                    viewModel.fair.set(
+//                        String.format(
+//                            "%.2f",
+//                            (pojo.getFair()!! * viewModel.distance.get()!!.toDouble())
+//                        ).toDouble()
+//                    )
                 } else {
                     viewModel.fairPerDistanceUnit.set(0.0)
                     viewModel.fair.set(0.0)
@@ -405,12 +437,28 @@ class NewRequestCourierOverseasActivity : BaseActivity() {
                             )
                         ).toString()
                     )
-                    viewModel.fair.set(
-                        String.format(
-                            "%.2f",
-                            viewModel.fairPerDistanceUnit.get()!!.toDouble() * viewModel.distance.get()!!.toDouble()
-                        ).toDouble()
-                    )
+                    if (viewModel.distance.get()!!.toFloat() < 1.0f) {
+                        viewModel.fair.set(
+                            String.format(
+                                "%.2f",
+                                (viewModel.fairPerDistanceUnit.get()!!.toDouble() * 1.0f)
+                            ).toDouble()
+                        )
+                    } else {
+                        viewModel.fair.set(
+                            String.format(
+                                "%.2f",
+                                (viewModel.fairPerDistanceUnit.get()!!.toDouble() * viewModel.distance.get()!!.toDouble())
+                            ).toDouble()
+                        )
+                    }
+
+//                    viewModel.fair.set(
+//                        String.format(
+//                            "%.2f",
+//                            viewModel.fairPerDistanceUnit.get()!!.toDouble() * viewModel.distance.get()!!.toDouble()
+//                        ).toDouble()
+//                    )
                 }
 
                 if (sharedPref.getString(Constants.latitude) == viewModel.pickUpLatitude.get() &&
@@ -442,12 +490,28 @@ class NewRequestCourierOverseasActivity : BaseActivity() {
                         ).toString()
                     )
 
-                    viewModel.fair.set(
-                        String.format(
-                            "%.2f",
-                            viewModel.fairPerDistanceUnit.get()!!.toDouble() * viewModel.distance.get()!!.toDouble()
-                        ).toDouble()
-                    )
+                    if (viewModel.distance.get()!!.toFloat() < 1.0f) {
+                        viewModel.fair.set(
+                            String.format(
+                                "%.2f",
+                                (viewModel.fairPerDistanceUnit.get()!!.toDouble() * 1.0f)
+                            ).toDouble()
+                        )
+                    } else {
+                        viewModel.fair.set(
+                            String.format(
+                                "%.2f",
+                                (viewModel.fairPerDistanceUnit.get()!!.toDouble() * viewModel.distance.get()!!.toDouble())
+                            ).toDouble()
+                        )
+                    }
+
+//                    viewModel.fair.set(
+//                        String.format(
+//                            "%.2f",
+//                            viewModel.fairPerDistanceUnit.get()!!.toDouble() * viewModel.distance.get()!!.toDouble()
+//                        ).toDouble()
+//                    )
                 }
 
             } else if (resultCode == AutocompleteActivity.RESULT_ERROR) {

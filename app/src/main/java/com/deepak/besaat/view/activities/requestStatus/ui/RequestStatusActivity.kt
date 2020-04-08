@@ -240,7 +240,10 @@ class RequestStatusActivity : BaseActivity() {
 //        bg_light_pink_tl_bl_br_round_30
         tvUserName.text = request?.getProvider()!!.name
         tvName.text = request?.getTitle()
+
         tvPrice.text = request?.getChargesInCurrency()
+        if (request?.getProvider() != null && request?.getProvider()?.getOfferInCurrency() != null)
+            tvPrice.text = request?.getProvider()?.getOfferInCurrency()
 
         Picasso.get()
             .load(request?.getProvider()!!.image)
