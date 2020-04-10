@@ -36,6 +36,7 @@ import android.text.method.LinkMovementMethod
 import android.widget.TextView
 import com.deepak.besaat.Interfaces.LastLocationValues
 import com.google.android.gms.auth.api.Auth
+import com.google.gson.Gson
 import java.io.IOException
 
 
@@ -222,7 +223,7 @@ class SignupActivity : BaseActivity() {
                 }
                 sharedPref.setString(Constants.ROLE, it.user!!.role!!)
                 var int = Intent(this@SignupActivity, HomeActivity::class.java)
-                int.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                int.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
                 startActivity(int)
                 finishAffinity()
             } else {

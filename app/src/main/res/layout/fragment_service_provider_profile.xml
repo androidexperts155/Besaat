@@ -2,7 +2,9 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="serviceProviderModel"
             type="com.deepak.besaat.viewModel.ServiceProviderProfileViewModel" />
@@ -12,28 +14,29 @@
             type="com.deepak.besaat.model.getUserProfile.UserProfileResponse" />
 
 
-        <import type="android.view.View"/>
+        <import type="android.view.View" />
     </data>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_blue_bl_br_round_30">
+
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/rootLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/rootLayout"
             tools:context=".view.activities.createprofile.CreateProfileActivity">
+
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/constraintLayout1"
                 android:layout_marginTop="@dimen/_40sdp"
-                android:paddingBottom="@dimen/_70sdp"
                 android:background="@drawable/bg_light_green_tl_tr_round_30"
+                android:paddingBottom="@dimen/_70sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                >
+                app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout2"
@@ -52,8 +55,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_light_green_tl_tr_br_round_30"
-                        android:paddingBottom="@dimen/_16sdp"
                         android:elevation="@dimen/_2sdp"
+                        android:paddingBottom="@dimen/_16sdp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
@@ -69,9 +72,9 @@
                             android:ems="10"
                             android:fontFamily="@font/roboto_regular"
                             android:hint="@string/your_name"
-                            android:text="@={serviceProviderModel.name}"
                             android:inputType="textCapWords"
                             android:padding="@dimen/_16sdp"
+                            android:text="@={serviceProviderModel.name}"
                             android:textAlignment="viewStart"
                             android:textSize="@dimen/_13ssp"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -89,11 +92,11 @@
                             android:layout_marginEnd="16dp"
                             android:background="@drawable/bg_light_whitish_blue_tl_br_bl_round_30"
                             android:ems="10"
-                            android:text="@={serviceProviderModel.email}"
                             android:fontFamily="@font/roboto_regular"
                             android:hint="@string/email_address"
                             android:inputType="textEmailAddress"
                             android:padding="@dimen/_16sdp"
+                            android:text="@={serviceProviderModel.email}"
                             android:textAlignment="viewStart"
                             android:textSize="@dimen/_13ssp"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -141,8 +144,8 @@
                                 android:hint="@string/phone_number"
                                 android:imeOptions="actionDone"
                                 android:inputType="phone"
-                                android:text="@={serviceProviderModel.phone}"
                                 android:padding="@dimen/_8sdp"
+                                android:text="@={serviceProviderModel.phone}"
                                 android:textAlignment="viewStart" />
                         </LinearLayout>
 
@@ -174,9 +177,10 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/cabin_semi_bold"
-                                        android:text="0"
+                                        android:text="@{userDetail.data.completedJobs}"
                                         android:textColor="@color/colorLightBlack"
-                                        android:textSize="@dimen/_18ssp" />
+                                        android:textSize="@dimen/_18ssp"
+                                        tools:text="0" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
@@ -229,17 +233,19 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/robot_medium"
-                                        android:text="2"
+                                        android:text="@{userDetail.data.ratingString}"
                                         android:textColor="@color/colorYellow"
-                                        android:textSize="@dimen/_18ssp" />
+                                        android:textSize="@dimen/_18ssp"
+                                        tools:text="2" />
 
 
                                     <RatingBar
                                         style="@style/RatingBar"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:rating="2"
-                                        android:theme="@style/RatingBar" />
+                                        android:rating="@{userDetail.data.ratingFloat}"
+                                        android:theme="@style/RatingBar"
+                                        tools:rating="2" />
                                 </LinearLayout>
 
 
@@ -282,10 +288,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:button="@drawable/selector_radio_button_icon2"
+                                android:checked="true"
                                 android:fontFamily="@font/open_sans_regular"
                                 android:paddingStart="@dimen/_8sdp"
                                 android:text="@string/enable"
-                                android:checked="true"
                                 android:textAlignment="viewStart"
                                 android:textColor="@color/colorLightBlack"
                                 android:textSize="@dimen/_10ssp" />
@@ -295,11 +301,11 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:textAlignment="viewStart"
                                 android:button="@drawable/selector_radio_button_icon2"
                                 android:fontFamily="@font/open_sans_regular"
                                 android:paddingStart="@dimen/_8sdp"
                                 android:text="@string/disable"
+                                android:textAlignment="viewStart"
                                 android:textColor="@color/colorLightBlack"
                                 android:textSize="@dimen/_10ssp" />
                         </RadioGroup>
@@ -389,8 +395,8 @@
                         android:id="@+id/view2"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:visibility="@{userDetail.data.providerRole.equals(`1`)|userDetail.data.providerRole.equals(`3`)?View.VISIBLE:View.GONE}"
                         android:background="@color/dividerColor"
+                        android:visibility="@{userDetail.data.providerRole.equals(`1`)|userDetail.data.providerRole.equals(`3`)?View.VISIBLE:View.GONE}"
                         app:layout_constraintTop_toBottomOf="@+id/relativeLayoutService" />
 
                     <RelativeLayout
@@ -437,8 +443,8 @@
                         android:id="@+id/view3"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:visibility="@{userDetail.data.providerRole.equals(`2`)?View.VISIBLE:View.GONE}"
                         android:background="@color/dividerColor"
+                        android:visibility="@{userDetail.data.providerRole.equals(`2`)?View.VISIBLE:View.GONE}"
                         app:layout_constraintTop_toBottomOf="@+id/relativeLayoutCourier" />
 
 
@@ -446,18 +452,19 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:drawableStart="@drawable/ic_add_circle_outline"
+                        android:drawablePadding="@dimen/_4sdp"
                         android:fontFamily="@font/robot_medium"
                         android:text="@{userDetail.data.providerRole.equals(`1`) ? @string/addCourier:@string/addServices}"
-                        android:visibility="@{userDetail.data.providerRole.equals(`1`)|userDetail.data.providerRole.equals(`2`)?View.VISIBLE:View.GONE}"
-                        android:drawablePadding="@dimen/_4sdp"
-                        android:layout_marginTop="@dimen/_10sdp"
                         android:textColor="@color/colorPrimary"
+                        android:visibility="@{userDetail.data.providerRole.equals(`1`)|userDetail.data.providerRole.equals(`2`)?View.VISIBLE:View.GONE}"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/view3" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
                 <TextView
                     android:id="@+id/textViewContinue"
                     android:layout_width="0dp"
@@ -477,29 +484,30 @@
                     app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/circularImageView"
                 android:layout_width="@dimen/_80sdp"
                 android:layout_height="@dimen/_80sdp"
                 android:elevation="@dimen/_4sdp"
-                app:imageFromUrl="@{userDetail.data.image}"
                 android:src="@drawable/ic_user_placeholder"
+                app:imageFromUrl="@{userDetail.data.image}"
                 app:layout_constraintBottom_toBottomOf="@+id/constraintLayout1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
-          <!--  <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:scaleType="centerInside"
-                android:elevation="@dimen/_4sdp"
-                app:layout_constraintCircleRadius="@dimen/_38sdp"
-                app:layout_constraintCircle="@+id/circularImageView"
-                app:layout_constraintCircleAngle="135"
-                android:background="@drawable/bg_light_blue_circle"
-                android:src="@drawable/ic_camera"/>-->
+            <!--  <ImageView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_centerInParent="true"
+                  android:scaleType="centerInside"
+                  android:elevation="@dimen/_4sdp"
+                  app:layout_constraintCircleRadius="@dimen/_38sdp"
+                  app:layout_constraintCircle="@+id/circularImageView"
+                  app:layout_constraintCircleAngle="135"
+                  android:background="@drawable/bg_light_blue_circle"
+                  android:src="@drawable/ic_camera"/>-->
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>

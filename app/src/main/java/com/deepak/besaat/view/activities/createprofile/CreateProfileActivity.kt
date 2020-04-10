@@ -29,6 +29,7 @@ import com.deepak.besaat.view.activities.home.HomeActivity
 import com.deepak.besaat.viewModel.CreateProfileViewModel
 import com.example.possibility.hr.utils.FilesFunctions
 import com.facebook.FacebookSdk
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_create_profile.*
 import org.koin.android.ext.android.inject
 import java.io.IOException

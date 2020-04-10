@@ -19,7 +19,7 @@ class OrdersListAdapter(
     var activity: Activity,
     var type: String,
     var subType: String,
-    var currentUserId: Int
+    var currentUserId: Long
 ) :
     ListAdapter<Request, RecyclerView.ViewHolder>(StoreDetailDiffCallback()) {
     lateinit var binding: Any
@@ -111,12 +111,18 @@ class OrdersListAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder.itemViewType) {
             VIEW_TYPE_JOB_SUB_VIEW_TYPE_DELIVERY -> {
+                (holder as ViewHolderJobDelivery).binding.currentUserID = currentUserId
                 (holder as ViewHolderJobDelivery).binding.orderItem = getItem(position)
 
-                if (getItem(position).getCancelledById() != null && getItem(position).getCancelledById() != currentUserId) {
+                if (getItem(position).getCancelledById() != null && getItem(position).getCancelledByIdLong() != currentUserId && getItem(
+                        position
+                    ).cancellationPanelVisibility() == 1
+                ) {
                     holder.binding.llCancellationActions.visibility = View.VISIBLE
+                    holder.binding.tvCancellationQuestion.visibility = View.VISIBLE
                 } else {
                     holder.binding.llCancellationActions.visibility = View.GONE
+                    holder.binding.tvCancellationQuestion.visibility = View.GONE
                 }
 
                 holder.binding.rootLayout.setOnClickListener {
@@ -188,12 +194,20 @@ class OrdersListAdapter(
             //////////////////////////////////////////////////////////////////////////
 
             VIEW_TYPE_JOB_SUB_VIEW_TYPE_SERVICE -> {
+                (holder as ViewHolderJobServices).binding.currentUserID = currentUserId
                 (holder as ViewHolderJobServices).binding.orderItem = getItem(position)
-                if (getItem(position).getCancelledById() != null && getItem(position).getCancelledById() != currentUserId) {
+
+                if (getItem(position).getCancelledById() != null && getItem(position).getCancelledByIdLong() != currentUserId && getItem(
+                        position
+                    ).cancellationPanelVisibility() == 1
+                ) {
                     holder.binding.llCancellationActions.visibility = View.VISIBLE
+                    holder.binding.tvCancellationQuestion.visibility = View.VISIBLE
                 } else {
                     holder.binding.llCancellationActions.visibility = View.GONE
+                    holder.binding.tvCancellationQuestion.visibility = View.GONE
                 }
+
                 holder.binding.rootLayout.setOnClickListener {
                     if (iOrderItemClick != null) {
                         iOrderItemClick?.onOrderItemClick(
@@ -264,12 +278,18 @@ class OrdersListAdapter(
             ///////////////////////////////////////////////////////////////////////
 
             VIEW_TYPE_JOB_SUB_VIEW_TYPE_COURIER -> {
+                (holder as ViewHolderJobCourier).binding.currentUserID = currentUserId
                 (holder as ViewHolderJobCourier).binding.orderItem = getItem(position)
 
-                if (getItem(position).getCancelledById() != null && getItem(position).getCancelledById() != currentUserId) {
+                if (getItem(position).getCancelledById() != null && getItem(position).getCancelledByIdLong() != currentUserId && getItem(
+                        position
+                    ).cancellationPanelVisibility() == 1
+                ) {
                     holder.binding.llCancellationActions.visibility = View.VISIBLE
+                    holder.binding.tvCancellationQuestion.visibility = View.VISIBLE
                 } else {
                     holder.binding.llCancellationActions.visibility = View.GONE
+                    holder.binding.tvCancellationQuestion.visibility = View.GONE
                 }
 
                 holder.binding.rootLayout.setOnClickListener {
@@ -342,12 +362,18 @@ class OrdersListAdapter(
             //////////////////////////////// Requests/////////////////////////////
 
             VIEW_TYPE_REQUEST_SUB_VIEW_TYPE_DELIVERY -> {
+                (holder as ViewHolderReqDelivery).binding.currentUserID = currentUserId
                 (holder as ViewHolderReqDelivery).binding.orderItem = getItem(position)
 
-                if (getItem(position).getCancelledById() != null && getItem(position).getCancelledById() != currentUserId) {
+                if (getItem(position).getCancelledById() != null && getItem(position).getCancelledByIdLong() != currentUserId && getItem(
+                        position
+                    ).cancellationPanelVisibility() == 1
+                ) {
                     holder.binding.llCancellationActions.visibility = View.VISIBLE
+                    holder.binding.tvCancellationQuestion.visibility = View.VISIBLE
                 } else {
                     holder.binding.llCancellationActions.visibility = View.GONE
+                    holder.binding.tvCancellationQuestion.visibility = View.GONE
                 }
 
                 holder.binding.rootLayout.setOnClickListener {
@@ -421,12 +447,17 @@ class OrdersListAdapter(
 
             ///////////////////////////////////////////////////////////////////////////////
             VIEW_TYPE_REQUEST_SUB_VIEW_TYPE_SERVICE -> {
+                (holder as ViewHolderReqServices).binding.currentUserID = currentUserId
                 (holder as ViewHolderReqServices).binding.orderItem = getItem(position)
-
-                if (getItem(position).getCancelledById() != null && getItem(position).getCancelledById() != currentUserId) {
+                if (getItem(position).getCancelledById() != null && getItem(position).getCancelledByIdLong() != currentUserId && getItem(
+                        position
+                    ).cancellationPanelVisibility() == 1
+                ) {
                     holder.binding.llCancellationActions.visibility = View.VISIBLE
+                    holder.binding.tvCancellationQuestion.visibility = View.VISIBLE
                 } else {
                     holder.binding.llCancellationActions.visibility = View.GONE
+                    holder.binding.tvCancellationQuestion.visibility = View.GONE
                 }
 
                 holder.binding.rootLayout.setOnClickListener {
@@ -497,12 +528,18 @@ class OrdersListAdapter(
             }
             /////////////////////////////////////////////////////////////////////////////////////////
             VIEW_TYPE_REQUEST_SUB_VIEW_TYPE_COURIER -> {
+                (holder as ViewHolderReqCourier).binding.currentUserID = currentUserId
                 (holder as ViewHolderReqCourier).binding.orderItem = getItem(position)
 
-                if (getItem(position).getCancelledById() != null && getItem(position).getCancelledById() != currentUserId) {
+                if (getItem(position).getCancelledById() != null && getItem(position).getCancelledByIdLong() != currentUserId && getItem(
+                        position
+                    ).cancellationPanelVisibility() == 1
+                ) {
                     holder.binding.llCancellationActions.visibility = View.VISIBLE
+                    holder.binding.tvCancellationQuestion.visibility = View.VISIBLE
                 } else {
                     holder.binding.llCancellationActions.visibility = View.GONE
+                    holder.binding.tvCancellationQuestion.visibility = View.GONE
                 }
 
                 holder.binding.rootLayout.setOnClickListener {

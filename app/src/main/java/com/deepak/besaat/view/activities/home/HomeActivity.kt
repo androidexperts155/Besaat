@@ -324,9 +324,9 @@ class HomeActivity : BaseActivity(), KeyboardVisibilityEventListener,
             sharedPref.getString(Constants.USER_IMAGE),
             circularImageView
         )
-        textViewUserName.setText(sharedPref.getString(Constants.USER_NAME))
+        textViewUserName.text = sharedPref.getString(Constants.USER_NAME)
+//        tvRating.text=
         userType = sharedPref.getString(Constants.ROLE)
-
     }
 
     private fun logoutClick() {

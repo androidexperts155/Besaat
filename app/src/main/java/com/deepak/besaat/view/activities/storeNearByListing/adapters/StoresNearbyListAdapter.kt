@@ -56,10 +56,10 @@ class StoresNearbyListAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.textViewRequest.setOnClickListener {
             var int: Intent? = Intent(activity, NewRequestStore::class.java)
-            int?.putExtra("latitute", storeList.get(position).latitute!!)
-            int?.putExtra("longitute", storeList.get(position).longitute!!)
-            int?.putExtra("location", storeList.get(position).locAddress)
-            int?.putExtra("title", storeList.get(position).name)
+            int?.putExtra("latitute", storeList[position].latitute!!)
+            int?.putExtra("longitute", storeList[position].longitute!!)
+            int?.putExtra("location", storeList[position].locAddress)
+            int?.putExtra("title", storeList[position].name)
             int?.putExtra("from", "")
             int?.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
             activity.startActivity(int)

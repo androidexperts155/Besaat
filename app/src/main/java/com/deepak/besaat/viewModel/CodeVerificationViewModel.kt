@@ -10,6 +10,7 @@ import com.deepak.besaat.utils.*
 import com.deepak.besaat.view.activities.createprofile.CreateProfileActivity
 import com.deepak.besaat.view.activities.home.HomeActivity
 import com.deepak.besaat.view.activities.selectDeliveryTypes.SelectDeliveryTypes
+import com.google.gson.Gson
 
 class CodeVerificationViewModel(
     validations: Validations,

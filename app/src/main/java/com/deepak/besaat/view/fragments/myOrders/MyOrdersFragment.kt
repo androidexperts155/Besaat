@@ -83,7 +83,7 @@ class MyOrdersFragment : BaseFragment(), IOrderItemClick {
         if (role == Constants.ROLE_BUYER) {
             radioButtonMyJobs.visibility = View.GONE
         }
-        viewModel.status.value = Constants.FILTER_ORDER_STATUS_ALL
+        viewModel.status.value = Constants.FILTER_ALL
         viewModel.requestType.value = Constants.REQUEST_TYPE_STORE
         viewModel.orderType.value = NetworkConstants.MY_REQUESTS
         viewModel.getOrders()
@@ -95,7 +95,7 @@ class MyOrdersFragment : BaseFragment(), IOrderItemClick {
             activity!!,
             viewModel.orderType.value!!,
             viewModel.requestType.value!!,
-            sharedPref.getLong(Constants.USER_ID).toInt()
+            sharedPref.getLong(Constants.USER_ID)
         )
         binding.recyclerViewOrders.adapter = adapter
         adapter.attachOrderItemClick(this)
@@ -275,25 +275,25 @@ class MyOrdersFragment : BaseFragment(), IOrderItemClick {
         radioGroup.setOnCheckedChangeListener { group, viewID ->
             when (viewID) {
                 R.id.radio_all -> {
-                    viewModel.status.value = Constants.FILTER_ORDER_STATUS_ALL
+                    viewModel.status.value = Constants.FILTER_ALL
                 }
                 R.id.radio_new -> {
-                    viewModel.status.value = Constants.FILTER_ORDER_STATUS_NEW_PENDING
+                    viewModel.status.value = Constants.FILTER_PLACED_NEW
                 }
                 R.id.radio_placed -> {
-                    viewModel.status.value = Constants.FILTER_ORDER_STATUS_PLACED
+                    viewModel.status.value = Constants.FILTER_PLACED_NEW
                 }
                 R.id.radio_in_progress -> {
-                    viewModel.status.value = Constants.FILTER_ORDER_STATUS_IN_PROGRESS
+                    viewModel.status.value = Constants.FILTER_IN_PROGRESS
                 }
                 R.id.radio_cancelled -> {
-                    viewModel.status.value = Constants.FILTER_ORDER_STATUS_CANCELLED
+                    viewModel.status.value = Constants.FILTER_CANCELLED
                 }
 //                R.id.radio_rejected -> {
 //                    viewModel.status.value = Constants.FILTER_ORDER_STATUS_REJECT
 //                }
                 R.id.radio_delivered -> {
-                    viewModel.status.value = Constants.FILTER_ORDER_STATUS_COMPLETED
+                    viewModel.status.value = Constants.FILTER_COMPLETED
                 }
             }
         }
@@ -308,7 +308,7 @@ class MyOrdersFragment : BaseFragment(), IOrderItemClick {
         }
 
         tvReset.setOnClickListener {
-            viewModel.status.value = Constants.FILTER_ORDER_STATUS_ALL
+            viewModel.status.value = Constants.FILTER_ALL
             radioGroup.check(R.id.radio_all)
             tvReset.visibility = View.GONE
 //            commonDialog.dismiss()
@@ -316,31 +316,27 @@ class MyOrdersFragment : BaseFragment(), IOrderItemClick {
         }
 
         when (viewModel.status.value) {
-            Constants.FILTER_ORDER_STATUS_ALL -> {
+            Constants.FILTER_ALL -> {
                 radioGroup.check(R.id.radio_all)
                 tvReset.visibility = View.GONE
             }
-            Constants.FILTER_ORDER_STATUS_PLACED -> {
-                radioGroup.check(R.id.radio_placed)
+            Constants.FILTER_PLACED_NEW -> {
+                if (viewModel.orderType.value == NetworkConstants.MY_REQUESTS) {
+                    radioGroup.check(R.id.radio_placed)
+                } else {
+                    radioGroup.check(R.id.radio_new)
+                }
                 tvReset.visibility = View.VISIBLE
             }
-            Constants.FILTER_ORDER_STATUS_NEW_PENDING -> {
-                radioGroup.check(R.id.radio_new)
-                tvReset.visibility = View.VISIBLE
-            }
-            Constants.FILTER_ORDER_STATUS_IN_PROGRESS -> {
+            Constants.FILTER_IN_PROGRESS -> {
                 radioGroup.check(R.id.radio_in_progress)
                 tvReset.visibility = View.VISIBLE
             }
-            Constants.FILTER_ORDER_STATUS_CANCELLED -> {
+            Constants.FILTER_CANCELLED -> {
                 radioGroup.check(R.id.radio_cancelled)
                 tvReset.visibility = View.VISIBLE
             }
-            Constants.FILTER_ORDER_STATUS_REJECT -> {
-                radioGroup.check(R.id.radio_rejected)
-                tvReset.visibility = View.VISIBLE
-            }
-            Constants.FILTER_ORDER_STATUS_COMPLETED -> {
+            Constants.FILTER_COMPLETED -> {
                 radioGroup.check(R.id.radio_delivered)
                 tvReset.visibility = View.VISIBLE
             }
@@ -394,6 +390,17 @@ class MyOrdersFragment : BaseFragment(), IOrderItemClick {
                 adapter.notifyDataSetChanged()
             }
         }
+
+        if (requestCode == Constants.VIEW_REQ && resultCode == Activity.RESULT_CANCELED) {
+            if (data?.getSerializableExtra("data") != null) {
+                var request: Request = data.getSerializableExtra("data") as Request
+                ordersList[clickedPosition] = request
+                if (viewModel.requestType.value == Constants.REQUEST_TYPE_STORE)
+                    ordersList.removeAt(clickedPosition)
+                adapter.submitList(ordersList)
+                adapter.notifyDataSetChanged()
+            }
+        }
     }
 
     override fun onOrderItemClick(position: Int, type: Int, purpose: String, status: String) {
@@ -418,8 +425,19 @@ class MyOrdersFragment : BaseFragment(), IOrderItemClick {
             intent.putExtra("data", ordersList[position])
             startActivityForResult(intent, Constants.VIEW_REQ)
         } else if (type == adapter.VIEW_TYPE_REQUEST_SUB_VIEW_TYPE_DELIVERY && purpose == Constants.ORDER_STATUS_REQ_REORDER) {
-            val intent = Intent(activity, StoreNearByListingActivity::class.java)
+            val intent = Intent(activity, NewRequestStore::class.java)
             intent.putExtra("data", ordersList[position])
+
+            if (ordersList[position].getRequestType() == Constants.REQUEST_TYPE_STORE) {
+                intent.putExtra("latitute", ordersList[position].getPickupLatitude()!!.toDouble())
+                intent.putExtra("longitute", ordersList[position].getPickupLongitude()!!.toDouble())
+                intent.putExtra("location", ordersList[position].getPickupAddress())
+                intent.putExtra("title", ordersList[position].getName())
+                intent.putExtra("info", ordersList[position].getOrderInfo())
+                intent.putExtra("note", ordersList[position].getSpecialNote())
+                intent.putExtra("from", "")
+            }
+
             intent.putExtra("from", Constants.ORDER_STATUS_REQ_REORDER)
             startActivity(intent)
         } else if (type == adapter.VIEW_TYPE_REQUEST_SUB_VIEW_TYPE_SERVICE && purpose == Constants.ORDER_STATUS_REQ_REORDER) {

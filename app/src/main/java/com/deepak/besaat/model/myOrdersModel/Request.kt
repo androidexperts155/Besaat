@@ -170,6 +170,18 @@ class Request : Serializable {
         return cancelledById
     }
 
+
+    fun getCancelledByIdLong(): Long? {
+        if (cancelledById!=null)
+        {
+            return cancelledById?.toLong()
+        }
+        else{
+            return 0L
+        }
+
+    }
+
     fun setCancelledById(cancelledById: Int?) {
         this.cancelledById = cancelledById
     }
@@ -579,7 +591,7 @@ class Request : Serializable {
             R.drawable.radio_button_selected_yellow
         } else if (provider != null) {
             R.drawable.ic_check_circle_blue
-        } else if (requestStatus == "6" || requestStatus == "7" && provider == null) {
+        } else if (requestStatus == "6" || requestStatus == "7" || requestStatus == "3" && provider == null) {
             R.drawable.radio_button_selected_red
         } else {
             R.drawable.bg_transparent_stroke_gray_circle
@@ -589,7 +601,7 @@ class Request : Serializable {
     fun getImageDrawableStage2(): Int? {
         return if (requestStatus == "1" && provider == null) {
             R.drawable.bg_transparent_stroke_gray_circle
-        } else if (requestStatus == "6" || requestStatus == "7") {
+        } else if (requestStatus == "6" || requestStatus == "7"||requestStatus == "3") {
             R.drawable.radio_button_selected_red
         } else if (requestStatus == "4") {
             R.drawable.radio_button_selected_yellow
@@ -603,7 +615,7 @@ class Request : Serializable {
     fun getImageDrawableStage3(): Int? {
         return if (requestStatus == "1" || requestStatus == "4") {
             R.drawable.bg_transparent_stroke_gray_circle
-        } else if (requestStatus == "6" || requestStatus == "7") {
+        } else if (requestStatus == "6" || requestStatus == "7" || requestStatus == "3") {
             R.drawable.ic_cancel_order_status
         } else if (requestStatus == "5") {
             R.drawable.ic_check_circle_blue
@@ -632,7 +644,7 @@ class Request : Serializable {
         } else if (requestStatus == "6" || requestStatus == "7") {
             "#DD8B89"  //red
         } else if (requestStatus == "3") {
-            "#E1E1ED"  //red
+            "#DD8B89"  //red
         } else {
             "#64BFCD"  // blue
         }
@@ -641,7 +653,7 @@ class Request : Serializable {
     fun getTextColorStage2(): String? {
         return if (requestStatus == "1") {
             "#E1E1ED"  // grey
-        } else if (requestStatus == "6" || requestStatus == "7") {
+        } else if (requestStatus == "6" || requestStatus == "7"|| requestStatus == "3") {
             "#DD8B89"  //red
         } else if (requestStatus == "4") {
             "#E5B253"  // yellow
@@ -653,7 +665,7 @@ class Request : Serializable {
     }
 
     fun getTextStage3(): String? {
-        return if (requestStatus == "6" || requestStatus == "7") {
+        return if (requestStatus == "6" || requestStatus == "7"|| requestStatus == "3") {
             "Cancelled"
         } else {
             "Completed"
@@ -661,10 +673,10 @@ class Request : Serializable {
     }
 
     fun getTextColorStage3(): String? {
-        return if (requestStatus == "6" || requestStatus == "7") {
+        return if (requestStatus == "6" || requestStatus == "7"|| requestStatus == "3") {
             "#DD8B89"  //red
         } else if (requestStatus == "4") {
-            "#DD8B89"  // grey
+            "#E1E1ED"  // grey
         } else if (requestStatus == "5") {
             "#64BFCD"  // blue
         } else {
@@ -677,7 +689,7 @@ class Request : Serializable {
             return "#E1E1ED" // grey
         } else if (provider != null) {
             return "#64BFCD"  // blue
-        } else if (requestStatus == "6" || requestStatus == "7" && provider == null) {
+        } else if (requestStatus == "6" || requestStatus == "7"|| requestStatus == "3" && provider == null) {
             return "#DD8B89"  //red
         } else {
             return "#E1E1ED" // grey
@@ -687,7 +699,7 @@ class Request : Serializable {
     fun getColorStage2_3(): String? {
         if (requestStatus == "1" || requestStatus == "4") {
             return "#E1E1ED" // grey
-        } else if (requestStatus == "6" || requestStatus == "7") {
+        } else if (requestStatus == "6" || requestStatus == "7"|| requestStatus == "3") {
             return "#DD8B89"  //red
         } else if (requestStatus == "5") {
             return "#64BFCD"  // blue

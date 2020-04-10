@@ -113,7 +113,6 @@ class User : Serializable {
 
     ///////////////////////////////////////////
 
-
     fun getDistanceString(): String {
         return if (distance != null)
             String.format("%.2f km", distance!!.toFloat())

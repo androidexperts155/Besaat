@@ -7,6 +7,11 @@
 
         <import type="android.view.View" />
 
+
+        <variable
+            name="currentUserID"
+            type="Long" />
+
         <variable
             name="orderItem"
             type="com.deepak.besaat.model.myOrdersModel.Request" />
@@ -164,12 +169,43 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/tvLabel4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.4"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/client"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorDarkGray"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <TextView
+                        android:id="@+id/tvValue4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.6"
+                        android:fontFamily="@font/roboto_regular"
+                        android:maxLines="1"
+                        android:text='@{orderItem.user!=null?orderItem.user.name:"N/A"}'
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="@dimen/_12ssp"
+                        tools:text="1234" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="horizontal">
+
+                    <TextView
                         android:id="@+id/tvLabel2"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.4"
                         android:fontFamily="@font/roboto_regular"
-                        android:text="@string/delivery_location"
+                        android:text="@string/location"
                         android:textAlignment="viewStart"
                         android:textColor="@color/colorDarkGray"
                         android:textSize="@dimen/_12ssp" />
@@ -195,6 +231,38 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/tvLabel5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.4"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/payment_type"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorDarkGray"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <TextView
+                        android:id="@+id/tvValue5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.6"
+                        android:fontFamily="@font/roboto_regular"
+                        android:maxLines="1"
+                        android:text="@string/cash_on_delivery"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="@dimen/_12ssp"
+                        tools:text="1234" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="horizontal">
+
+                    <TextView
                         android:id="@+id/tvLabel3"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -213,37 +281,6 @@
                         android:fontFamily="@font/roboto_regular"
                         android:maxLines="1"
                         android:text="@{orderItem.pickupAddress}"
-                        android:textAlignment="viewStart"
-                        android:textColor="@color/colorLightBlack"
-                        android:textSize="@dimen/_12ssp"
-                        tools:text="1234" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/tvLabel4"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.4"
-                        android:fontFamily="@font/roboto_regular"
-                        android:text="@string/client_name"
-                        android:textAlignment="viewStart"
-                        android:textColor="@color/colorDarkGray"
-                        android:textSize="@dimen/_12ssp" />
-
-                    <TextView
-                        android:id="@+id/tvValue4"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.6"
-                        android:fontFamily="@font/roboto_regular"
-                        android:maxLines="1"
-                        android:text='@{orderItem.user!=null?orderItem.user.name:"N/A"}'
                         android:textAlignment="viewStart"
                         android:textColor="@color/colorLightBlack"
                         android:textSize="@dimen/_12ssp"
@@ -281,11 +318,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:fontFamily="@font/roboto_regular"
-                    android:text="@string/do_you_want_to_accept_cancellation_request_from_provider"
+                    android:text="@string/do_you_want_to_accept_cancellation_request_from_client"
                     android:textAlignment="viewStart"
                     android:textColor="@color/colorLightBlack"
                     android:textSize="@dimen/_12ssp"
-                    android:visibility="@{orderItem.cancellationReason!=null?View.VISIBLE : View.GONE}" />
+                    android:id="@+id/tvCancellationQuestion"/>
 
                 <LinearLayout
                     android:id="@+id/llCancellationActions"
@@ -295,7 +332,6 @@
                     android:layout_marginTop="@dimen/_14sdp"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:visibility="@{orderItem.cancellationPanelVisibility()==1?View.VISIBLE : View.GONE}"
                     android:weightSum="1">
 
                     <TextView

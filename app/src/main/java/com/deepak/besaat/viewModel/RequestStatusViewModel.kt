@@ -18,6 +18,7 @@ class RequestStatusViewModel(
     var wantToCancelClickObserver: MutableLiveData<Boolean> = MutableLiveData()
     var viewDirectionClickObserver: MutableLiveData<Boolean> = MutableLiveData()
     var chatClickObserver: MutableLiveData<Boolean> = MutableLiveData()
+    var reorderClickObserver: MutableLiveData<Boolean> = MutableLiveData()
     var rateServiceProviderClickObserver: MutableLiveData<Boolean> = MutableLiveData()
 
     fun rateServiceProviderClick(view: View) {
@@ -30,6 +31,10 @@ class RequestStatusViewModel(
 
     fun chatClick(view: View) {
         chatClickObserver.value = true
+    }
+
+    fun reorderClick(view: View) {
+        reorderClickObserver.value = true
     }
 
 

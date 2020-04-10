@@ -26,8 +26,12 @@ import com.deepak.besaat.utils.SharedPref
 import com.deepak.besaat.view.activities.BaseActivity
 import com.deepak.besaat.view.activities.cancelOrderRequest.ui.CancelOrderRequestActivity
 import com.deepak.besaat.view.activities.chat.ui.ChatActivity
+import com.deepak.besaat.view.activities.courierGuysListing.CourierGuysListing
+import com.deepak.besaat.view.activities.newRequestStore.NewRequestStore
 import com.deepak.besaat.view.activities.requestOffers.ui.RequestOffersActivity
 import com.deepak.besaat.view.activities.requestStatus.adapter.RequestSentToServiceProviderListAdapter
+import com.deepak.besaat.view.activities.servicesListing.ServicesListingActivity
+import com.deepak.besaat.view.activities.storeNearByListing.activities.StoreNearByListingActivity
 import com.deepak.besaat.viewModel.RequestStatusViewModel
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
@@ -107,6 +111,37 @@ class RequestStatusActivity : BaseActivity() {
         viewModel.wantToCancelClickObserver.observe(this, Observer {
             if (it) {
                 showWantToCancelDialog()
+            }
+        })
+
+        viewModel.reorderClickObserver.observe(this, Observer {
+            if (it) {
+                var intent: Intent = when {
+                    request?.getRequestType() == Constants.REQUEST_TYPE_STORE -> {
+                        Intent(this, NewRequestStore::class.java)
+                    }
+                    request?.getRequestType() == Constants.REQUEST_TYPE_SERVICE -> {
+                        Intent(this, ServicesListingActivity::class.java)
+                    }
+                    else -> {
+                        Intent(this, CourierGuysListing::class.java)
+                    }
+                }
+
+                if (request?.getRequestType() == Constants.REQUEST_TYPE_STORE) {
+
+                    intent.putExtra("latitute", request?.getPickupLatitude()!!.toDouble())
+                    intent.putExtra("longitute", request?.getPickupLongitude()!!.toDouble())
+                    intent.putExtra("location", request?.getPickupAddress())
+                    intent.putExtra("title", request?.getName())
+                    intent.putExtra("info", request?.getOrderInfo())
+                    intent.putExtra("note", request?.getSpecialNote())
+                    intent.putExtra("from", "")
+                }
+
+                intent.putExtra("data", request)
+                intent.putExtra("from", Constants.ORDER_STATUS_REQ_REORDER)
+                startActivity(intent)
             }
         })
 
@@ -301,6 +336,7 @@ class RequestStatusActivity : BaseActivity() {
             if (data?.getSerializableExtra("data") != null) {
                 request = data.getSerializableExtra("data") as Request
                 binding.orderItem = request
+                cancellationBannerStatusText()
             }
         }
     }

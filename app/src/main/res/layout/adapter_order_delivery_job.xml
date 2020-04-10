@@ -8,6 +8,10 @@
         <import type="android.view.View" />
 
         <variable
+            name="currentUserID"
+            type="Long" />
+
+        <variable
             name="orderItem"
             type="com.deepak.besaat.model.myOrdersModel.Request" />
 
@@ -347,15 +351,15 @@
                     tools:text="@string/remarks" />
 
                 <TextView
+                    android:id="@+id/tvCancellationQuestion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:fontFamily="@font/roboto_regular"
-                    android:text="@string/do_you_want_to_accept_cancellation_request_from_provider"
+                    android:text="@string/do_you_want_to_accept_cancellation_request_from_client"
                     android:textAlignment="viewStart"
                     android:textColor="@color/colorLightBlack"
-                    android:textSize="@dimen/_12ssp"
-                    android:visibility="@{orderItem.cancellationPanelVisibility()==1?View.VISIBLE : View.GONE}" />
+                    android:textSize="@dimen/_12ssp" />
 
                 <LinearLayout
                     android:id="@+id/llCancellationActions"
@@ -365,7 +369,6 @@
                     android:layout_marginTop="@dimen/_14sdp"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:visibility="@{orderItem.cancellationPanelVisibility()==1?View.VISIBLE : View.GONE}"
                     android:weightSum="1">
 
                     <TextView

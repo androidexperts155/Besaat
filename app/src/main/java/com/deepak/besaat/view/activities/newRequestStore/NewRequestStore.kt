@@ -91,11 +91,14 @@ class NewRequestStore : BaseActivity(), IServiceProviderClickListener {
         storeName = intent.getStringExtra("title") ?: "Store"
 
 //        edTitle.setText(title)
-
         lat = intent.getDoubleExtra("latitute", 0.0)
         long = intent.getDoubleExtra("longitute", 0.0)
         if (from != "MapFrag") {
             address = intent.getStringExtra("location") ?: ""
+        }
+        if (from == Constants.ORDER_STATUS_REQ_REORDER) {
+            editTextOrderInformation.setText(intent.getStringExtra("info") ?: "")
+            editTextSpecialNotes.setText(intent.getStringExtra("note") ?: "")
         }
 
         textViewTitleName.text = getString(R.string.new_request)

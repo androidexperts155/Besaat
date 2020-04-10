@@ -349,6 +349,7 @@
     <string name="remarks">Remarks</string>
     <string name="please_select_reason_to_cancel">Please select at least one reason to cancel.</string>
     <string name="do_you_want_to_accept_cancellation_request_from_provider">Do you want to accept cancellation request from provider?</string>
+    <string name="do_you_want_to_accept_cancellation_request_from_client">Do you want to accept cancellation request from client?</string>
     <string name="request_status">Request Status</string>
     <string name="rate_service_provider">rate service provider</string>
     <string name="rate_user_validation">To submit rating for user, please rate user at least 1 star.</string>
@@ -364,7 +365,6 @@
     <string name="drop_to">Drop To</string>
     <string name="support">Support</string>
     <string name="change_status">Change Status</string>
-    <string name="view_directions">View Directions</string>
     <string name="job_details">Job Details</string>
     <string name="picked_up">Picked Up</string>
     <string name="delay">Delay</string>
@@ -384,4 +384,6 @@
     <string name="no_offer">No offer yet! Please wait for provider\'s response to get best offer.</string>
     <string name="selected">Selected</string>
     <string name="_new">New</string>
+    <string name="view_directions">View Directions</string>
+    <!--    <string name="cash_on_delivery">Cash on Delivery</string>-->
 </resources>

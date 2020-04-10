@@ -388,7 +388,7 @@
                                 android:gravity="center"
                                 android:text="@string/successfully_delivered"
                                 android:textAlignment="center"
-                                android:textColor="@color/colorLightBlack"
+                                android:textColor="@color/DarkBlue"
                                 android:textSize="@dimen/_18ssp" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -429,7 +429,7 @@
                                 android:gravity="center"
                                 android:text="@string/cancelled1"
                                 android:textAlignment="center"
-                                android:textColor="@color/colorLightBlack"
+                                android:textColor="@color/colorLightPink"
                                 android:textSize="@dimen/_18ssp"
                                 tools:text="@string/cancelled_by_you" />
                         </LinearLayout>
@@ -611,7 +611,7 @@
                                 android:fontFamily="@font/robot_medium"
                                 android:maxWidth="@dimen/_150sdp"
                                 android:maxLines="1"
-                                android:text='@{orderItem.provider.offerInCurrency!=null?orderItem.provider.offerInCurrency:orderItem.chargesInCurrency}'
+                                android:text='@{orderItem.provider.offerInCurrency!=null?orderItem.provider.offerInCurrency:"N/A"}'
                                 android:textColor="@color/colorLightBlack"
                                 android:textSize="@dimen/_10ssp"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -719,7 +719,7 @@
                         android:weightSum="2">
 
                         <TextView
-                            android:id="@+id/tvYes"
+                            android:id="@+id/tvReorder"
                             android:layout_width="0dp"
                             android:layout_height="@dimen/_45sdp"
                             android:layout_marginEnd="8dp"
@@ -732,10 +732,9 @@
                             android:text="@string/reorder"
                             android:textAlignment="center"
                             android:textAllCaps="true"
+                            android:onClick="@{viewModel::reorderClick}"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/_14ssp">
-
-                        </TextView>
+                            android:textSize="@dimen/_14ssp"/>
 
 
                         <TextView

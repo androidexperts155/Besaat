@@ -72,13 +72,14 @@ class JobDetailsActivity : BaseActivity() {
 
         jobType = intent.getStringExtra("jobType")
 
-        if (jobType == Constants.REQUEST_TYPE_STORE) {
-            llTime.visibility = View.GONE
-            llDate.visibility = View.GONE
+        if (jobType == Constants.REQUEST_TYPE_SERVICE) {
+//            llTime.visibility = View.GONE
+//            llDate.visibility = View.GONE
+
         }
     }
 
-    fun setOrderDateTime() {
+    private fun setOrderDateTime() {
         if (request?.getServiceTimeFrom() != null) {
             tvValue2.text = request?.getOrderServiceDateOnlyFormatted()
             tvValue3.text = request?.getOrderServiceTimeOnlyFormatted()
@@ -86,7 +87,7 @@ class JobDetailsActivity : BaseActivity() {
             tvValue2.text = request?.getOrderDeliveryDateOnlyFormatted()
             tvValue3.text = request?.getOrderDeliveryTimeOnlyFormatted()
         } else {
-            tvValue2.text = request?.getOrderDateFormatted()
+            tvValue2.text = request?.getOrderDateOnlyFormatted()
             tvValue3.text = request?.getOrderTimeOnlyFormatted()
         }
     }
@@ -178,7 +179,18 @@ class JobDetailsActivity : BaseActivity() {
                     request = pojo.request
                     binding.orderItem = request
                     setOrderDateTime()
+//                    viewModel.getRequestDetails()
                 }
+            }
+            if (pojo.message != null && (pojo.message!!.contains(
+                    "Job reject",
+                    true
+                ) || pojo.message!!.contains("job accept", true))
+            ) {
+                var intent = Intent()
+                intent.putExtra("data", request)
+                setResult(Activity.RESULT_CANCELED, intent)
+                finish()
             }
         })
 

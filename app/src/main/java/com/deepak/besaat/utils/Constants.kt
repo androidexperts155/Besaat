@@ -53,7 +53,7 @@ object Constants {
     val REQUEST_TYPE_SERVICE = "2"
     val REQUEST_TYPE_COURIER = "3"
 
-    // for filter of order
+    // for status check
     val FILTER_ORDER_STATUS_ALL = "0"
     val FILTER_ORDER_STATUS_PLACED = "1"
     val FILTER_ORDER_STATUS_ACCEPT = "2"
@@ -66,7 +66,12 @@ object Constants {
     val FILTER_ORDER_STATUS_REQ_VIEW_OFFERS = "101" //dummy
     val FILTER_ORDER_STATUS_TRACK = "102" //dummy
 
-
+    // for filter order
+    val FILTER_ALL = "0"
+    val FILTER_PLACED_NEW = "1"
+    val FILTER_IN_PROGRESS = "2"
+    val FILTER_CANCELLED = "3"
+    val FILTER_COMPLETED = "4"
 
     // for status of order list  //1:placed,2:accept,3:reject,4:in_progress,5:completed,6:cancelled,7:requested for cancellation
     val ORDER_STATUS_PLACED = "1"
@@ -109,6 +114,7 @@ object Constants {
     val USER_ID = "userId"
     val USER_IMAGE = "userImage"
     val USER_NAME = "userName"
+    val USER_RATING = "userRating"
 
     val USER_Language = "userLanguage"
     val WALK_THROUGH = "walkThrough"
