@@ -71,7 +71,7 @@ class ServicesListingActivityViewModel(
                     sort.get()!!,order.get()!!,
                     search.get()!!,
                     service_id.get()!!, latitude.get()!!,
-                    logitude.get()!!, radius.get()!!
+                    logitude.get()!!, radius.get()!!, rating.get()!!
                 )
                 Coroutines.mainThread {
 //                    progressBar.value = false

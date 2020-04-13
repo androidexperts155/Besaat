@@ -117,7 +117,7 @@ class CourierGuysListingActivityViewModel(
                         sort_by.get()!!, order.get()!!,
                         courierStatus.get()!!, latitude.get()!!,
                         longitude.get()!!, fromCountry.get()!!,
-                        toCountry.get()!!, search.get()!!, radius.get()!!
+                        toCountry.get()!!, search.get()!!, radius.get()!!,rating.get()!!
                     )
                 }
                 else{
@@ -127,7 +127,7 @@ class CourierGuysListingActivityViewModel(
                         sort_by.get()!!, order.get()!!,
                         courierStatus.get()!!, latitude.get()!!,
                         longitude.get()!!, fromCountry.get()!!,
-                        toCountry.get()!!, search.get()!!
+                        toCountry.get()!!, search.get()!!,rating.get()!!
                     )
                 }
 

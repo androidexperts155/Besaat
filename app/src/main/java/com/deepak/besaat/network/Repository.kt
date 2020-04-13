@@ -146,7 +146,8 @@ class Repository(interceptor: NetworkConnectionInterceptor) : SafeApiRequest() {
         fromCountry: String,
         toCountry: String,
         search: String,
-        radius: String
+        radius: String,
+        rating: String
     ): GetCourierGuysPojo {
         return apiRequest {
             api.getCourierGuys(
@@ -160,7 +161,8 @@ class Repository(interceptor: NetworkConnectionInterceptor) : SafeApiRequest() {
                 fromCountry,
                 toCountry,
                 search,
-                radius
+                radius,
+                rating
             )
         }
     }
@@ -175,7 +177,8 @@ class Repository(interceptor: NetworkConnectionInterceptor) : SafeApiRequest() {
         longitude: String,
         fromCountry: String,
         toCountry: String,
-        search: String
+        search: String,
+        rating: String
     ): GetCourierGuysPojo {
         return apiRequest {
             api.getCourierGuysOverSeas(
@@ -188,7 +191,8 @@ class Repository(interceptor: NetworkConnectionInterceptor) : SafeApiRequest() {
                 longitude,
                 fromCountry,
                 toCountry,
-                search
+                search,
+                rating
             )
         }
     }
@@ -520,7 +524,8 @@ class Repository(interceptor: NetworkConnectionInterceptor) : SafeApiRequest() {
         service_id: String,
         latitude: String,
         logitude: String,
-        radius: String
+        radius: String,
+        rating: String
     ): GetProvidersPojo {
         return apiRequest {
             api.getServiceProviders(
@@ -532,7 +537,8 @@ class Repository(interceptor: NetworkConnectionInterceptor) : SafeApiRequest() {
                 service_id,
                 latitude,
                 logitude,
-                radius
+                radius,
+                rating
             )
         }
     }

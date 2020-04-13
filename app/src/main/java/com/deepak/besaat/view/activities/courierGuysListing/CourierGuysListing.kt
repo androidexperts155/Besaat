@@ -274,6 +274,7 @@ class CourierGuysListing : BaseActivity(), DeliveryTypesAdapter.OnDeliveryTypeSe
         viewModel.sort_by.set(Constants.SORT_DISTANCE) //sort_by(0=>distance, 1=>rating)
         viewModel.order.set(Constants.ORDER_LOWEST)  //order(0 => highest, 1=> lowest)
         viewModel.radius.set(defaultRadius)
+        viewModel.rating.set("All")
 
 
         var countryName = getCurrentCountry()
