@@ -106,7 +106,7 @@ class ServicesListingActivity : BaseActivity(), IServiceCategory {
 
         radioGroup.setOnCheckedChangeListener { group, viewID ->
             if (viewID == R.id.radia_id11) {
-                viewModel.rating.set("All")
+                viewModel.rating.set("0")
             }
             if (viewID == R.id.radia_id1) {
                 viewModel.rating.set("5")
@@ -155,7 +155,7 @@ class ServicesListingActivity : BaseActivity(), IServiceCategory {
 
         tvReset.setOnClickListener {
             viewModel.radius.set(defaultDistance)
-            viewModel.rating.set("All")
+            viewModel.rating.set("0")
             radioGroup.check(R.id.radia_id11)
             selectedDistance = viewModel.radius.get()!!
             tvDistance.text = String.format("%s km", viewModel.radius.get())
@@ -187,7 +187,7 @@ class ServicesListingActivity : BaseActivity(), IServiceCategory {
         })
 
         when (viewModel.rating.get()) {
-            "All" -> {
+            "0" -> {
                 radioGroup.check(R.id.radia_id11)
             }
             "5" -> {
@@ -244,7 +244,7 @@ class ServicesListingActivity : BaseActivity(), IServiceCategory {
     {
         viewModel.service_id.set("0")
         viewModel.radius.set(defaultDistance)
-        viewModel.rating.set("All")
+        viewModel.rating.set("0")
         viewModel.search.set("")
         viewModel.sort.set(Constants.SORT_DISTANCE)
         viewModel.order.set(Constants.ORDER_LOWEST)

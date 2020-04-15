@@ -21,10 +21,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.activities.jobDetails.ui.JobDetailsActivity"
+        <activity android:name=".view.activities.messagesList.ui.MessagesListActivity"></activity>
+        <activity
+            android:name=".view.activities.jobDetails.ui.JobDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/lightBlueStatusBar"
-            android:windowSoftInputMode="stateAlwaysHidden"/>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".view.activities.cancelOrderRequest.ui.CancelOrderRequestActivity"
             android:screenOrientation="portrait"

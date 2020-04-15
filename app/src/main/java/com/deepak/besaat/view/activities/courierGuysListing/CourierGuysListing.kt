@@ -27,6 +27,7 @@ import com.deepak.besaat.R
 import com.deepak.besaat.databinding.ActivityCourierGuysListingBinding
 import com.deepak.besaat.model.courierGuysModel.Courier
 import com.deepak.besaat.model.courierGuysModel.GetDeliveryTypesPojo
+import com.deepak.besaat.network.NetworkConstants
 import com.deepak.besaat.utils.*
 import com.deepak.besaat.view.activities.BaseActivity
 import com.deepak.besaat.view.activities.courierGuysListing.adapter.CourierGuyzListAdapter
@@ -61,7 +62,7 @@ class CourierGuysListing : BaseActivity(), DeliveryTypesAdapter.OnDeliveryTypeSe
     var courierGuysList: MutableList<Courier> = ArrayList()
     var deliveryTypesList: MutableList<GetDeliveryTypesPojo.Datum> = ArrayList()
 
-    val url: String = "get-couriers"
+    val url: String = NetworkConstants.GET_COURIERS
     var markerIcon = ""
     var defaultRadius = "15"
     var distanceMin = 1
@@ -124,7 +125,7 @@ class CourierGuysListing : BaseActivity(), DeliveryTypesAdapter.OnDeliveryTypeSe
 
         radioGroup.setOnCheckedChangeListener { group, viewID ->
             if (viewID == R.id.radia_id11) {
-                viewModel.rating.set("All")
+                viewModel.rating.set("0")
             }
             if (viewID == R.id.radia_id1) {
                 viewModel.rating.set("5")
@@ -173,7 +174,7 @@ class CourierGuysListing : BaseActivity(), DeliveryTypesAdapter.OnDeliveryTypeSe
 
         tvReset.setOnClickListener {
             viewModel.radius.set(defaultRadius)
-            viewModel.rating.set("All")
+            viewModel.rating.set("0")
             radioGroup.check(R.id.radia_id11)
             selectedDistance = viewModel.radius.get()!!
             tvDistance.text = String.format("%s km", viewModel.radius.get())
@@ -205,7 +206,7 @@ class CourierGuysListing : BaseActivity(), DeliveryTypesAdapter.OnDeliveryTypeSe
         })
 
         when (viewModel.rating.get()) {
-            "All" -> {
+            "0" -> {
                 radioGroup.check(R.id.radia_id11)
             }
             "5" -> {
@@ -274,7 +275,7 @@ class CourierGuysListing : BaseActivity(), DeliveryTypesAdapter.OnDeliveryTypeSe
         viewModel.sort_by.set(Constants.SORT_DISTANCE) //sort_by(0=>distance, 1=>rating)
         viewModel.order.set(Constants.ORDER_LOWEST)  //order(0 => highest, 1=> lowest)
         viewModel.radius.set(defaultRadius)
-        viewModel.rating.set("All")
+        viewModel.rating.set("0")
 
 
         var countryName = getCurrentCountry()

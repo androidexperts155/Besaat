@@ -334,7 +334,7 @@ interface Api {
         @Field("latitude") latitude: String,
         @Field("logitude") logitude: String,
         @Field("radius") radius: String,
-        @Field("rating") rating: String
+        @Field("filter_by_rating") rating: String
     ): Response<GetProvidersPojo>
 
 
@@ -354,7 +354,7 @@ interface Api {
         @Field("to_country") toCountry: String,
         @Field("search") search: String,
         @Field("radius") radius: String,
-        @Field("rating") rating: String
+        @Field("filter_by_rating") rating: String
     ): Response<GetCourierGuysPojo>
 
     @FormUrlEncoded
@@ -370,7 +370,7 @@ interface Api {
         @Field("from_country") fromCountry: String,
         @Field("to_country") toCountry: String,
         @Field("search") search: String,
-        @Field("rating") rating: String
+        @Field("filter_by_rating") rating: String
     ): Response<GetCourierGuysPojo>
 
     @GET(NetworkConstants.GET_DELIVERY_TYPES)

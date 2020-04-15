@@ -21,6 +21,7 @@ object NetworkConstants {
     const val ADD_TRIP = "add-trip"
     const val EDIT_TRIP = "edit-trip"
     const val DELETE_TRIP ="delete-trip"
+    const val GET_COURIERS ="get-couriers"
     const val MY_REQUESTS = "my-requests"
     const val MY_JOBS = "my-jobs"
     const val REQUEST_DETAILS = "request-details"
