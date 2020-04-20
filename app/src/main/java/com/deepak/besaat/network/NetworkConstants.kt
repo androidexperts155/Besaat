@@ -35,4 +35,5 @@ object NetworkConstants {
     const val ACCEPT_OR_REJECT_CANCEL_REQUEST = "accept-or-reject-cancel-request" // or Order from both side jobs and request
     const val RATE_USER = "rate-user"
     const val CHANGE_ORDER_STATUS = "change-status"  // for jobs
+    const val ORDER_CHAT_LIST = "order-chat-list"  // messages/User list
 }

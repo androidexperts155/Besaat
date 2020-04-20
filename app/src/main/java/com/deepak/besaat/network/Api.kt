@@ -457,4 +457,7 @@ interface Api {
     @GET(NetworkConstants.REQUEST_CANCELLATION_REASONS)
     suspend fun getCancellationReasons(@Header("authorization") authorization: String): Response<JsonElement>
 
+    @GET(NetworkConstants.ORDER_CHAT_LIST)
+    suspend fun getOrderChatList(@Header("authorization") authorization: String): Response<JsonElement>
+
 }

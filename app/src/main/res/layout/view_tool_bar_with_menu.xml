@@ -43,6 +43,17 @@
             android:tint="@android:color/white"
             android:visibility="gone"
             app:srcCompat="@drawable/ic_search" />
+
+        <ImageView
+            android:id="@+id/imageViewMessages"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="15dp"
+            android:padding="@dimen/_1sdp"
+            android:layout_centerVertical="true"
+            android:visibility="visible"
+            app:srcCompat="@drawable/ic_messages" />
     </RelativeLayout>
     <!-- <LinearLayout
          android:id="@+id/appBarLayout"

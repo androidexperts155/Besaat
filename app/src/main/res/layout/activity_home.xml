@@ -49,16 +49,6 @@
             android:visibility="gone"
             app:srcCompat="@drawable/ic_menu_2" />
 
-        <ImageView
-            android:id="@+id/imageViewMessages"
-            android:layout_width="@dimen/_24sdp"
-            android:layout_height="@dimen/_24sdp"
-            android:layout_alignParentEnd="true"
-            android:layout_margin="15dp"
-            android:layout_marginTop="8dp"
-            android:padding="@dimen/_4sdp"
-            android:visibility="visible"
-            app:srcCompat="@drawable/ic_messages" />
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout1"

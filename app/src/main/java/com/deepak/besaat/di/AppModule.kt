@@ -38,6 +38,7 @@ object AppModule {
         viewModel { NewRequestCourierViewModel(get(),get(),get()) }
         viewModel { ChatViewModel(get(),get(),get()) }
         viewModel { MyOrdersViewModel(get(),get(),get()) }
+        viewModel { MessageListViewModel(get(),get(),get()) }
         viewModel { CourierGuysListingActivityViewModel(get(),get()) }
         viewModel { CourierUserDetailsViewModel(get(),get(),get()) }
         viewModel { ServiceProviderProfileViewModel(get()) }

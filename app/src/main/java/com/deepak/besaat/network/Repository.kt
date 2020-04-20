@@ -202,6 +202,11 @@ class Repository(interceptor: NetworkConnectionInterceptor) : SafeApiRequest() {
         return apiRequest { api.getCancellationReasons(authorization) }
     }
 
+
+    suspend fun getOrderChatList(authorization: String): JsonElement {
+        return apiRequest { api.getOrderChatList(authorization) }
+    }
+
     suspend fun getOrders(
         url: String,
         authorization: String,

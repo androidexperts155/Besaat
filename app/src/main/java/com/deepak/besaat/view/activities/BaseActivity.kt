@@ -84,6 +84,7 @@ open class BaseActivity : AppCompatActivity(), View.OnClickListener {
         lateinit var topRelative: RelativeLayout
 
         lateinit var imageViewMenu: ImageView
+        lateinit var imageViewMessages: ImageView
         lateinit var textViewTitle: TextView
         lateinit var searchEdit: EditText
         lateinit var imageViewbackArrow: ImageView
@@ -204,6 +205,7 @@ open class BaseActivity : AppCompatActivity(), View.OnClickListener {
         appBarLayout = view.findViewById(R.id.appBarLayout)
         textViewTitle = view.findViewById<TextView>(R.id.textViewTitle)
         imageViewMenu = view.findViewById<ImageView>(R.id.imageViewMenu)
+        imageViewMessages = view.findViewById<ImageView>(R.id.imageViewMessages)
         topRelative = view.findViewById<RelativeLayout>(R.id.topRelative)
 
         context.supportActionBar!!.customView = view
