@@ -34,7 +34,7 @@ class WalkThroughActivity : BaseActivity() {
     //<editor-fold desc="view pager adapter set here">
     fun setUpAdapter(){
         items = resources.getStringArray(R.array.welcome_screens_titles)
-        icons = getResources().obtainTypedArray(R.array.welcome_screens_images)
+        icons = resources.obtainTypedArray(R.array.welcome_screens_images)
         var adapter=WalkThroughAdapter(items,icons)
         viewPager.adapter=adapter
         indicator.setViewPager(viewPager)

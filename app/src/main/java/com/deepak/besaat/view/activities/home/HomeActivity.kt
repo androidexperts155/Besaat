@@ -42,6 +42,7 @@ import androidx.lifecycle.Observer
 import com.deepak.besaat.Interfaces.CloseOpenDrawerInterface
 import com.deepak.besaat.Interfaces.InterfaceBackAlert
 import com.deepak.besaat.view.activities.home.viewModel.HomeActivityViewModel
+import com.deepak.besaat.view.activities.messagesList.ui.MessagesListActivity
 import com.deepak.besaat.view.fragments.InprogressFragment
 import com.deepak.besaat.view.fragments.MyVisitFragment.MyVisitFragment
 import com.deepak.besaat.view.fragments.myOrders.MyOrdersFragment
@@ -277,11 +278,17 @@ class HomeActivity : BaseActivity(), KeyboardVisibilityEventListener,
         menuClickListener()
         logoutClick()
         setData()
+        clicks()
         topBarExtraLay.visibility = View.GONE
-
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-
         //KeyboardVisibilityEvent.setEventListener(this,this)
+    }
+
+    private fun clicks() {
+        BaseActivity.imageViewMessages.setOnClickListener {
+            var intent = Intent(this, MessagesListActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun initObserverFun() {
@@ -534,7 +541,7 @@ class HomeActivity : BaseActivity(), KeyboardVisibilityEventListener,
     }
 
 
-    fun setNavigationAdapter() {
+    private fun setNavigationAdapter() {
         Log.e("UserType", "user type is   " + sharedPref.getString(Constants.ROLE))
         var type = sharedPref.getString(Constants.ROLE)
         var navigationItems: Array<String>
@@ -567,7 +574,6 @@ class HomeActivity : BaseActivity(), KeyboardVisibilityEventListener,
         bottomNavigation.setOnClickMenuListener {
             val currentFragment = supportFragmentManager.findFragmentById(R.id.container)
             when (it.id) {
-
                 1 -> {
                     visitBool = false
                     topBarExtraLay.visibility = View.GONE
@@ -952,7 +958,6 @@ class HomeActivity : BaseActivity(), KeyboardVisibilityEventListener,
             super.onBackPressed()
         }
     }
-
 
     private fun checkPermissionss(): Boolean {
         val permissionState = ActivityCompat.checkSelfPermission(

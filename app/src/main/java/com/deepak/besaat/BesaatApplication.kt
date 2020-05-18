@@ -8,9 +8,7 @@ import org.koin.core.context.startKoin
 
 
 class BesaatApplication:Application() {
-    companion object{
-
-    }
+    companion object;
 
 
     override fun onCreate() {

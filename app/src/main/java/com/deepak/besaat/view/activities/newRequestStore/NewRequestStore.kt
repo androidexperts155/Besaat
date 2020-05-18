@@ -60,6 +60,10 @@ class NewRequestStore : BaseActivity(), IServiceProviderClickListener {
     var long: Double? = null
     var address: String? = null
     var dadress: String? = null
+
+    var dropLat: Double = 0.0
+    var dropLong: Double = 0.0
+
     var radiusValue: Any? = null
     var fairAmount: Double? = null
     var fair: String? = null
@@ -134,11 +138,17 @@ class NewRequestStore : BaseActivity(), IServiceProviderClickListener {
                 sharedPref.getString(Constants.latitude).toDouble(),
                 sharedPref.getString(Constants.longitude).toDouble()
             )
+            dropLat = sharedPref.getString(Constants.latitude).toDouble()
+            dropLong = sharedPref.getString(Constants.longitude).toDouble()
+
         } else {
             completeAddress = getCompleteAddressString(
                 sharedPref.getString(Constants.latChanged).toDouble(),
                 sharedPref.getString(Constants.longChanged).toDouble()
             )
+
+            dropLat = sharedPref.getString(Constants.latChanged).toDouble()
+            dropLong = sharedPref.getString(Constants.longChanged).toDouble()
         }
         Log.e("Address", completeAddress)
         dropAddress.text = completeAddress
@@ -193,9 +203,10 @@ class NewRequestStore : BaseActivity(), IServiceProviderClickListener {
 
 
         linearLayout11.setOnClickListener {
-            var intent =
-                Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN, fields).build(this)
-            startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE)
+            initPlaceAutoCompleteActivity(this, Constants.REQUEST_DROP_LOCATION, "")
+//            var intent =
+//                Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN, fields).build(this)
+//            startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE)
         }
         var authorization =
             Constants.BEARER + " " + sharedPref.getString(Constants.TOKEN)
@@ -212,8 +223,6 @@ class NewRequestStore : BaseActivity(), IServiceProviderClickListener {
                 var authorization =
                     Constants.BEARER + " " + sharedPref.getString(Constants.TOKEN)
 
-
-
                 if (validation()) {
 
                     var providerID = selectedProviderIDs.toString().removeSurrounding("[", "]")
@@ -226,9 +235,9 @@ class NewRequestStore : BaseActivity(), IServiceProviderClickListener {
                         textCurrentAddress.text.toString(),
                         lat.toString(),
                         long.toString(),
-                        completeAddress,
-                        sharedPref.getString(Constants.latitude),
-                        sharedPref.getString(Constants.longitude),
+                        dropAddress.text.toString().trim(),
+                        dropLat.toString(),
+                        dropLong.toString(),
                         editTextOrderInformation.text.toString(),
                         editTextSpecialNotes.text.toString(),
                         fairAmount.toString(),
@@ -344,6 +353,15 @@ class NewRequestStore : BaseActivity(), IServiceProviderClickListener {
             )
             return paramBool
         }
+        if (radiusValue.toString().toDouble() > 20.0) {
+            paramBool = false
+            commonFunctions.showFeedbackMessage(
+                scrollView,
+                "Distance must be less than or equal to 20 KM"
+            )
+            return paramBool
+        }
+
         if (editTextOrderInformation.text.toString() == "") {
             paramBool = false
             commonFunctions.showFeedbackMessage(
@@ -374,12 +392,12 @@ class NewRequestStore : BaseActivity(), IServiceProviderClickListener {
                 if (servicesProviderList == null) {
                     commonFunctions.showFeedbackMessage(
                         scrollView,
-                        "No nearby provider,\n you can choose auto transmission"
+                        "No nearby provider for this location"
                     )
                 } else if (servicesProviderList != null && servicesProviderList!!.isEmpty()) {
                     commonFunctions.showFeedbackMessage(
                         scrollView,
-                        "No nearby provider,\n you can choose auto transmission"
+                        "No nearby provider for this location"
                     )
                 } else {
                     commonFunctions.showFeedbackMessage(
@@ -387,6 +405,23 @@ class NewRequestStore : BaseActivity(), IServiceProviderClickListener {
                         "please select at least one provider"
                     )
                 }
+                return paramBool
+            }
+        }
+        if (type == 1) {
+            if (servicesProviderList == null) {
+                paramBool = false
+                commonFunctions.showFeedbackMessage(
+                    scrollView,
+                    "No nearby provider for this location"
+                )
+                return paramBool
+            } else if (servicesProviderList != null && servicesProviderList!!.isEmpty()) {
+                paramBool = false
+                commonFunctions.showFeedbackMessage(
+                    scrollView,
+                    "No nearby provider for this location"
+                )
                 return paramBool
             }
         }
@@ -419,12 +454,12 @@ class NewRequestStore : BaseActivity(), IServiceProviderClickListener {
                     if (servicesProviderList!!.isEmpty())
                         commonFunctions.showFeedbackMessage(
                             scrollView,
-                            "No nearby provider,\n you can choose auto transmission"
+                            "No nearby provider for this location"
                         )
                 } else {
                     commonFunctions.showFeedbackMessage(
                         scrollView,
-                        "No nearby provider,\n you can choose auto transmission"
+                        "No nearby provider for this location"
                     )
                 }
             }
@@ -493,17 +528,22 @@ class NewRequestStore : BaseActivity(), IServiceProviderClickListener {
         try {
             fair = it?.getString("fair")
             Log.e("RequestResponse", "fair is $fair")
-            fairAmount = (fair?.toDouble())?.times((radiusValue.toString().toDouble()))
-            Log.e("RequestResponse", "fair calculation is  $fairAmount")
-            if (fairAmount.toString().length > 3) {
-                fairText.text = "$" + fairAmount.toString().substring(0, 4) + " "
-            } else if (fairAmount.toString().length > 2) {
-                fairText.text = "$" + fairAmount.toString().substring(0, 3) + " "
-            } else if (fairAmount.toString().length > 1) {
-                fairText.text = "$" + fairAmount.toString().substring(0, 2) + " "
+
+            fairAmount = if (radiusValue.toString().toFloat() < 1.0f) {
+                String.format(
+                    "%.2f",
+                    (fair?.toDouble())
+                ).toDouble()
             } else {
-                fairText.text = "$" + "0.0" + " "
+                String.format(
+                    "%.2f",
+                    (fair?.toFloat())?.times(radiusValue.toString().toFloat())
+                ).toDouble()
             }
+            fairText.text = String.format(
+                "$%s", fairAmount.toString()
+            )
+
         } catch (e: JSONException) {
             e.printStackTrace()
         }
@@ -596,18 +636,43 @@ class NewRequestStore : BaseActivity(), IServiceProviderClickListener {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 5) {
+        if (requestCode == Constants.REQUEST_DROP_LOCATION) {
             if (resultCode == Activity.RESULT_OK) {
                 if (data != null) {
                     val place = Autocomplete.getPlaceFromIntent(data)
                     var longitude = place.latLng!!.longitude
                     var latitude = place.latLng!!.latitude
                     Log.e("longitude", longitude.toString())
+
+                    dropLat = latitude
+                    dropLong = longitude
                     Log.e("latitude", latitude.toString())
 
                     var completeAddress = getCompleteAddressString(latitude, longitude)
                     Log.e("Address", completeAddress)
                     dropAddress.text = completeAddress
+
+                    var distance =
+                        getDistance(LatLng(lat!!, long!!), LatLng(latitude, longitude)).toString()
+                            .toFloat()
+
+                    radiusValue = distance
+
+                    fairAmount = if (distance < 1.0f) {
+                        String.format(
+                            "%.2f",
+                            (fair?.toDouble())
+                        ).toDouble()
+                    } else {
+                        String.format(
+                            "%.2f",
+                            (fair?.toDouble())?.times(distance)
+                        ).toDouble()
+                    }
+                    fairText.text = String.format(
+                        "$%s", fairAmount.toString()
+                    )
+
                 }
             } else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
                 val status = Autocomplete.getStatusFromIntent(data!!)

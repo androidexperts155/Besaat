@@ -105,14 +105,14 @@ class BezierView : View {
         mainPaint = Paint(Paint.ANTI_ALIAS_FLAG)
         mainPaint?.apply {
             strokeWidth = 0f
-            isAntiAlias = true
+            isAntiAlias = false
             style = Paint.Style.FILL
             color = this@BezierView.color
         }
 
         shadowPaint = Paint(Paint.ANTI_ALIAS_FLAG)
         shadowPaint?.apply {
-            isAntiAlias = true
+            isAntiAlias = false
             setShadowLayer(dipf(context, 4), 0f, 0f, shadowColor)
         }
 

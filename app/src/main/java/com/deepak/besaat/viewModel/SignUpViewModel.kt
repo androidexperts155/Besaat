@@ -105,7 +105,7 @@ class SignUpViewModel(respository: Repository) : BaseViewModel(), Authentication
                             var isDefaultProfileImage:Boolean =true
                             isDefaultProfileImage=data.optBoolean("is_silhouette")
 //                            socialLogin(name, email, profile_img_url, "", "", "", id)
-                            socialLogin(name, "vkkkdd@yopmail.com", profile_img_url, "", "", "", "345464545454",isDefaultProfileImage)
+                            socialLogin(name, email, profile_img_url, "", "", "", ""+id,isDefaultProfileImage)
                         }
                     })
                 val parameters = Bundle()

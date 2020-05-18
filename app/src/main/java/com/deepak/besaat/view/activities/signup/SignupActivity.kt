@@ -185,7 +185,7 @@ class SignupActivity : BaseActivity() {
                     if (frequentFunctions.isGooglePlayServicesAvailable(this@SignupActivity)) {
 
                         Log.e("Signin", "sign in function is ")
-                        val signInIntent = mGoogleSignInClient!!.getSignInIntent()
+                        val signInIntent = mGoogleSignInClient!!.signInIntent
                         startActivityForResult(signInIntent, Constants.GOOGLE_SIGN_IN)
                     }
                 }

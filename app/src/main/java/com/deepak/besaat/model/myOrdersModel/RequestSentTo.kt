@@ -6,9 +6,9 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 class RequestSentTo : Serializable {
-    @SerializedName("receiver_id")
+    @SerializedName("id")
     @Expose
-    private var receiverId: Int? = null
+    private var id: Int? = null
     @SerializedName("provider_status")
     @Expose
     private var providerStatus: Int? = null
@@ -18,22 +18,28 @@ class RequestSentTo : Serializable {
     @SerializedName("offer")
     @Expose
     private var offer: String? = null
-    @SerializedName("receiver_image")
+    @SerializedName("image")
     @Expose
     private var receiverImage: String? = null
-    @SerializedName("receiver_name")
+    @SerializedName("name")
     @Expose
     private var receiverName: String? = null
-    @SerializedName("receiver_rating")
+    @SerializedName("rating")
     @Expose
     private var receiverRating: String? = null
+    @SerializedName("rate_per_hour")
+    @Expose
+    private var ratePerHour: String? = null
+    @SerializedName("completed_jobs")
+    @Expose
+    private var completedJobs: String? = null
 
     fun getReceiverId(): Int? {
-        return receiverId
+        return id
     }
 
-    fun setReceiverId(receiverId: Int?) {
-        this.receiverId = receiverId
+    fun setReceiverId(id: Int?) {
+        this.id = id
     }
 
     fun getProviderStatus(): Int? {
@@ -74,6 +80,22 @@ class RequestSentTo : Serializable {
 
     fun setReceiverName(receiverName: String?) {
         this.receiverName = receiverName
+    }
+
+    fun getCompletedJobs(): String? {
+        return completedJobs
+    }
+
+    fun setCompletedJobs(completedJobs: String?) {
+        this.completedJobs = completedJobs
+    }
+
+    fun getRatePerHours(): String? {
+        return ratePerHour
+    }
+
+    fun setRatePerHours(ratePerHour: String?) {
+        this.ratePerHour = ratePerHour
     }
 
     fun getReceiverRating(): String? {

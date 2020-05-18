@@ -31,7 +31,6 @@ import com.deepak.besaat.utils.SharedPref;
 import com.deepak.besaat.view.activities.chat.ui.ChatActivity;
 import com.deepak.besaat.view.activities.deliveryPersonDetail.DeliveryPersonDetail;
 import com.deepak.besaat.view.activities.newRequestService.NewRequestService;
-import com.deepak.besaat.view.fragments.MapFragment.MapFragment;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -349,6 +348,9 @@ public class ServiceProvidersMapFragment extends
                 intent.putExtra("providerLat", "" + sourceDetails.getLatitude());
                 intent.putExtra("providerLng", "" + sourceDetails.getLogitude());
                 intent.putExtra("providerAddress", sourceDetails.getAddress());
+                intent.putExtra("availableDays", sourceDetails.getAvailableDays());
+                intent.putExtra("serviceTimeFrom", sourceDetails.getServiceTimeFrom());
+                intent.putExtra("serviceTimeTo", sourceDetails.getServiceTimeTo());
                 intent.putExtra("from", "MapFrag");
                 intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 getActivity().startActivity(intent);
@@ -468,6 +470,9 @@ public class ServiceProvidersMapFragment extends
                 intent.putExtra("providerLat", "" + sourceDetails.getLatitude());
                 intent.putExtra("providerLng", "" + sourceDetails.getLogitude());
                 intent.putExtra("providerAddress", sourceDetails.getAddress());
+                intent.putExtra("availableDays", sourceDetails.getAvailableDays());
+                intent.putExtra("serviceTimeFrom", sourceDetails.getServiceTimeFrom());
+                intent.putExtra("serviceTimeTo", sourceDetails.getServiceTimeTo());
                 intent.putExtra("from", "MapFrag");
                 intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 getActivity().startActivity(intent);

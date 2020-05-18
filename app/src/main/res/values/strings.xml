@@ -264,7 +264,11 @@
     <string name="requestitem">RequestItem</string>
     <string name="pickup_address">PickUp Address</string>
     <string name="pickup_location">Pickup Location</string>
-    <string name="dropoff_location">Dropoff Location</string>
+    <string name="dropoff_location">Drop off Location</string>
+
+    <string name="pickup_location_">Pickup Location:</string>
+    <string name="dropoff_location_">Drop Location:"</string>
+
     <string name="address_pickup">Address Pickup</string>
     <string name="delivery_address">Delivery Address</string>
     <string name="delivery_adress">Delivery Address</string>
@@ -305,6 +309,7 @@
     <string name="pickup_delivery_locations">Pickup/Delivery Locations</string>
     <string name="service_location">Service Location</string>
     <string name="type_a_message">Type a message...</string>
+    <string name="messages">Messages</string>
     <string name="do_you_want_to_send_image">Do you Want to send image?</string>
     <string name="_00_00">00:00/</string>
     <string name="delete">Delete</string>

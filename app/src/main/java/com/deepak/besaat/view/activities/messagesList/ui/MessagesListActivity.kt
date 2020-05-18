@@ -9,6 +9,8 @@ import com.deepak.besaat.utils.CommonFunctions
 import com.deepak.besaat.utils.FragmentFucntions
 import com.deepak.besaat.utils.SharedPref
 import com.deepak.besaat.viewModel.MessageListViewModel
+import kotlinx.android.synthetic.main.activity_messages_list.*
+import kotlinx.android.synthetic.main.activity_select_language.*
 import org.koin.android.ext.android.inject
 
 class MessagesListActivity : AppCompatActivity() {
@@ -20,10 +22,14 @@ class MessagesListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_messages_list)
         initObserver()
+        init()
+    }
+
+    fun init() {
+        viewModel.getOrderChatList()
     }
 
     fun initObserver() {
-
         viewModel.progressBar.observe(this, Observer<Boolean> {
             if (it) {
                 commonFunctions.showProgressBar(this, getString(R.string.loading))
@@ -36,8 +42,8 @@ class MessagesListActivity : AppCompatActivity() {
             Log.e("data", "" + it)
         })
 
-//        viewModel.feedBackMessage.observe(this, Observer {
-//            commonFunctions.showFeedbackMessage(rootLayout, it)
-//        })
+        viewModel.feedBackMessage.observe(this, Observer {
+            commonFunctions.showFeedbackMessage(rootLayout, it)
+        })
     }
 }

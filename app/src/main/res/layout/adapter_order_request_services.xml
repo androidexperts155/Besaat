@@ -170,7 +170,7 @@
                         android:layout_weight="0.6"
                         android:fontFamily="@font/roboto_regular"
                         android:maxLines="1"
-                        android:text='@{orderItem.provider!=null?orderItem.provider.name:"N/A"}'
+                        android:text='@{(orderItem.provider!=null &amp;&amp;orderItem.provider.name!=null) ?orderItem.provider.name:orderItem.requestSentToName}'
                         android:textAlignment="viewStart"
                         android:textColor="@color/colorLightBlack"
                         android:textSize="@dimen/_12ssp"
@@ -201,7 +201,7 @@
                         android:layout_weight="0.6"
                         android:fontFamily="@font/roboto_regular"
                         android:maxLines="1"
-                        android:text='@{(orderItem.provider!=null &amp;&amp;orderItem.provider.ratePerHourString!=null) ?orderItem.provider.ratePerHourString:"N/A"}'
+                        android:text='@{(orderItem.provider!=null &amp;&amp;orderItem.provider.ratePerHourString!=null) ?orderItem.provider.ratePerHourString:orderItem.requestSentToRatePerHour}'
                         android:textAlignment="viewStart"
                         android:textColor="@color/colorLightBlack"
                         android:textSize="@dimen/_12ssp"

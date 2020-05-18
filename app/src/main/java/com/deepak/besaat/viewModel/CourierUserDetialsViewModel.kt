@@ -26,6 +26,11 @@ class CourierUserDetailsViewModel(
     var providerLongitude: ObservableField<String> = ObservableField()
     var providerAddress: ObservableField<String> = ObservableField()
 
+
+    var availableDays: ObservableField<String> = ObservableField()
+    var serviceTimeFrom: ObservableField<String> = ObservableField()
+    var serviceTimeTo: ObservableField<String> = ObservableField()
+
     var deliveryType: ObservableField<String> = ObservableField()
     var from: ObservableField<String> = ObservableField()
     var name: ObservableField<String> = ObservableField()

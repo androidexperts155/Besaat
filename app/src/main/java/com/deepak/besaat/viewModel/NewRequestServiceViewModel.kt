@@ -26,6 +26,11 @@ class NewRequestServiceViewModel(
     var onDateClick: MutableLiveData<Boolean> = MutableLiveData()
     var onTimeClick: MutableLiveData<Boolean> = MutableLiveData()
     var onImageClick: MutableLiveData<Boolean> = MutableLiveData()
+    // service provider's date time/ working hours and days
+    var availableDays: ObservableField<String> = ObservableField()
+    var serviceTimeFrom: ObservableField<String> = ObservableField()
+    var serviceTimeTo: ObservableField<String> = ObservableField()
+
     var latitude: ObservableField<String> = ObservableField()
     var logitude: ObservableField<String> = ObservableField()
     var logitudeProvider: ObservableField<String> = ObservableField()

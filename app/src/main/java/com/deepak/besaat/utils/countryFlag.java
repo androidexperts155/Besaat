@@ -1,7 +1,5 @@
 package com.deepak.besaat.utils;
 
-import com.rilixtech.widget.countrycodepicker.Country;
-
 public class countryFlag {
 
     public static int getFlagDrawableResId(String name) {

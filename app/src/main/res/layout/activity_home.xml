@@ -112,13 +112,23 @@
             app:contentInsetRight="0dp"
             app:contentInsetStart="0dp"/>-->
 
-        <FrameLayout
-            android:id="@+id/container"
+        <RelativeLayout
+            android:layout_below="@+id/appBarLayout1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/appBarLayout1"/>
-
-
+            android:layout_height="match_parent">
+            <FrameLayout
+                android:layout_above="@id/viewDummy"
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+            <View
+                android:id="@+id/viewDummy"
+                android:layout_alignParentBottom="true"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_15sdp"
+                android:background="@color/transparent"/>
+        </RelativeLayout>
         <LinearLayout
             android:id="@+id/bottomNavigationlayout"
             android:layout_width="match_parent"

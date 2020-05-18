@@ -35,13 +35,13 @@ class WalkThroughAdapter(
         }else{
             textViewWelcome.visibility=View.GONE
         }
-        textViewWelcomeTitle.setText(items.get(position))
+        textViewWelcomeTitle.text = items[position]
         container.addView(view)
         return view
     }
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
-        return `object` == view;
+        return `object` == view
     }
 
     override fun getCount(): Int {

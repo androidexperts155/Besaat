@@ -26,6 +26,7 @@ object Constants {
     val GALLERY_INTENT = 1
     val CAMERA_INTENT = 2
     val REQUEST_PERMISSION_SETTING = 3
+
     var REQUEST_CHECK_LOCATION_STATUS = 4
     val REQUEST_PERMISSION = 111
     val REQUEST_LOCATION = 100
@@ -164,6 +165,7 @@ object Constants {
     val Pattern_HH_MM_SS = "HH:mm:ss"
     val Pattern_HH_MM_A = "hh:mm a"
     val Pattern_HH_MM_SS_A = "hh:mm:ss a"
+    val Pattern_MMM_D_YYYY_HH_MM_A = "MMM d, yyyy hh:mm a"
     val Pattern_MMM_D_YYYY = "MMM d, yyyy"
     val Pattern_HH_MM = "HH:mm"
 

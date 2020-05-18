@@ -160,9 +160,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/textViewStore"
                                 android:paddingLeft="@dimen/_10sdp"
-                                android:paddingRight="@dimen/_10sdp">
+                                android:paddingRight="@dimen/_10sdp"/>
 
-                            </androidx.recyclerview.widget.RecyclerView>
                         </RelativeLayout>
 
 

@@ -97,8 +97,6 @@ class NewRequestCourierOverseasActivity : BaseActivity() {
             viewModel.pickUpLatitude.set(sharedPref.getString(Constants.latitude))
             viewModel.pickUpLogitude.set(sharedPref.getString(Constants.longitude))
         }
-
-
     }
 
     private fun getCompleteAddressString(LATITUDE: Double, LONGITUDE: Double): String {
@@ -505,7 +503,6 @@ class NewRequestCourierOverseasActivity : BaseActivity() {
                             ).toDouble()
                         )
                     }
-
 //                    viewModel.fair.set(
 //                        String.format(
 //                            "%.2f",
@@ -513,7 +510,6 @@ class NewRequestCourierOverseasActivity : BaseActivity() {
 //                        ).toDouble()
 //                    )
                 }
-
             } else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
                 val status = Autocomplete.getStatusFromIntent(data!!)
             } else if (resultCode == Activity.RESULT_CANCELED) {

@@ -43,6 +43,7 @@ class NewRequestCourier : BaseActivity() {
     val commonFunctions: CommonFunctions by inject()
     val dateFunctions: DateFunctions by inject()
     val sharedPref: SharedPref by inject()
+    var currentCountryCode=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_new_request_courier)
@@ -67,10 +68,10 @@ class NewRequestCourier : BaseActivity() {
                 viewModel.dropAddress.set(intent.getStringExtra("providerAddress"))
             } else {
                 viewModel.dropAddress.set("N/A")
-                getCompleteAddressString(
+                viewModel.dropAddress.set(getCompleteAddressString(
                     viewModel.dropLatitude.get()!!.toDouble(),
                     viewModel.dropLogitude.get()!!.toDouble()
-                )
+                ))
             }
         }
 
@@ -83,6 +84,8 @@ class NewRequestCourier : BaseActivity() {
         viewModel.pickUpAddress.set(sharedPref.getString(Constants.ADDRESS))
         viewModel.pickUpLatitude.set(sharedPref.getString(Constants.latitude))
         viewModel.pickUpLogitude.set(sharedPref.getString(Constants.longitude))
+
+        getCompleteAddressString(viewModel.pickUpLatitude.get()!!.toDouble(),viewModel.pickUpLogitude.get()!!.toDouble())
     }
 
     private fun getCompleteAddressString(LATITUDE: Double, LONGITUDE: Double): String {
@@ -97,11 +100,11 @@ class NewRequestCourier : BaseActivity() {
                 for (i in 0..returnedAddress.maxAddressLineIndex) {
                     strReturnedAddress.append(returnedAddress.getAddressLine(i)).append("\n")
                 }
+                currentCountryCode=returnedAddress.countryCode
                 strAdd = strReturnedAddress.toString()
-                viewModel.dropAddress.set(strAdd)
             }
         } catch (e: Exception) {
-            Log.w("CurrentAddress", "Canont get Address!")
+            Log.w("CurrentAddress", "Can't get Address!")
         }
         return strAdd
     }
@@ -127,7 +130,7 @@ class NewRequestCourier : BaseActivity() {
             if (sharedPref.getString(Constants.latitude) == viewModel.pickUpLatitude.get() &&
                 sharedPref.getString(Constants.longitude) == viewModel.pickUpLogitude.get()
             ) {
-                initPlaceAutoCompleteActivity(this, Constants.REQUEST_LOCATION,"")
+                initPlaceAutoCompleteActivity(this, Constants.REQUEST_LOCATION,currentCountryCode)
             } else {
                 ivChangeLocation.setImageResource(R.drawable.ic_location)
                 viewModel.pickUpLatitude.set(sharedPref.getString(Constants.latitude))
@@ -175,7 +178,7 @@ class NewRequestCourier : BaseActivity() {
         })
 
         viewModel.changeDropLocationClick.observe(this, Observer {
-            initPlaceAutoCompleteActivity(this, Constants.REQUEST_DROP_LOCATION,"")
+            initPlaceAutoCompleteActivity(this, Constants.REQUEST_DROP_LOCATION,currentCountryCode)
         })
 
         viewModel.onTimeClick.observe(this, Observer {
@@ -370,7 +373,6 @@ class NewRequestCourier : BaseActivity() {
                 viewModel.pickUpLatitude.set(place?.latLng?.latitude?.toString())
                 viewModel.pickUpLogitude.set(place?.latLng?.longitude?.toString())
                 viewModel.pickUpAddress.set(place.address)
-
                 if (viewModel.dropLatitude.get() != null && viewModel.dropLatitude.get() != "") {
                     viewModel.distance.set(
                         getDistance(

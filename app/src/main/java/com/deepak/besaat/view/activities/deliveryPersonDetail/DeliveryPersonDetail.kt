@@ -2,7 +2,6 @@ package com.deepak.besaat.view.activities.deliveryPersonDetail
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.deepak.besaat.R
@@ -10,7 +9,6 @@ import com.deepak.besaat.databinding.ActivityDeliveryPersonDetailBinding
 import com.deepak.besaat.model.GetUserDetailsModel.GetUserDetailsPojo
 import com.deepak.besaat.view.activities.BaseActivity
 import kotlinx.android.synthetic.main.activity_delivery_person_detail.*
-import com.deepak.besaat.model.getServiceProviderModel.Datum
 import com.deepak.besaat.utils.CommonFunctions
 import com.deepak.besaat.utils.Constants
 import com.deepak.besaat.utils.SharedPref
@@ -44,6 +42,10 @@ class DeliveryPersonDetail : BaseActivity() {
         if (intent.getStringExtra("from") != null) {
             viewModel.from.set(intent.getStringExtra("from"))
         }
+
+        viewModel.availableDays.set(intent.getStringExtra("availableDays"))
+        viewModel.serviceTimeFrom.set(intent.getStringExtra("serviceTimeFrom"))
+        viewModel.serviceTimeTo.set(intent.getStringExtra("serviceTimeTo"))
 
         viewModel.name.set(intent.getStringExtra("name"))
         viewModel.distance.set(intent.getStringExtra("distance"))
@@ -111,28 +113,31 @@ class DeliveryPersonDetail : BaseActivity() {
 
         viewModel.onRequestClick.observe(this, Observer {
             if (it) {
-                var intent: Intent
+                var nextIntent: Intent
                 if (viewModel.from.get() != null && viewModel.from.get().toString().contains("service")) {
-                    intent = Intent(this, NewRequestService::class.java)
+                    nextIntent = Intent(this, NewRequestService::class.java)
+                    nextIntent.putExtra("availableDays", viewModel.availableDays.get())
+                    nextIntent.putExtra("serviceTimeFrom", viewModel.serviceTimeFrom.get())
+                    nextIntent.putExtra("serviceTimeTo", viewModel.serviceTimeTo.get())
                 } else if (viewModel.from.get() != null && viewModel.from.get().toString().contains(
                         "CourierOverSeas"
                     )
                 ) {
-                    intent = Intent(this, NewRequestCourierOverseasActivity::class.java)
-                    intent.putExtra("pickupCountry", intent.getStringExtra("pickupCountry"))
-                    intent.putExtra("dropCountry", intent.getStringExtra("dropCountry"))
+                    nextIntent = Intent(this, NewRequestCourierOverseasActivity::class.java)
+                    nextIntent.putExtra("pickupCountry", intent.getStringExtra("pickupCountry"))
+                    nextIntent.putExtra("dropCountry", intent.getStringExtra("dropCountry"))
                 } else {
-                    intent = Intent(this, NewRequestCourier::class.java)
+                    nextIntent = Intent(this, NewRequestCourier::class.java)
                 }
-                intent.putExtra("id", viewModel.id.get())
-                intent.putExtra("name", viewModel.name.get())
-                intent.putExtra("distance", viewModel.distance.get())
-                intent.putExtra("providerLat", viewModel.providerLatitude.get())
-                intent.putExtra("providerLng", viewModel.providerLongitude.get())
-                intent.putExtra("providerAddress", viewModel.providerAddress.get())
-                intent.putExtra("deliveryType", viewModel.deliveryType.get())
+                nextIntent.putExtra("id", viewModel.id.get())
+                nextIntent.putExtra("name", viewModel.name.get())
+                nextIntent.putExtra("distance", viewModel.distance.get())
+                nextIntent.putExtra("providerLat", viewModel.providerLatitude.get())
+                nextIntent.putExtra("providerLng", viewModel.providerLongitude.get())
+                nextIntent.putExtra("providerAddress", viewModel.providerAddress.get())
+                nextIntent.putExtra("deliveryType", viewModel.deliveryType.get())
 
-                startActivity(intent)
+                startActivity(nextIntent)
             }
         })
 

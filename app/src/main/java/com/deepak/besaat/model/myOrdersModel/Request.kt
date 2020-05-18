@@ -172,11 +172,9 @@ class Request : Serializable {
 
 
     fun getCancelledByIdLong(): Long? {
-        if (cancelledById!=null)
-        {
+        if (cancelledById != null) {
             return cancelledById?.toLong()
-        }
-        else{
+        } else {
             return 0L
         }
 
@@ -466,6 +464,7 @@ class Request : Serializable {
         this.requestSentTo = requestSentTo
     }
 
+
     fun getAcceptedAtString(): String? {
         return String.format(
             "Accepted at: %s", CommonFunctions().getFormattedTimeOrDate(
@@ -483,6 +482,25 @@ class Request : Serializable {
             return 0
     }
 
+    fun getRequestSentToName(): String {
+        if (requestSentTo != null && requestSentTo!!.size == 1) {
+            if (requestType == "1" && getDriverSelectionType() == Constants.DRIVER_AUTO)
+                return "N/A"
+            else
+                return requestSentTo!![0]!!.getReceiverName()!!
+        } else {
+            return "N/A"
+        }
+    }
+
+    fun getRequestSentToRatePerHour(): String {
+        if (requestSentTo != null && requestSentTo!!.isNotEmpty() && requestSentTo!![0]!!.getRatePerHours() != null) {
+            return String.format("$%.2f/hr", requestSentTo!![0]!!.getRatePerHours()!!.toFloat())
+        } else {
+            return "N/A"
+        }
+    }
+
     fun getChargesInCurrency(): String? {
         if (charges != null) {
             return String.format("$%.2f", charges!!.toFloat())
@@ -498,6 +516,8 @@ class Request : Serializable {
         )
     }
 
+
+
     fun getOrderDateOnlyFormatted(): String {
         return CommonFunctions().getFormattedTimeOrDate(
             createdAt!!,
@@ -511,6 +531,14 @@ class Request : Serializable {
             createdAt!!,
             Constants.Pattern_YYYY_MM_DD_HH_MM_SS,
             Constants.Pattern_HH_MM_A
+        )
+    }
+
+    fun getOrderDateTimeFormatted(): String {
+        return CommonFunctions().getFormattedTimeOrDate(
+            createdAt!!,
+            Constants.Pattern_YYYY_MM_DD_HH_MM_SS,
+            Constants.Pattern_MMM_D_YYYY_HH_MM_A
         )
     }
 
@@ -538,6 +566,18 @@ class Request : Serializable {
         }
     }
 
+    fun getOrderServiceDateTimeFormatted(): String {
+        return if (serviceTimeFrom != null) {
+            CommonFunctions().getFormattedTimeOrDate(
+                serviceTimeFrom!!,
+                Constants.Pattern_YYYY_MM_DD_HH_MM_SS,
+                Constants.Pattern_MMM_D_YYYY_HH_MM_A
+            )
+        } else {
+            "N/A"
+        }
+    }
+
     fun getOrderDeliveryDateOnlyFormatted(): String {
         return if (deliverTimeFrom != null) {
             CommonFunctions().getFormattedTimeOrDate(
@@ -556,6 +596,18 @@ class Request : Serializable {
                 deliverTimeFrom!!,
                 Constants.Pattern_YYYY_MM_DD_HH_MM_SS,
                 Constants.Pattern_HH_MM_A
+            )
+        } else {
+            "N/A"
+        }
+    }
+
+    fun getOrderDeliveryDateTimeFormatted(): String {
+        return if (deliverTimeFrom != null) {
+            CommonFunctions().getFormattedTimeOrDate(
+                deliverTimeFrom!!,
+                Constants.Pattern_YYYY_MM_DD_HH_MM_SS,
+                Constants.Pattern_MMM_D_YYYY_HH_MM_A
             )
         } else {
             "N/A"
@@ -601,7 +653,7 @@ class Request : Serializable {
     fun getImageDrawableStage2(): Int? {
         return if (requestStatus == "1" && provider == null) {
             R.drawable.bg_transparent_stroke_gray_circle
-        } else if (requestStatus == "6" || requestStatus == "7"||requestStatus == "3") {
+        } else if (requestStatus == "6" || requestStatus == "7" || requestStatus == "3") {
             R.drawable.radio_button_selected_red
         } else if (requestStatus == "4") {
             R.drawable.radio_button_selected_yellow
@@ -653,7 +705,7 @@ class Request : Serializable {
     fun getTextColorStage2(): String? {
         return if (requestStatus == "1") {
             "#E1E1ED"  // grey
-        } else if (requestStatus == "6" || requestStatus == "7"|| requestStatus == "3") {
+        } else if (requestStatus == "6" || requestStatus == "7" || requestStatus == "3") {
             "#DD8B89"  //red
         } else if (requestStatus == "4") {
             "#E5B253"  // yellow
@@ -665,7 +717,7 @@ class Request : Serializable {
     }
 
     fun getTextStage3(): String? {
-        return if (requestStatus == "6" || requestStatus == "7"|| requestStatus == "3") {
+        return if (requestStatus == "6" || requestStatus == "7" || requestStatus == "3") {
             "Cancelled"
         } else {
             "Completed"
@@ -673,7 +725,7 @@ class Request : Serializable {
     }
 
     fun getTextColorStage3(): String? {
-        return if (requestStatus == "6" || requestStatus == "7"|| requestStatus == "3") {
+        return if (requestStatus == "6" || requestStatus == "7" || requestStatus == "3") {
             "#DD8B89"  //red
         } else if (requestStatus == "4") {
             "#E1E1ED"  // grey
@@ -689,7 +741,7 @@ class Request : Serializable {
             return "#E1E1ED" // grey
         } else if (provider != null) {
             return "#64BFCD"  // blue
-        } else if (requestStatus == "6" || requestStatus == "7"|| requestStatus == "3" && provider == null) {
+        } else if (requestStatus == "6" || requestStatus == "7" || requestStatus == "3" && provider == null) {
             return "#DD8B89"  //red
         } else {
             return "#E1E1ED" // grey
@@ -699,7 +751,7 @@ class Request : Serializable {
     fun getColorStage2_3(): String? {
         if (requestStatus == "1" || requestStatus == "4") {
             return "#E1E1ED" // grey
-        } else if (requestStatus == "6" || requestStatus == "7"|| requestStatus == "3") {
+        } else if (requestStatus == "6" || requestStatus == "7" || requestStatus == "3") {
             return "#DD8B89"  //red
         } else if (requestStatus == "5") {
             return "#64BFCD"  // blue

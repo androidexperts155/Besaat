@@ -52,7 +52,7 @@
             android:layout_marginEnd="15dp"
             android:padding="@dimen/_1sdp"
             android:layout_centerVertical="true"
-            android:visibility="visible"
+            android:visibility="gone"
             app:srcCompat="@drawable/ic_messages" />
     </RelativeLayout>
     <!-- <LinearLayout

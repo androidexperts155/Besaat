@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.deepak.besaat.R
 import com.deepak.besaat.view.activities.deliveryPersonDetail.DeliveryPersonDetail
 import com.deepak.besaat.view.activities.newRequestCourier.NewRequestCourier
-import com.deepak.besaat.view.activities.newRequestService.NewRequestService
 
 class CourierGuyzAdapter(activity: Activity) : RecyclerView.Adapter<CourierGuyzAdapter.ViewHolder>() {
     var activity=activity

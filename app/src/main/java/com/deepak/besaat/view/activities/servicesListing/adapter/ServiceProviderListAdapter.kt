@@ -73,6 +73,9 @@ class ServiceProviderListAdapter(
             intent.putExtra("providerLat", getItem(position).latitude.toString())
             intent.putExtra("providerLng", getItem(position).logitude.toString())
             intent.putExtra("providerAddress", getItem(position).address)
+            intent.putExtra("availableDays", getItem(position).availableDays)
+            intent.putExtra("serviceTimeFrom", getItem(position).serviceTimeFrom)
+            intent.putExtra("serviceTimeTo", getItem(position).serviceTimeTo)
             activity.startActivity(intent)
         }
 

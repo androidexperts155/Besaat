@@ -8,11 +8,11 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.location.Geocoder
-import android.location.Location
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.DatePicker
+import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -33,8 +33,6 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.libraries.places.widget.Autocomplete
 import com.google.android.libraries.places.widget.AutocompleteActivity
 import com.google.gson.Gson
-import io.nlopez.smartlocation.OnReverseGeocodingListener
-import io.nlopez.smartlocation.SmartLocation
 import kotlinx.android.synthetic.main.activity_new_request_service.*
 import org.koin.android.ext.android.inject
 import java.text.SimpleDateFormat
@@ -64,6 +62,10 @@ class NewRequestService : BaseActivity() {
 
         viewModel.latitudeProvider.set(intent.getStringExtra("providerLat"))
         viewModel.logitudeProvider.set(intent.getStringExtra("providerLng"))
+
+        viewModel.availableDays.set(intent.getStringExtra("availableDays"))
+        viewModel.serviceTimeFrom.set(intent.getStringExtra("serviceTimeFrom"))
+        viewModel.serviceTimeTo.set(intent.getStringExtra("serviceTimeTo"))
 
         if (intent.getStringExtra("providerLat") != null && intent.getStringExtra("providerLat") != "") {
             if (intent.getStringExtra("providerAddress") != null) {
@@ -284,6 +286,21 @@ class NewRequestService : BaseActivity() {
         startActivity(int)
     }
 
+    private fun showDialogToSelectDateTimeAvailability(title: String, message: String) {
+        val builder = AlertDialog.Builder(this!!)
+        builder.setTitle(title)
+        builder.setMessage(message)
+        builder.setPositiveButton(getString(R.string.ok)) { dialogInterface, i ->
+            dialogInterface.dismiss()
+            if (title.contains("Time"))
+                timePicker()
+            else
+                datePickerDialog()
+        }
+        builder.setCancelable(false)
+        builder.show()
+    }
+
     private fun datePickerDialog() {
         val myCalendar = Calendar.getInstance()
         val date = object : DatePickerDialog.OnDateSetListener {
@@ -294,10 +311,31 @@ class NewRequestService : BaseActivity() {
                 myCalendar.set(Calendar.YEAR, year)
                 myCalendar.set(Calendar.MONTH, monthOfYear)
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-                updateLabel()
+
+                var day = myCalendar.getDisplayName(
+                    Calendar.DAY_OF_WEEK,
+                    Calendar.SHORT,
+                    Locale.getDefault()
+                )
+                if (viewModel.availableDays.get()!!.contains(day, true)) {
+                    updateLabel()
+                } else {
+                    commonFunctions.showFeedbackMessage(
+                        rootLayout!!,
+                        "Provider not available for this day. Please try other date"
+                    )
+                    showDialogToSelectDateTimeAvailability(
+                        "Date",
+                        "Provider not available for this day. Please try other date"
+                    )
+//                    datePickerDialog()
+                }
             }
 
             private fun updateLabel() {
+                viewModel.serviceTime.set("")
+                viewModel.serviceTimeShow.set("")
+
                 val myFormat = "yyyy-MM-dd" // to show on screen
                 var sdf = SimpleDateFormat(myFormat, Locale.US)
                 viewModel.serviceDateShow.set("" + sdf.format(myCalendar.time))
@@ -338,8 +376,45 @@ class NewRequestService : BaseActivity() {
                 } else {
                     newMinutes = minute.toString()
                 }
-                viewModel.serviceTime.set(dateFunctions.tweleveHoursFormat("$newHours:$newMinutes"))
-                viewModel.serviceTimeShow.set(dateFunctions.tweleveHoursFormat("$newHours:$newMinutes"))
+
+                if (viewModel.serviceTimeFrom.get() != null) {
+//                    var timeStart =
+//                        SimpleDateFormat("HH:mm:ss").parse(viewModel.serviceTimeFrom.get())
+//                    var timeStop = SimpleDateFormat("HH:mm:ss").parse(viewModel.serviceTimeTo.get())
+                    var timeStart =
+                        SimpleDateFormat("HH:mm:ss", Locale.ENGLISH).parse(
+                            CommonFunctions().getFormattedTimeOrDate(
+                                viewModel.serviceTimeFrom.get()!!,
+                                Constants.Pattern_HH_MM_SS,
+                                Constants.Pattern_HH_MM_SS
+                            )
+                        )
+
+                    var timeStop = SimpleDateFormat("HH:mm:ss", Locale.ENGLISH).parse(
+                        CommonFunctions().getFormattedTimeOrDate(
+                            viewModel.serviceTimeTo.get()!!,
+                            Constants.Pattern_HH_MM_SS,
+                            Constants.Pattern_HH_MM_SS
+                        )
+                    )
+
+                    var timeCurrent = SimpleDateFormat(
+                        "HH:mm:ss",
+                        Locale.ENGLISH
+                    ).parse("$newHours:$newMinutes:00")
+                    if (!isTimeBetweenTwoTime(timeStart, timeStop, timeCurrent)) {
+                        showDialogToSelectDateTimeAvailability(
+                            "Time",
+                            "Provider not available for this day/time. Please try other date"
+                        )
+                    } else {
+                        viewModel.serviceTime.set(dateFunctions.tweleveHoursFormat("$newHours:$newMinutes"))
+                        viewModel.serviceTimeShow.set(dateFunctions.tweleveHoursFormat("$newHours:$newMinutes"))
+                    }
+                } else {
+                    viewModel.serviceTime.set(dateFunctions.tweleveHoursFormat("$newHours:$newMinutes"))
+                    viewModel.serviceTimeShow.set(dateFunctions.tweleveHoursFormat("$newHours:$newMinutes"))
+                }
             },
             hour,
             minute,
@@ -347,6 +422,30 @@ class NewRequestService : BaseActivity() {
         )
         mTimePicker.setTitle("Select Time")
         mTimePicker.show()
+    }
+
+    private fun isTimeBetweenTwoTime(
+        startTime1: Date,
+        stopTime1: Date,
+        currentTime1: Date
+    ): Boolean {
+        //Start Time
+        var startTime = Calendar.getInstance()
+        startTime.time = startTime1
+        //Current Time
+        var currentTime = Calendar.getInstance()
+        currentTime.time = currentTime1
+        //Stop Time
+        var stopTime = Calendar.getInstance()
+        stopTime.time = stopTime1
+
+        if (stopTime < startTime) {
+            if (currentTime < stopTime) {
+                currentTime.add(Calendar.DATE, 1)
+            }
+            stopTime.add(Calendar.DATE, 1)
+        }
+        return currentTime >= startTime && currentTime < stopTime
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -71,7 +71,8 @@ class PaymentDetails : Fragment() {
         textRequest.text = orderInfo.toString()
         textPickUp.text = pickUp.toString()
         textDrop.text = drop.toString()
-        distance.text = radiusValue.toString().substring(0, 3) + " km"
+//        distance.text = radiusValue.toString().substring(0, 3) + " km"
+        distance.text = String.format("%.2f km",radiusValue)
         fairMoney.text = "$ $fair "
 
         if (fairAmount!=null)

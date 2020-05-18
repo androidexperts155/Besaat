@@ -69,7 +69,6 @@ class CustomerProfile : BaseFragment() {
         initObserver()
     }
 
-
     fun initObserver() {
         viewModel.progressBar.observe(viewLifecycleOwner, Observer<Boolean> {
             if (it) {
@@ -84,10 +83,7 @@ class CustomerProfile : BaseFragment() {
         })
 
         viewModel.successfullyGetUserProfile.observe(viewLifecycleOwner, Observer {
-
-
             sharedPref.setLong(Constants.USER_ID, it.data!!.id!!)
-
             // Log.e("Response","share prefrence "+it.data!!.id+"       "+sharedPref.getLong(Constants. USER_ID))
 
             viewModel.name.set(it.data!!.name!!)

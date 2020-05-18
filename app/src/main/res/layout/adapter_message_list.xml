@@ -1,184 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
-    <data>
-        <variable
-            name="serviceProvider"
-            type="com.deepak.besaat.model.getServiceProviderModel.Datum" />
 
-        <variable
-            name="viewModel"
-            type="com.deepak.besaat.viewModel.ServicesListingActivityViewModel" />
+    <data>
+        <!--        <variable-->
+        <!--            name="serviceProvider"-->
+        <!--            type="com.deepak.besaat.model.getServiceProviderModel.Datum" />-->
+
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rootLayout"
-        android:orientation="vertical">
-
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/circleImageView"
-            android:layout_width="@dimen/_55sdp"
-            android:layout_height="@dimen/_55sdp"
-            android:layout_marginStart="16dp"
-            android:src="@color/colorAccent"
-            app:image_url='@{serviceProvider.image!=null?serviceProvider.image:"R.drawable.pin"}'
-            app:layout_constraintBottom_toBottomOf="@+id/llRateExp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView19" />
-
-        <TextView
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:maxWidth="@dimen/_130sdp"
-            android:id="@+id/textView19"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/cabin_semi_bold"
-            android:text="@{serviceProvider.name}"
-            android:hint="@string/name"
-            tools:text="User name"
-            android:textColor="@color/colorLightBlack"
-            android:textSize="@dimen/_13ssp"
-            app:layout_constraintStart_toEndOf="@+id/circleImageView"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <LinearLayout
-            android:id="@+id/linearLayoutRatingBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textViewUserName"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:gravity="center_horizontal"
-            app:layout_constraintStart_toEndOf="@+id/circleImageView"
-            app:layout_constraintTop_toBottomOf="@+id/textView19">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginEnd="@dimen/_4sdp"
-                android:fontFamily="@font/robot_medium"
-                tools:text="0.0"
-                android:text="@{serviceProvider.ratingString}"
-                android:textColor="@color/colorYellow"
-                android:textSize="@dimen/_13ssp" />
-
-            <RatingBar
-                style="@style/RatingBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                tools:rating="0"
-                android:rating="@{serviceProvider.ratingFloat}"
-                android:theme="@style/RatingBar" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/llRateExp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/circleImageView"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutRatingBar"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/textView20"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
-                android:text="@{serviceProvider.ratePerHourString}"
-                android:textColor="@color/colorDarkGray"
-                android:textSize="@dimen/_10ssp"
-                android:ellipsize="end"
-                android:maxWidth="@dimen/_150sdp"
-                tools:text="Address"
-                android:maxLines="1"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/circleImageView"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayoutRatingBar" />
-
-            <TextView
-                android:layout_marginStart="@dimen/_10sdp"
-                android:id="@+id/textView21"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_light"
-                android:text="@{serviceProvider.expString}"
-                android:textColor="@color/colorDarkGray"
-                android:textSize="@dimen/_10ssp"
-                android:ellipsize="end"
-                android:maxWidth="@dimen/_150sdp"
-                tools:text="Address"
-                android:maxLines="1"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/circleImageView"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayoutRatingBar" />
-        </LinearLayout>
-
-
+        android:elevation="2dp"
+        app:cardCornerRadius="4dp"
+        android:layout_marginLeft="@dimen/_12sdp"
+        android:layout_marginRight="@dimen/_12sdp"
+        app:cardUseCompatPadding="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/rootLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/llRateExp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView19">
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/circleImageView"
+                android:layout_width="@dimen/_45sdp"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginStart="16dp"
+                android:src="@color/colorAccent"
+                app:layout_constraintBottom_toBottomOf="@+id/llRateExp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView19" />
 
             <TextView
-                android:id="@+id/textView24"
+                android:id="@+id/textView19"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
                 android:layout_marginTop="8dp"
-                android:drawableLeft="@drawable/ic_location_pin"
-                android:drawablePadding="@dimen/_4sdp"
-                android:fontFamily="@font/roboto_regular"
-                android:text="@{serviceProvider.distanceString}"
-                android:textSize="@dimen/_10ssp"
-                app:layout_constraintEnd_toEndOf="@+id/textViewRequest"
-                app:layout_constraintStart_toStartOf="@+id/textViewRequest"
-                app:layout_constraintTop_toBottomOf="@+id/textViewRequest" />
+                android:ellipsize="end"
+                android:fontFamily="@font/robot_medium"
+                android:hint="@string/name"
+                android:maxWidth="@dimen/_130sdp"
+                android:maxLines="1"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="@dimen/_13ssp"
+                app:layout_constraintStart_toEndOf="@+id/circleImageView"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="User name" />
 
-            <ImageView
-                android:id="@+id/ivChat"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginEnd="@dimen/_10sdp"
-                app:layout_constraintBottom_toBottomOf="@+id/textViewRequest"
-                app:layout_constraintEnd_toStartOf="@+id/textViewRequest"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintTop_toTopOf="@+id/textViewRequest"
-                app:srcCompat="@drawable/ic_chat" />
-
-            <TextView
-                android:id="@+id/textViewRequest"
+            <LinearLayout
+                android:id="@+id/llRateExp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/bg_light_blue_all_side_four_dp"
-                android:paddingLeft="@dimen/_6sdp"
-                android:paddingTop="@dimen/_4sdp"
-                android:paddingRight="@dimen/_6sdp"
-                android:paddingBottom="@dimen/_4sdp"
-                android:text="@string/request"
-                android:textAllCaps="true"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/_8ssp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/circleImageView"
+                app:layout_constraintTop_toBottomOf="@+id/textView19">
+
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/roboto_regular"
+                    android:maxLines="1"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/circleImageView"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutRatingBar"
+                    tools:text="Address" />
+
+
+            </LinearLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/textView19"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/textView19">
+
+
+                <TextView
+                    android:id="@+id/textViewRequest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:paddingLeft="@dimen/_6sdp"
+                    android:paddingTop="@dimen/_4sdp"
+                    android:paddingRight="@dimen/_6sdp"
+                    android:paddingBottom="@dimen/_4sdp"
+                    android:text="@string/request"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorDarkGray"
+                    android:textSize="@dimen/_8ssp"
+                    android:fontFamily="@font/roboto_regular"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </layout>

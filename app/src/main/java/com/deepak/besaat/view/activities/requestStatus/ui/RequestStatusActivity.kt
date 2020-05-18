@@ -78,6 +78,7 @@ class RequestStatusActivity : BaseActivity() {
             if (request != null) {
                 binding.orderItem = request
                 cancellationBannerStatusText()
+                setOrderDateTime()
                 viewModel.receiverID.set(request?.getProviderId().toString())
                 viewModel.requestID.set(request?.getId().toString())
                 setAdapterServiceProviders()
@@ -90,8 +91,19 @@ class RequestStatusActivity : BaseActivity() {
 //            intent.putExtra("data", request)
 //            startActivityForResult(intent, Constants.SELECT_OFFER_REQ)
 //        }
+    }
 
-
+    private fun setOrderDateTime() {
+        if (request?.getServiceTimeFrom() != null) {
+            llDeliveryDate.visibility = View.VISIBLE
+            tvValue5.text = request?.getOrderServiceDateTimeFormatted()
+        } else if (request?.getDeliverTimeFrom() != null) {
+            llDeliveryDate.visibility = View.VISIBLE
+            tvValue5.text = request?.getOrderDeliveryDateTimeFormatted()
+        } else {
+            llDeliveryDate.visibility = View.GONE
+            tvValue5.text = request?.getOrderDateTimeFormatted()
+        }
     }
 
     fun initObserver() {
@@ -183,6 +195,7 @@ class RequestStatusActivity : BaseActivity() {
                     request = pojo.request
                     binding.orderItem = request
                     cancellationBannerStatusText()
+                    setOrderDateTime()
 
                     serviceProviderList.clear()
                     if (request?.getRequestSentTo() != null) {
@@ -336,6 +349,7 @@ class RequestStatusActivity : BaseActivity() {
             if (data?.getSerializableExtra("data") != null) {
                 request = data.getSerializableExtra("data") as Request
                 binding.orderItem = request
+                setOrderDateTime()
                 cancellationBannerStatusText()
             }
         }

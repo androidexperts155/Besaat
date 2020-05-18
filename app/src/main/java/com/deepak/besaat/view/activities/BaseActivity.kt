@@ -309,7 +309,7 @@ open class BaseActivity : AppCompatActivity(), View.OnClickListener {
         dialogBuilder.setView(view)
         dialogBuilder.setCancelable(false)
         dialog = dialogBuilder.show()
-        dialog!!.getWindow()!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog!!.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 
     override fun onClick(view: View?) {
